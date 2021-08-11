@@ -28,9 +28,6 @@ function App() {
                 <Route exact path='/'>
                     <h1>Home Page</h1>
                 </Route>
-                <Route path='/login'>
-                    <LoginFormPage />
-                </Route>
                 <Route path='/signup'>
                     <SignupFormPage />
                 </Route>
