@@ -9,22 +9,22 @@ import configureStore from './store';
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
-  window.store = store;
+    window.store = store;
 }
 
 function Root() {
-  return (
-    <ReduxProvider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ReduxProvider>
-  );
+    return (
+        <ReduxProvider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </ReduxProvider>
+    );
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Root />
+    </React.StrictMode>,
+    document.getElementById('root')
 );
