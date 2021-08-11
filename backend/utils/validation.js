@@ -1,4 +1,4 @@
-const { validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 // middleware for formatting errors from express-validator middleware
 // (to customize, see express-validator's documentation)
@@ -19,6 +19,21 @@ const handleValidationErrors = (req, _res, next) => {
     next();
 };
 
+const validateLogin = [
+    check('credential')
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a valid email or username.'),
+    check('password')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a password.'),
+    handleValidationErrors,
+];
+
+
+
+
 module.exports = {
     handleValidationErrors,
+    validateLogin
 };
