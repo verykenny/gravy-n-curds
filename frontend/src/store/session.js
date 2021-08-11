@@ -3,8 +3,6 @@ import { csrfFetch } from './csrf';
 const SET_SESSION = 'session/setSession';
 const REMOVE_SESSION = 'session/removeSession';
 
-const initialState = { user: null };
-
 const setSession = (user) => ({
     type: SET_SESSION,
     payload: user,
@@ -23,7 +21,7 @@ export const logInUser = (credential, password) => async dispatch => {
         }),
     });
 
-    const user = await res.json();
+    const { user } = await res.json();
     console.log(user);
 
     dispatch(setSession(user));
@@ -34,6 +32,8 @@ export const logOutUser = () => async (dispatch) => {
     await csrfFetch('/api/session', { method: 'DELETE'});
     dispatch(removeSession());
 }
+
+const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
     Object.freeze(state);
