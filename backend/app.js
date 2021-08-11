@@ -12,23 +12,21 @@ const routes = require('./routes');
 
 const app = express();
 
-app.use(morgan);
+app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
-
-app.use(routes);
-
 if (!isProduction) app.use(cors());
-
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(
     csurf({
         cookie: {
             secure: isProduction,
-            sameSite: isProduction && 'Lax',
+            sameSite: isProduction && "Lax",
             httpOnly: true,
         },
     })
 );
+
+app.use(routes);
 
 module.exports = app;
