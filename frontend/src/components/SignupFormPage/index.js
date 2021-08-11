@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { signupUser } from "../../store/session";
 
+import './SignupFormPage.css'
+
 
 
 function SignupFormPage () {

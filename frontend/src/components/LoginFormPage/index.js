@@ -47,7 +47,7 @@ function LoginFormPage() {
                     ></input>
                 </div>
                 <div>
-                    <button type="submit">Sign In</button>
+                    <button type="submit">Log In</button>
                 </div>
             </form>
         </div>
