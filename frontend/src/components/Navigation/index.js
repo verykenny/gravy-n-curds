@@ -1,14 +1,36 @@
 import { NavLink } from "react-router-dom";
 
-import './Navigation.css'
 
-function Navigation() {
+import './Navigation.css'
+import ProfileButton from "./ProfileButton";
+import { useSelector } from 'react-redux'
+
+function Navigation({ isLoaded }) {
+    const sessionUser = useSelector(state => state.session.user)
+
+    let sessionLinks;
+    if (sessionUser) {
+        sessionLinks = (
+            <ProfileButton user={sessionUser} />
+        );
+    } else {
+        sessionLinks = (
+            <>
+                <NavLink to="/login">Log In</NavLink>
+                <NavLink to="/signup">Sign Up</NavLink>
+            </>
+        );
+    }
+
     return (
         <div className='nav-container'>
             <nav>
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to='/login'>Log in</NavLink>
-                <NavLink to='/signup'>Sign up</NavLink>
+                <ul>
+                    <li>
+                        <NavLink exact to="/">Home</NavLink>
+                        {isLoaded && sessionLinks}
+                    </li>
+                </ul>
             </nav>
         </div>
     )

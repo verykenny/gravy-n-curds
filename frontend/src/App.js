@@ -22,9 +22,9 @@ function App() {
 
     return isLoaded && (
         <>
-            <Navigation />
-
-            <Switch>
+            <Navigation isLoaded={isLoaded} />
+            {isLoaded && (
+                <Switch>
                 <Route exact path='/'>
                     <h1>Home Page</h1>
                 </Route>
@@ -34,7 +34,8 @@ function App() {
                 <Route path='/signup'>
                     <SignupFormPage />
                 </Route>
-            </Switch>
+                </Switch>
+            )}
         </>
     );
 }
