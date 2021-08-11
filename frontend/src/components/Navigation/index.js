@@ -7,7 +7,8 @@ function Navigation() {
         <div className='nav-container'>
             <nav>
                 <NavLink to='/'>Home</NavLink>
-                <NavLink to='/login'>Login</NavLink>
+                <NavLink to='/login'>Log in</NavLink>
+                <NavLink to='/signup'>Sign up</NavLink>
             </nav>
         </div>
     )

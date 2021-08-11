@@ -21,10 +21,23 @@ export const logInUser = (credential, password) => async dispatch => {
         }),
     });
 
-    const { user } = await res.json();
+    const data = await res.json();
 
-    dispatch(setSession(user));
-    return user;
+    dispatch(setSession(data.user));
+    return data.user;
+};
+
+
+export const signupUser = (user) => async dispatch => {
+    const res = await csrfFetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({ ...user }),
+    });
+
+    const data = await res.json();
+
+    dispatch(setSession(data.user));
+    return data.user;
 };
 
 export const logOutUser = () => async (dispatch) => {
@@ -35,7 +48,6 @@ export const logOutUser = () => async (dispatch) => {
 export const restoreUser = () => async dispatch => {
     const response = await csrfFetch('/api/session');
     const { user } = await response.json();
-    console.log(user);
     dispatch(setSession(user));
     return response;
 };
