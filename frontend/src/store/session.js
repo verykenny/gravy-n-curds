@@ -32,6 +32,14 @@ export const logOutUser = () => async (dispatch) => {
     dispatch(removeSession());
 }
 
+export const restoreUser = () => async dispatch => {
+    const response = await csrfFetch('/api/session');
+    const { user } = await response.json();
+    console.log(user);
+    dispatch(setSession(user));
+    return response;
+};
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
@@ -39,7 +47,7 @@ const sessionReducer = (state = initialState, action) => {
     const newState = { ...state };
     switch (action.type) {
         case SET_SESSION:
-            newState.user = { ...action.payload };
+            if (action.payload) newState.user = { ...action.payload };
             return newState;
         case REMOVE_SESSION:
             return initialState;
