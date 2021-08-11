@@ -64,7 +64,7 @@ function SignupFormPage () {
                 ></input>
             </div>
             <div>
-                <button type="submit">Sign In</button>
+                <button type="submit">Sign Up</button>
             </div>
         </form>
     </div>
