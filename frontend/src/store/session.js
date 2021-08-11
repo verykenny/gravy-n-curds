@@ -22,7 +22,6 @@ export const logInUser = (credential, password) => async dispatch => {
     });
 
     const { user } = await res.json();
-    console.log(user);
 
     dispatch(setSession(user));
     return user;
