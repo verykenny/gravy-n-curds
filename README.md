@@ -1,7 +1,7 @@
 # Welcome to gravy-n-curds!
 
 gravy-n-curds is a web application that allows users to view poutine dish options and see what others thought about them. User can also check-in and rate poutine dishes so they can remember what they have tried and what they thought of it. This project is inspired by [Untapped](https://untappd.com/), a website where individuals can search for beer, check-in and leave reviews on beer they try and unlock acheivements by trying new and different beer styles.
-#### Live link: [LINK](/)
+#### Live link: [gravy-n-curds-dev](https://gravy-n-curds-dev.herokuapp.com/)
 ***
 
 ### Index
