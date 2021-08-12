@@ -18,10 +18,10 @@ function LoginForm({ setShowModal }) {
         e.preventDefault();
         try {
             await dispatch(logInUser(credential, password));
-            history.push('/');
+            history.go(-1);
         } catch (e) {
-            const error = await e.json();
-            console.log('error that was returned', error);
+            // const error = await e.json();
+            console.log('error that was returned', e);
             // TODO:
             // 1. Handle and display these errors
         }

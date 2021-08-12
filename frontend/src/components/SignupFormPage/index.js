@@ -30,7 +30,7 @@ function SignupFormPage () {
         try {
             const user = await dispatch(signupUser(payload));
             console.log(user);
-            history.push('/')
+            history.go(-1)
         } catch (e) {
             const errors = await e.json();
             console.log(errors);
