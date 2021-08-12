@@ -68,6 +68,6 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 ***
 
 ### Future Goals
-- GOAL
+- Badges
 - GOAL
 - GOAL
