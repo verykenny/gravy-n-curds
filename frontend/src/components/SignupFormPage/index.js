@@ -7,10 +7,11 @@ import './SignupFormPage.css'
 
 
 
-function SignupFormPage () {
+function SignupFormPage() {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [errors, setErrors] = useState([]);
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -19,8 +20,9 @@ function SignupFormPage () {
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
 
+        e.preventDefault();
+        setErrors([]);
         const payload = {
             username,
             email,
@@ -28,48 +30,60 @@ function SignupFormPage () {
         }
 
         try {
-            const user = await dispatch(signupUser(payload));
-            console.log(user);
+            await dispatch(signupUser(payload));
             history.go(-1)
         } catch (e) {
-            const errors = await e.json();
-            console.log(errors);
+            const res = await e.json();
+            const { errors } = res
+            setErrors(errors);
         }
 
     }
 
     return (
         <div className='form-container signup-form'>
-        <form onSubmit={handleSubmit}>
-            <div className='widget-container'>
-                <input
-                    type="text"
-                    placeholder='username'
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                ></input>
-            </div>
-            <div className='widget-container'>
-                <input
-                    type="text"
-                    placeholder='email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                ></input>
-            </div>
-            <div className='widget-container'>
-                <input
-                    type="password"
-                    placeholder='password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                ></input>
-            </div>
-            <div className='btn-container'>
-                <button className='btn btn-primary' type="submit">Sign Up</button>
-            </div>
-        </form>
-    </div>
+            <form onSubmit={handleSubmit}>
+                <div className='widget-container'>
+                    <input
+                        type="text"
+                        placeholder='username'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    ></input>
+                    {errors.includes('Please provide a username with at least 4 characters.') && (
+                        <p className='form-custom-error'>Please provide a username with at least 4 characters.</p>
+                    )}
+                    {errors.includes('Username cannot be an email.') && (
+                        <p className='form-custom-error'>Username cannot be an email.</p>
+                    )}
+                </div>
+                <div className='widget-container'>
+                    <input
+                        type="text"
+                        placeholder='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    ></input>
+                    {errors.includes('Please provide a valid email.') && (
+                        <p className='form-custom-error'>Please provide a valid email.</p>
+                    )}
+                </div>
+                <div className='widget-container'>
+                    <input
+                        type="password"
+                        placeholder='password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    ></input>
+                    {errors.includes('Password must be 6 characters or more.') && (
+                        <p className='form-custom-error'>Password must be 6 characters or more.</p>
+                    )}
+                </div>
+                <div className='btn-container'>
+                    <button className='btn btn-primary' type="submit">Sign Up</button>
+                </div>
+            </form>
+        </div>
     )
 }
 

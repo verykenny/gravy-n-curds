@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { logInUser } from '../../store/session';
@@ -14,9 +14,12 @@ function LoginForm({ setShowModal }) {
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
 
+    if (sessionUser) return <Redirect to="/"></Redirect>;
+
+
     const handleSubmit = async (e) => {
-        setErrors([]);
         e.preventDefault();
+        setErrors([]);
         try {
             await dispatch(logInUser(credential, password));
             history.go(-1);
@@ -27,7 +30,6 @@ function LoginForm({ setShowModal }) {
         }
     };
 
-    if (sessionUser) return <Redirect to="/"></Redirect>;
 
     return (
         <div className="form-container login-form">
