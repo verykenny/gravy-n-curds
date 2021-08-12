@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { logInUser } from '../../store/session';
 
 import './LoginForm.css'
 
-function LoginForm() {
+function LoginForm({ setShowModal }) {
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -30,24 +30,25 @@ function LoginForm() {
     return (
         <div className='form-container login-form'>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>username or email:</label>
+                <div className='widget-container'>
                     <input
-                        type="text"
+                        type='text'
+                        placeholder='username or email'
                         value={credential}
                         onChange={(e) => setCredential(e.target.value)}
                     ></input>
                 </div>
-                <div>
-                    <label>password: </label>
+                <div className='widget-container'>
                     <input
-                        type="password"
+                        type='password'
+                        placeholder='password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     ></input>
                 </div>
-                <div>
-                    <button type="submit">Log In</button>
+                <div className='btn-container'>
+                    <button className='btn btn-primary' type="submit">Log In</button>
+                    <Link className='btn btn-primary' to="/signup" onClick={() => setShowModal(false)}>Sign Up</Link>
                 </div>
             </form>
         </div>
