@@ -62,7 +62,7 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 <img src="https://github.com/verykenny/gravy-n-curds/blob/main/planning/database-schema.png?raw=true" alt="database-schema.png" height="300">
 
 #### [Feature List](https://github.com/verykenny/gravy-n-curds/wiki/Feature-List)
-#### [Frontend Routes](/)
+#### [Frontend Routes](https://github.com/verykenny/gravy-n-curds/wiki/Front-End-Routes)
 #### [User Stories](https://github.com/verykenny/gravy-n-curds/wiki/User-Stories)
 
 ***
