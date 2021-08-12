@@ -41,32 +41,32 @@ function SignupFormPage () {
     return (
         <div className='form-container signup-form'>
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>username:</label>
+            <div className='widget-container'>
                 <input
                     type="text"
+                    placeholder='username'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 ></input>
             </div>
-            <div>
-                <label>email:</label>
+            <div className='widget-container'>
                 <input
                     type="text"
+                    placeholder='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 ></input>
             </div>
-            <div>
-                <label>password: </label>
+            <div className='widget-container'>
                 <input
                     type="password"
+                    placeholder='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 ></input>
             </div>
-            <div>
-                <button type="submit">Sign Up</button>
+            <div className='btn-container'>
+                <button className='btn btn-primary' type="submit">Sign Up</button>
             </div>
         </form>
     </div>
