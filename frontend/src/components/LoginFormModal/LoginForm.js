@@ -48,7 +48,7 @@ function LoginForm({ setShowModal }) {
                 </div>
                 <div className='btn-container'>
                     <button className='btn btn-primary' type="submit">Log In</button>
-                    <Link className='btn btn-primary' to="/signup" onClick={() => setShowModal(false)}>Sign Up</Link>
+                    <Link className='btn btn-alt' to="/signup" onClick={() => setShowModal(false)}>Sign Up</Link>
                 </div>
             </form>
         </div>

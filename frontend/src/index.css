@@ -11,21 +11,31 @@ body {
 .btn {
     background-color: transparent;
     border: none;
-    font-size: 1rem;
-    text-decoration: none;
+    border-radius: 2px;
     color: black;
+    font-size: .7rem;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor: pointer;
 }
 
 .btn-primary {
     background-color: lightblue;
-    border-radius: 2px;
-    padding: 10px 20px;
-    font-size: .7rem;
 }
 
 .btn-primary:hover {
-    cursor: pointer;
     background-color: rgb(112, 199, 228);
+}
+
+.btn-alt {
+    background-color: lightcoral;
+}
+
+.btn-alt:hover {
+    background-color: rgb(236, 98, 98);
 }
 
 /* *************** */
@@ -34,7 +44,6 @@ body {
 .form-container {
     padding: 32px 24px;
     width: 200px;
-
 }
 
 .widget-container {
