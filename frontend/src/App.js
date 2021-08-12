@@ -3,9 +3,6 @@ import { Switch, Route } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-
-
-import LoginFormPage from "./components/LoginFormPage";
 import Navigation from './components/Navigation';
 import { restoreUser } from "./store/session";
 import SignupFormPage from './components/SignupFormPage';
