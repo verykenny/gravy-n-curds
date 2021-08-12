@@ -25,6 +25,7 @@ function Navigation({ isLoaded }) {
 
     return (
             <nav className='nav-container'>
+                <p>gravy-n-curds</p>
                 <ul>
                     <li>
                         <NavLink exact to="/">Home</NavLink>
