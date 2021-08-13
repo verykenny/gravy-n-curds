@@ -9,21 +9,27 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             ownerId: {
+                allowNull: false,
                 type: Sequelize.INTEGER
             },
             name: {
-                type: Sequelize.STRING
+                allowNull: false,
+                unique: true,
+                type: Sequelize.STRING(30)
             },
             imageUrl: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
             createdAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             },
             updatedAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             }
         });
     },
