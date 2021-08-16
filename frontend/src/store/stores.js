@@ -39,7 +39,9 @@ export const createStore = (name, imageUrl) => async dispatch => {
 
 
 export const removeStore = (storeId) => async dispatch => {
-    await csrfFetch(`/api/stores/${storeId}`);
+    await csrfFetch(`/api/stores/${storeId}`, {
+        method: 'DELETE',
+    });
     dispatch(deleteStore(storeId));
 }
 
@@ -53,10 +55,15 @@ const storesReducer = (state = initialState, action) => {
     let newState = { ...state };
     switch (action.type) {
         case GET_STORES:
+            action.payload.forEach(store => {
+                newState[store.id] = store
+            })
             return newState;
         case ADD_STORE:
+            newState[action.payload.id] = action.payload;
             return newState;
         case DELETE_STORE:
+            delete newState[action.payload];
             return newState;
         default:
             return state;
