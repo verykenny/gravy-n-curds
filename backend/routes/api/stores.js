@@ -11,6 +11,22 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json({ stores });
 }))
 
+// GET retrieve all poutine for a store
+router.get('/:storeId(\\d+)/poutines', asyncHandler(async (req, res) => {
+    const storeId = Number(req.params.storeId);
+
+    const poutines = await Poutine.findAll({
+        include: {
+            model: Store,
+            where: {
+                id: storeId
+            }
+        }
+    })
+
+    return res.json({ poutines })
+}))
+
 
 // POST add a new store
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
