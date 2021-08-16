@@ -8,11 +8,7 @@ router.get('/', asyncHandler(async (req, res) => {
 }))
 
 
-// POST add new poutine
-router.post('/', asyncHandler(async (req, res) => {
 
-    res.json({ message: 'success' })
-}))
 
 
 // PUT update a poutine

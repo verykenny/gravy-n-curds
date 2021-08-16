@@ -24,6 +24,16 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
     });
 
     return res.json({ store });
+}));
+
+
+// POST add new poutine
+router.post('/:storeId(\\d+)/poutines', asyncHandler(async (req, res) => {
+    const { storeId, name, imageUrl, description } = req.body;
+
+
+
+    res.json({ storeId, name, imageUrl, description })
 }))
 
 
