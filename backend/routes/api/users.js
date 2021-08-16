@@ -22,4 +22,12 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     });
 }));
 
+
+// GET all check-ins for a user
+router.get('/:userId(\\d+)/checkins', asyncHandler(async (req, res) => {
+
+
+    res.json({ message: 'success' });
+}))
+
 module.exports = router;

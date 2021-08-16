@@ -12,6 +12,21 @@ router.get('/', asyncHandler(async (req, res) => {
 }))
 
 
+// GET check-ins for a poutine dish
+router.get('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
+
+
+    res.json({ message: 'success' });
+}))
+
+
+// POST create a check-in for a poutine dish
+router.post('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
+
+
+    res.json({ message: 'success' });
+}))
+
 
 
 // PUT update a poutine
