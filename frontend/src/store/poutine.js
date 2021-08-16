@@ -14,10 +14,10 @@ const addPoutine = (poutine) => ({
     payload: poutine
 });
 
-const deletePoutine = (poutineId) => ({
-    type: DELETE_POUTINE,
-    payload: poutineId
-});
+// const deletePoutine = (poutineId) => ({
+//     type: DELETE_POUTINE,
+//     payload: poutineId
+// });
 
 export const getPoutines = () => async dispatch => {
     const res = await csrfFetch('/api/poutines');
@@ -25,6 +25,14 @@ export const getPoutines = () => async dispatch => {
     dispatch(setPoutines(data.poutines));
 };
 
+export const createPoutine = (name, imageURL, description, storeId) => async dispatch => {
+    const res = await fetch(`/api/stores/${storeId}/poutines`, {
+        method: 'POST',
+        body: JSON.stringify({ name, imageURL, description })
+    })
+    const data = await res.json();
+    dispatch(addPoutine(data.poutine))
+}
 
 
 
@@ -36,6 +44,14 @@ const poutinesReducer = (state = initialState, action) => {
     Object.freeze(state);
     let newState = { ...state };
     switch (action.type) {
+        case SET_POUTINES:
+            action.payload.forEach(poutine => {
+                newState[poutine.id] = poutine
+            })
+            return newState;
+        case ADD_POUTINE:
+            newState[action.payload.id] = action.payload;
+            return newState;
         default:
             return state;
     }
