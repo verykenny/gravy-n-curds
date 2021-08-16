@@ -27,10 +27,19 @@ router.get('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
 
 
 // POST create a check-in for a poutine dish
-router.post('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
+router.post('/:poutineId(\\d+)/checkins', requireAuth, asyncHandler(async (req, res) => {
+    const { comment, rating } = req.body;
+    const userId = req.user.id;
+    const poutineId = Number(req.params.poutineId);
 
+    const checkin = await Checkin.create({
+        userId,
+        poutineId,
+        comment,
+        rating
+    });
 
-    res.json({ message: 'success' });
+    res.json({ checkin });
 }))
 
 
