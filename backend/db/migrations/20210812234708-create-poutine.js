@@ -10,7 +10,8 @@ module.exports = {
             },
             storeId: {
                 allowNull: false,
-                type: Sequelize.INTEGER
+                type: Sequelize.INTEGER,
+                references: { model: 'Stores' }
             },
             name: {
                 allowNull: false,
@@ -22,15 +23,17 @@ module.exports = {
             },
             description: {
                 allowNull: false,
-                type: Sequelize.TEXT(500)
+                type: Sequelize.TEXT
             },
             createdAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             },
             updatedAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             }
         });
     },
