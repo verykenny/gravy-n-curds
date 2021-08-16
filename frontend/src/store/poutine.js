@@ -14,10 +14,10 @@ const addPoutine = (poutine) => ({
     payload: poutine
 });
 
-// const deletePoutine = (poutineId) => ({
-//     type: DELETE_POUTINE,
-//     payload: poutineId
-// });
+const deletePoutine = (poutineId) => ({
+    type: DELETE_POUTINE,
+    payload: poutineId
+});
 
 export const getPoutines = () => async dispatch => {
     const res = await csrfFetch('/api/poutines');
@@ -32,26 +32,25 @@ export const createPoutine = (name, imageUrl, description, storeId) => async dis
     })
     const data = await res.json();
     dispatch(addPoutine(data.poutine))
-}
+};
 
 export const updatePoutine = (name, imageUrl, description, poutineId) => async dispatch => {
-    try {
-        const res = await csrfFetch(`/api/poutines/${poutineId}`, {
-            method: 'PUT',
-            body: JSON.stringify({ name, imageUrl, description })
-        })
+    const res = await csrfFetch(`/api/poutines/${poutineId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ name, imageUrl, description })
+    })
 
-        const data = await res.json();
+    const data = await res.json();
 
-        dispatch(addPoutine(data.poutine))
+    dispatch(addPoutine(data.poutine))
+};
 
-    } catch (e) {
-        const error = await e.json()
-        console.log(error);
-    }
+export const removePoutine = (poutineId) => async dispatch => {
+    await csrfFetch(`/api/poutines/${poutineId}`, {
+        method: 'DELETE'
+    })
+    dispatch(deletePoutine(poutineId))
 }
-
-
 
 const initialState = {};
 
@@ -65,8 +64,10 @@ const poutinesReducer = (state = initialState, action) => {
             })
             return newState;
         case ADD_POUTINE:
-            console.log(action.payload);
             newState[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_POUTINE:
+            delete newState[action.payload];
             return newState;
         default:
             return state;
