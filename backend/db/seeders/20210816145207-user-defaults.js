@@ -12,12 +12,27 @@ module.exports = {
             },
             {
                 email: faker.internet.email(),
-                username: 'FakeUser1',
+                username: 'poutineLuvver',
                 hashedPassword: bcrypt.hashSync(faker.internet.password()),
             },
             {
                 email: faker.internet.email(),
-                username: 'FakeUser2',
+                username: 'curdsRlove',
+                hashedPassword: bcrypt.hashSync(faker.internet.password()),
+            },
+            {
+                email: faker.internet.email(),
+                username: 'Linda Poutine',
+                hashedPassword: bcrypt.hashSync(faker.internet.password()),
+            },
+            {
+                email: faker.internet.email(),
+                username: 'gravyTrain',
+                hashedPassword: bcrypt.hashSync(faker.internet.password()),
+            },
+            {
+                email: faker.internet.email(),
+                username: 'boat of gravy',
                 hashedPassword: bcrypt.hashSync(faker.internet.password()),
             },
         ], {});
@@ -26,7 +41,7 @@ module.exports = {
     down: (queryInterface, Sequelize) => {
         const Op = Sequelize.Op;
         return queryInterface.bulkDelete('Users', {
-            username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
+            username: { [Op.in]: ['Demo-lition', 'poutineLuvver', 'curdsRlove', 'Linda Poutine', 'gravyTrain', 'boat of gravy'] }
         }, {});
     }
 };
