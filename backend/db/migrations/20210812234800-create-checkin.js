@@ -9,10 +9,14 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             userId: {
-                type: Sequelize.INTEGER
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                references: { model: 'Users'}
             },
             poutineId: {
-                type: Sequelize.INTEGER
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                references: { model: 'Poutines' }
             },
             comment: {
                 type: Sequelize.TEXT
@@ -22,11 +26,13 @@ module.exports = {
             },
             createdAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             },
             updatedAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             }
         });
     },

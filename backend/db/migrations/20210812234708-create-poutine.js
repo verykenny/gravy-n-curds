@@ -9,24 +9,31 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             storeId: {
-                type: Sequelize.INTEGER
+                allowNull: false,
+                type: Sequelize.INTEGER,
+                references: { model: 'Stores' }
             },
             name: {
-                type: Sequelize.STRING
+                allowNull: false,
+                type: Sequelize.STRING(30)
             },
             imageUrl: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
             description: {
+                allowNull: false,
                 type: Sequelize.TEXT
             },
             createdAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             },
             updatedAt: {
                 allowNull: false,
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.fn('now')
             }
         });
     },
