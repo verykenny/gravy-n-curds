@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import storesReducer from "./stores";
 import poutinesReducer from "./poutine";
+import checkinsReducer from "./checkins";
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     stores: storesReducer,
     poutines: poutinesReducer,
+    checkins: checkinsReducer,
 });
 
 let enhancer;
