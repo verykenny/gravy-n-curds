@@ -2,6 +2,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const { Store, Poutine } = require('../../db/models');
+const { requireAuth } = require('../../utils/auth');
 
 // GET retrieve all poutines
 router.get('/', asyncHandler(async (req, res) => {
@@ -13,11 +14,25 @@ router.get('/', asyncHandler(async (req, res) => {
 
 
 
-
 // PUT update a poutine
-router.put('/:poutineId(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:poutineId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const { name, imageUrl, description } = req.body;
+    const poutineId = Number(req.params.poutineId);
+    const ownerId = req.user.id;
 
-    res.json({ message: 'success' })
+    const poutine = await Poutine.findByPk(poutineId, {
+        include: Store
+    })
+
+    if (poutine.Store.ownerId !== ownerId) return res.json({ message: 'unauthorized' })
+
+    poutine.name = name;
+    poutine.imageUrl = imageUrl;
+    poutine.description = description;
+    await poutine.save();
+
+
+    res.json({ poutine })
 }))
 
 
