@@ -3,12 +3,12 @@
 import { csrfFetch } from "./csrf";
 
 
-const GET_STORES = 'stores/setStores';
+const SET_STORES = 'stores/setStores';
 const ADD_STORE = 'stores/addStore';
 const DELETE_STORE = 'stores/deleteStore';
 
 const setStores = (stores) => ({
-    type: GET_STORES,
+    type: SET_STORES,
     payload: stores
 });
 
@@ -37,6 +37,15 @@ export const createStore = (name, imageUrl) => async dispatch => {
     dispatch(addStore(data.store));
 };
 
+export const updateStore = (name, imageUrl, storeId) => async dispatch => {
+    const res = await csrfFetch(`/api/stores/${storeId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ name, imageUrl })
+    })
+    const data = await res.json();
+    dispatch(addStore(data.store));
+};
+
 
 export const removeStore = (storeId) => async dispatch => {
     await csrfFetch(`/api/stores/${storeId}`, {
@@ -54,7 +63,7 @@ const storesReducer = (state = initialState, action) => {
     Object.freeze(state);
     let newState = { ...state };
     switch (action.type) {
-        case GET_STORES:
+        case SET_STORES:
             action.payload.forEach(store => {
                 newState[store.id] = store
             })

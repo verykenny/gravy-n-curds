@@ -9,6 +9,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
 import * as storeActions from './store/stores'
+import * as poutineActions from './store/poutine'
 
 const store = configureStore();
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
     window.store = store;
     window.sessionActions = sessionActions;
     window.storeActions = storeActions;
+    window.poutineActions = poutineActions;
 }
 
 
