@@ -76,6 +76,10 @@ validatePoutine = [
         .exists({ checkFalsy: true })
         .isLength({ min: 4 })
         .withMessage('Please provide a name for your poutine with at least 4 characters.'),
+    check('description')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 4 })
+        .withMessage('Please provide a description of your poutine with at least 4 characters.'),
     check('imageUrl')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a url to a photo of your poutine dish.'),
