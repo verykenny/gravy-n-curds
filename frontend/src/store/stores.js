@@ -3,12 +3,12 @@
 import { csrfFetch } from "./csrf";
 
 
-const GET_STORES = 'stores/setStores';
+const SET_STORES = 'stores/setStores';
 const ADD_STORE = 'stores/addStore';
 const DELETE_STORE = 'stores/deleteStore';
 
 const setStores = (stores) => ({
-    type: GET_STORES,
+    type: SET_STORES,
     payload: stores
 });
 
@@ -54,7 +54,7 @@ const storesReducer = (state = initialState, action) => {
     Object.freeze(state);
     let newState = { ...state };
     switch (action.type) {
-        case GET_STORES:
+        case SET_STORES:
             action.payload.forEach(store => {
                 newState[store.id] = store
             })
