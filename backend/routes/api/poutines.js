@@ -37,7 +37,17 @@ router.put('/:poutineId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 
 
 // DELETE remove a poutine
-router.delete('/:poutineId(\\d+)', asyncHandler(async (req, res) => {
+router.delete('/:poutineId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const poutineId = Number(req.params.poutineId);
+    const userId = req.user.id;
+
+    const poutine = await Poutine.findByPk(poutineId, {
+        include: Store
+    });
+
+    if (poutine.Store.ownerId !== userId) return res.json({ message: 'unauthorized' })
+
+    await poutine.destroy();
 
     res.json({ message: 'success' })
 }))
