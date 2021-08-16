@@ -18,13 +18,13 @@ router.get('/', asyncHandler(async (req, res) => {
 router.put('/:poutineId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const { name, imageUrl, description } = req.body;
     const poutineId = Number(req.params.poutineId);
-    const ownerId = req.user.id;
+    const userId = req.user.id;
 
     const poutine = await Poutine.findByPk(poutineId, {
         include: Store
     })
 
-    if (poutine.Store.ownerId !== ownerId) return res.json({ message: 'unauthorized' })
+    if (poutine.Store.ownerId !== userId) return res.json({ message: 'unauthorized' })
 
     poutine.name = name;
     poutine.imageUrl = imageUrl;
