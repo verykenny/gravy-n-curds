@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     Poutine.associate = function (models) {
         // associations can be defined here
+        Poutine.belongsTo(models.Store, { foreignKey: 'storeId' });
+        Poutine.hasMany(models.Checkin, { foreignKey: 'poutineId'});
     };
     return Poutine;
 };

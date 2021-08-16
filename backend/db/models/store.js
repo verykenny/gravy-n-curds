@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     Store.associate = function (models) {
         // associations can be defined here
+        Store.belongsTo(models.User, { foreignKey: 'ownerId' });
+        Store.hasMany(models.Poutine, { foreignKey: 'storeId' })
     };
     return Store;
 };
