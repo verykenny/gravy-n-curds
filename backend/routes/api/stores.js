@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const { Store } = require('../../db/models');
+const { Store, Poutine } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 
 
@@ -9,6 +9,22 @@ const { requireAuth } = require('../../utils/auth');
 router.get('/', asyncHandler(async (req, res) => {
     const stores = await Store.findAll();
     return res.json({ stores });
+}))
+
+// GET retrieve all poutine for a store
+router.get('/:storeId(\\d+)/poutines', asyncHandler(async (req, res) => {
+    const storeId = Number(req.params.storeId);
+
+    const poutines = await Poutine.findAll({
+        include: {
+            model: Store,
+            where: {
+                id: storeId
+            }
+        }
+    })
+
+    return res.json({ poutines })
 }))
 
 
@@ -24,6 +40,28 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
     });
 
     return res.json({ store });
+}));
+
+
+// POST add new poutine to a store
+router.post('/:storeId(\\d+)/poutines', requireAuth, asyncHandler(async (req, res) => {
+    const { name, imageUrl, description } = req.body;
+    const storeId  = Number(req.params.storeId);
+    const userId = req.user.id;
+    const store = await Store.findByPk(storeId);
+
+
+    if (userId !== store.ownerId) return res.json({ message: 'unauthorized' })
+
+    const poutine = await Poutine.create({
+        storeId,
+        name,
+        imageUrl,
+        description
+    })
+
+
+    res.json({ poutine })
 }))
 
 
