@@ -2,14 +2,21 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
 
+const { Checkin } = require('../../db/models');
+
 
 
 // GET all check-ins for logged in user
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
-    const userId = req.user.id
+    const userId = req.user.id;
+    
+    const checkins = await Checkin.findAll({
+        where: {
+            userId: userId
+        }
+    })
 
-
-    res.json({ message: 'success' });
+    res.json({ checkins });
 }))
 
 
