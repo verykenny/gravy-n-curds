@@ -1,10 +1,13 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
+const { Store, Poutine } = require('../../db/models');
+
 // GET retrieve all poutines
 router.get('/', asyncHandler(async (req, res) => {
+    const poutines = await Poutine.findAll();
 
-    res.json({ message: 'success' })
+    res.json({ poutines })
 }))
 
 
