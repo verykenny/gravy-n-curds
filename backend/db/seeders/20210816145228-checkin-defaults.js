@@ -15,8 +15,6 @@ module.exports = {
 
     down: (queryInterface, Sequelize) => {
         const Op = Sequelize.Op;
-        return queryInterface.bulkDelete('Checkins', {
-            userId: { [Op.in]: [1, 2] }
-        }, {});
+        return queryInterface.bulkDelete('Checkins', null, {truncate: true, cascade: true, restartIdentity: true});
     }
 };
