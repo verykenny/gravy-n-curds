@@ -6,7 +6,6 @@ import { getPoutines } from "../../store/poutine";
 const Home = () => {
     const poutines = useSelector(state => state.poutines)
     const dispatch = useDispatch();
-    console.log(poutines);
 
     useEffect(() => {
         dispatch(getPoutines());
