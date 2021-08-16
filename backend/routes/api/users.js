@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Checkin } = require('../../db/models');
 const { validateSignup } = require('../../utils/validation');
 
 
