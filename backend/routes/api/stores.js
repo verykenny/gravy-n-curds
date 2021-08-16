@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { Store, Poutine } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
+const { validatePoutine, validateStore } = require('../../utils/validation');
 
 
 // GET retrieve all stores
@@ -29,7 +30,7 @@ router.get('/:storeId(\\d+)/poutines', asyncHandler(async (req, res) => {
 
 
 // POST add a new store
-router.post('/', requireAuth, asyncHandler(async (req, res) => {
+router.post('/', requireAuth, validateStore, asyncHandler(async (req, res) => {
     const { name, imageUrl } = req.body;
     const ownerId = req.user.id;
 
@@ -44,7 +45,7 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
 
 
 // POST add new poutine to a store
-router.post('/:storeId(\\d+)/poutines', requireAuth, asyncHandler(async (req, res) => {
+router.post('/:storeId(\\d+)/poutines', requireAuth, validatePoutine, asyncHandler(async (req, res) => {
     const { name, imageUrl, description } = req.body;
     const storeId  = Number(req.params.storeId);
     const userId = req.user.id;
@@ -66,7 +67,7 @@ router.post('/:storeId(\\d+)/poutines', requireAuth, asyncHandler(async (req, re
 
 
 // PUT update a store
-router.put('/:storeId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.put('/:storeId(\\d+)', requireAuth, validateStore, asyncHandler(async (req, res) => {
     const { name, imageUrl } = req.body;
     const storeId  = Number(req.params.storeId);
 
