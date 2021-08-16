@@ -22,7 +22,18 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     });
 }));
 
+// GET all check-ins for a user
+router.get('/:userId(\\d+)/checkins', asyncHandler(async (req, res) => {
+    const userId = Number(req.params.userId);
 
+    const checkins = await Checkin.findAll({
+        where: {
+            userId: userId
+        }
+    })
+
+    res.json({ checkins });
+}))
 
 
 module.exports = router;

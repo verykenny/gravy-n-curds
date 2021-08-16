@@ -6,14 +6,10 @@ const { Checkin } = require('../../db/models');
 
 
 
-// GET all check-ins for logged in user
-router.get('/', requireAuth, asyncHandler(async (req, res) => {
-    const userId = req.user.id;
-    
+// GET all check-ins
+router.get('/', asyncHandler(async (req, res) => {
+
     const checkins = await Checkin.findAll({
-        where: {
-            userId: userId
-        }
     })
 
     res.json({ checkins });
