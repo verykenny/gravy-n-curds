@@ -35,7 +35,15 @@ router.put('/:checkinId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 
 
 // DELETE remove a check-in
-router.delete('/:checkinId(\\d+)', asyncHandler(async (req, res) => {
+router.delete('/:checkinId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const checkinId = Number(req.params.checkinId);
+    const userId = req.user.id;
+
+    const checkin = await Checkin.findByPk(checkinId);
+
+    if (userId !== checkin.userId) return res.json({ message: 'unauthorized' })
+
+    await checkin.destroy();
 
     res.json({ message: 'success' });
 }))
