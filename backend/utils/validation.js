@@ -79,6 +79,7 @@ validatePoutine = [
     check('imageUrl')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a url to a photo of your poutine dish.'),
+    handleValidationErrors,
 
 ];
 
