@@ -16,10 +16,20 @@ router.get('/', asyncHandler(async (req, res) => {
 
 
 // PUT update a check-in
-router.put('/:checkinId(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:checkinId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const { comment, rating } = req.body;
+    const checkinId = Number(req.params.checkinId);
+    const userId = req.user.id;
 
+    const checkin = await Checkin.findByPk(checkinId);
 
-    res.json({ message: 'success' });
+    if (userId !== checkin.userId) return res.json({ message: 'unauthorized' })
+
+    checkin.comment = comment;
+    checkin.rating = rating;
+    await checkin.save();
+
+    res.json({ checkin });
 }))
 
 
