@@ -9,8 +9,7 @@ const { Checkin } = require('../../db/models');
 // GET all check-ins
 router.get('/', asyncHandler(async (req, res) => {
 
-    const checkins = await Checkin.findAll({
-    })
+    const checkins = await Checkin.findAll();
 
     res.json({ checkins });
 }))
