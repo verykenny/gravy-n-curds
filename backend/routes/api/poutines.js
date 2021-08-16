@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const { Store, Poutine } = require('../../db/models');
+const { Store, Poutine, Checkin } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 
 // GET retrieve all poutines
@@ -14,9 +14,15 @@ router.get('/', asyncHandler(async (req, res) => {
 
 // GET check-ins for a poutine dish
 router.get('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
+    const poutineId = Number(req.params.poutineId);
 
+    const checkins = await Checkin.findAll({
+        where: {
+            poutineId: poutineId
+        }
+    })
 
-    res.json({ message: 'success' });
+    res.json({ checkins });
 }))
 
 
