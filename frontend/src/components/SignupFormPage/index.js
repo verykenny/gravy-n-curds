@@ -67,7 +67,7 @@ function SignupFormPage() {
                     {errors.includes('Please provide a valid email.') && (
                         <p className='form-custom-error'>Please provide a valid email.</p>
                     )}
-                    {errors.includes('The provided Email Address is already in use by another account') && (
+                    {errors.includes('The provided Email Address is already in use by another account.') && (
                         <p className='form-custom-error'>Email already in use.</p>
                     )}
                 </div>

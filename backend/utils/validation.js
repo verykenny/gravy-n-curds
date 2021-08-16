@@ -41,7 +41,7 @@ const validateSignup = [
             return User.findOne({ where: { email: value } })
                 .then((user) => {
                     if (user) {
-                        return Promise.reject('The provided Email Address is already in use by another account');
+                        return Promise.reject('The provided Email Address is already in use by another account.');
                     }
                 });
         }),
@@ -63,14 +63,24 @@ const validateSignup = [
 validateStore = [
     check('name')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a store/restaurant name.'),
+        .isLength({ min: 4 })
+        .withMessage('Please provide a store/restaurant name with at least 4 characters.'),
     check('imageUrl')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a url to a photo of your store/restaurant'),
+        .withMessage('Please provide a url to a photo of your store/restaurant.'),
     handleValidationErrors,
 ];
 
+validatePoutine = [
+    check('name')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 4 })
+        .withMessage('Please provide a name for your poutine with at least 4 characters.'),
+    check('imageUrl')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a url to a photo of your poutine dish.'),
 
+];
 
 
 module.exports = {
