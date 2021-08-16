@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Checkin } = require('../../db/models');
 const { validateSignup } = require('../../utils/validation');
 
 
@@ -21,5 +21,19 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
         user,
     });
 }));
+
+// GET all check-ins for a user
+router.get('/:userId(\\d+)/checkins', asyncHandler(async (req, res) => {
+    const userId = Number(req.params.userId);
+
+    const checkins = await Checkin.findAll({
+        where: {
+            userId: userId
+        }
+    })
+
+    res.json({ checkins });
+}))
+
 
 module.exports = router;
