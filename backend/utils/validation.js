@@ -1,5 +1,6 @@
 const { check, validationResult } = require('express-validator');
 
+const { User } = require('../db/models');
 // middleware for formatting errors from express-validator middleware
 // (to customize, see express-validator's documentation)
 const handleValidationErrors = (req, _res, next) => {
@@ -33,8 +34,17 @@ const validateLogin = [
 const validateSignup = [
     check('email')
         .exists({ checkFalsy: true })
+        .withMessage('Please provide a valid email.')
         .isEmail()
-        .withMessage('Please provide a valid email.'),
+        .withMessage('Please provide a valid email.')
+        .custom((value) => {
+            return User.findOne({ where: { email: value } })
+                .then((user) => {
+                    if (user) {
+                        return Promise.reject('The provided Email Address is already in use by another account.');
+                    }
+                });
+        }),
     check('username')
         .exists({ checkFalsy: true })
         .isLength({ min: 4 })
@@ -50,11 +60,40 @@ const validateSignup = [
     handleValidationErrors,
 ];
 
+validateStore = [
+    check('name')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a store/restaurant name with at least 4 characters.')
+        .isLength({ min: 4 })
+        .withMessage('Please provide a store/restaurant name with at least 4 characters.'),
+    check('imageUrl')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a url to a photo of your store/restaurant.'),
+    handleValidationErrors,
+];
 
+validatePoutine = [
+    check('name')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a name for your poutine with at least 4 characters.')
+        .isLength({ min: 4 })
+        .withMessage('Please provide a name for your poutine with at least 4 characters.'),
+    check('description')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a description of your poutine with at least 4 characters.')
+        .isLength({ min: 4 })
+        .withMessage('Please provide a description of your poutine with at least 4 characters.'),
+    check('imageUrl')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a url to a photo of your poutine dish.'),
+    handleValidationErrors,
+];
 
 
 module.exports = {
     handleValidationErrors,
     validateLogin,
     validateSignup,
+    validateStore,
+    validatePoutine,
 };

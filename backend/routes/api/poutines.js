@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { Store, Poutine, Checkin } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
+const { validatePoutine } = require('../../utils/validation');
 
 // GET retrieve all poutines
 router.get('/', asyncHandler(async (req, res) => {
@@ -45,7 +46,7 @@ router.post('/:poutineId(\\d+)/checkins', requireAuth, asyncHandler(async (req, 
 
 
 // PUT update a poutine
-router.put('/:poutineId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.put('/:poutineId(\\d+)', requireAuth, validatePoutine, asyncHandler(async (req, res) => {
     const { name, imageUrl, description } = req.body;
     const poutineId = Number(req.params.poutineId);
     const userId = req.user.id;
