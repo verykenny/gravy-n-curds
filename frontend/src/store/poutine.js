@@ -25,16 +25,31 @@ export const getPoutines = () => async dispatch => {
     dispatch(setPoutines(data.poutines));
 };
 
-export const createPoutine = (name, imageURL, description, storeId) => async dispatch => {
-    const res = await fetch(`/api/stores/${storeId}/poutines`, {
+export const createPoutine = (name, imageUrl, description, storeId) => async dispatch => {
+    const res = await csrfFetch(`/api/stores/${storeId}/poutines`, {
         method: 'POST',
-        body: JSON.stringify({ name, imageURL, description })
+        body: JSON.stringify({ name, imageUrl, description })
     })
     const data = await res.json();
     dispatch(addPoutine(data.poutine))
 }
 
+export const updatePoutine = (name, imageUrl, description, poutineId) => async dispatch => {
+    try {
+        const res = await csrfFetch(`/api/poutines/${poutineId}`, {
+            method: 'PUT',
+            body: JSON.stringify({ name, imageUrl, description })
+        })
 
+        const data = await res.json();
+
+        dispatch(addPoutine(data.poutine))
+
+    } catch (e) {
+        const error = await e.json()
+        console.log(error);
+    }
+}
 
 
 
@@ -50,6 +65,7 @@ const poutinesReducer = (state = initialState, action) => {
             })
             return newState;
         case ADD_POUTINE:
+            console.log(action.payload);
             newState[action.payload.id] = action.payload;
             return newState;
         default:
