@@ -7,24 +7,26 @@ const { validatePoutine } = require('../../utils/validation');
 
 // GET retrieve all poutines
 router.get('/', asyncHandler(async (req, res) => {
-    const poutines = await Poutine.findAll();
+    const poutines = await Poutine.findAll({
+        include: Checkin
+    });
 
     res.json({ poutines })
 }))
 
 
 // GET check-ins for a poutine dish
-router.get('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
-    const poutineId = Number(req.params.poutineId);
+// router.get('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
+//     const poutineId = Number(req.params.poutineId);
 
-    const checkins = await Checkin.findAll({
-        where: {
-            poutineId: poutineId
-        }
-    })
+//     const checkins = await Checkin.findAll({
+//         where: {
+//             poutineId: poutineId
+//         }
+//     })
 
-    res.json({ checkins });
-}))
+//     res.json({ checkins });
+// }))
 
 
 // POST create a check-in for a poutine dish

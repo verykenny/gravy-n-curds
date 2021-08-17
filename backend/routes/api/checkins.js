@@ -2,14 +2,16 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
 
-const { Checkin } = require('../../db/models');
+const { Checkin, User } = require('../../db/models');
 
 
 
 // GET all check-ins
 router.get('/', asyncHandler(async (req, res) => {
 
-    const checkins = await Checkin.findAll();
+    const checkins = await Checkin.findAll({
+        include: User
+    });
 
     res.json({ checkins });
 }))

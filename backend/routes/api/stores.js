@@ -8,7 +8,9 @@ const { validatePoutine, validateStore } = require('../../utils/validation');
 
 // GET retrieve all stores
 router.get('/', asyncHandler(async (req, res) => {
-    const stores = await Store.findAll();
+    const stores = await Store.findAll({
+        include: Poutine
+    });
     return res.json({ stores });
 }))
 
