@@ -18,6 +18,16 @@
     max-height: 74px;
 }
 
+.collapse-menu {
+    background-color: #d5b534;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0px;
+    top: 74px;
+
+}
+
 .public-links,
 .session-links,
 .home-link,
@@ -72,6 +82,13 @@
 }
 
 @media screen and (max-width: 790px) {
+    .nav-bar-color {
+        position: relative;
+    }
+
+    .nav-container {
+        max-height: 1000px;
+    }
     .public-links,
     .session-links {
         display: none;
@@ -83,5 +100,9 @@
 
     .hidden-module {
         display: inline;
+    }
+
+    .collapse-menu {
+        width: 100%;
     }
 }

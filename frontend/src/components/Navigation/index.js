@@ -5,7 +5,7 @@ import './Navigation.css'
 import { useDispatch, useSelector } from 'react-redux'
 import LoginFormModal from "../LoginFormModal";
 import { logOutUser } from "../../store/session";
-import MenuButton from "./ProfileButton";
+import MenuButton from "./MenuButton";
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user)

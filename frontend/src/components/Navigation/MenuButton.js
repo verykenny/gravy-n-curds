@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
+import { logOutUser } from "../../store/session";
+
 
 function MenuButton({ user }) {
     const dispatch = useDispatch();
@@ -31,17 +34,15 @@ function MenuButton({ user }) {
     return (
         <>
             <button onClick={openMenu}>
-                <i className="fas fa-user" />
-                Account
+                <i className="fas fa-bars" />
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
+                <div className='collapse-menu'>
+                    <NavLink className='nav-link' to='/recent'>Recent Reviews</NavLink>
+                    <NavLink className='nav-link' to='/top-rated'>Top Rated</NavLink>
+                    <NavLink className='nav-link' to='/profile'>Profile</NavLink>
+                    <button className='btn btn-alt' onClick={() => dispatch(logOutUser())}>Log Out</button>
+                </div>
             )}
         </>
     );
