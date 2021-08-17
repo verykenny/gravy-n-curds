@@ -12,10 +12,10 @@
     background-color: #d5b534;
     display: flex;
     width: 900px;
-    max-width: 100%;
     margin: 0 auto;
     padding: 0 60px;
     height: 34px;
+    max-width: 100%;
     box-sizing: border-box;
 }
 
@@ -91,7 +91,9 @@
 
     .nav-container {
         max-height: 1000px;
+        padding: 0 40px;
     }
+
     .public-links,
     .session-links {
         display: none;
@@ -139,5 +141,19 @@
     .session-buttons .btn {
         margin-left: 5px;
         padding: 10px 15px;
+    }
+
+
+}
+
+@media screen and (max-width: 420px) {
+    .home-link a {
+        font-size: 1rem;
+    }
+    .home-link {
+        margin-right: 10px;
+    }
+    .session-buttons .btn {
+        font-size: .4rem;
     }
 }
