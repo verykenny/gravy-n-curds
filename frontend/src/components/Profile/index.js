@@ -45,10 +45,9 @@ export default Profile;
 
 
 const CheckinCard = ({ checkin }) => {
-
     return (
         <div className='checkin-card'>
-            <p>You ate <Link to={`/poutine/${checkin.Poutine.id}`}>{checkin.Poutine.name}</Link> at <Link to={`/stores/${checkin.Poutine.Store.id}`}>{checkin.Poutine.Store.name}</Link>.</p>
+            <p>You ate <Link to={`/poutines/${checkin.Poutine.id}`}>{checkin.Poutine.name}</Link> at <Link to={`/stores/${checkin.Poutine.Store.id}`}>{checkin.Poutine.Store.name}</Link>.</p>
             <p>You said: </p>
             <p>{checkin.comment}</p>
             <p>Rating: {checkin.rating}</p>
