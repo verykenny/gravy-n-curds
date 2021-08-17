@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { logOutUser } from "../../store/session";
 
 
-function MenuButton({ user }) {
+function MenuButton() {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 
