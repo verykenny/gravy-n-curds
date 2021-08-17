@@ -40,13 +40,22 @@ img {
     background-color: #317a3b;
 }
 
-.btn-alt {
+.btn-warning {
     background-color: #A33B20;
     color: white;
 }
 
-.btn-alt:hover {
+.btn-warning:hover {
     background-color: #812f1a;
+}
+
+.btn-alt {
+    background-color: #393E41;
+    color: white;
+}
+
+.btn-alt:hover {
+    background-color: #1b1d1f;
 }
 
 /* *************** */
