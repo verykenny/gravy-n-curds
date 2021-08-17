@@ -13,30 +13,35 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <>
-                <NavLink to='/profile'>Profile</NavLink>
-                <button onClick={() => dispatch(logOutUser())}>Log Out</button>
-            </>
+            <div className='links'>
+                <div className='public-links'>
+                    <NavLink to='/recent'>Recent Checkins</NavLink>
+                    <NavLink to='/top-rated'>Top Rated</NavLink>
+                </div>
+                <div className='session-links'>
+                    <NavLink to='/profile'>Profile</NavLink>
+                    <button className='btn btn-alt' onClick={() => dispatch(logOutUser())}>Log Out</button>
+                </div>
+            </div>
         );
     } else {
         sessionLinks = (
             <>
                 <LoginFormModal />
-                <NavLink to="/signup">Sign Up</NavLink>
+                <NavLink className='btn btn-primary' to="/signup">Sign Up</NavLink>
             </>
         );
     }
 
     return (
-        <nav className='nav-container'>
-            <p>gravy-n-curds</p>
-            <ul>
-                <li>
-                    <NavLink exact to="/">Home</NavLink>
-                    {isLoaded && sessionLinks}
-                </li>
-            </ul>
-        </nav>
+        <div className='nav-bar-color'>
+            <nav className='nav-container'>
+                <div className='home-link'>
+                    <NavLink exact to="/">gravyNcurds</NavLink>
+                </div>
+                {isLoaded && sessionLinks}
+            </nav>
+        </div>
     )
 }
 
