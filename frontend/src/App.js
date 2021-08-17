@@ -13,6 +13,10 @@ import Store from './components/Store';
 import Checkin from './components/Checkin';
 import StoreForm from './components/StoreForm';
 import CheckinEditForm from './components/CheckinEditForm';
+import { getCheckins } from './store/checkins';
+import { getPoutines } from './store/poutine';
+import { get } from 'js-cookie';
+import { getStores } from './store/stores';
 
 
 function App() {
@@ -22,6 +26,9 @@ function App() {
 
     useEffect(() => {
         dispatch(restoreUser()).then(() => setIsLoaded(true));
+        dispatch(getCheckins());
+        dispatch(getPoutines());
+        dispatch(getStores());
     }, [dispatch]);
 
     return isLoaded && (

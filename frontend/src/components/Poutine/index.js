@@ -3,37 +3,53 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getPoutines } from '../../store/poutine';
+import { getStores } from '../../store/stores';
+
+import './Poutine.css'
 
 const Poutine = () => {
     const { poutineId } = useParams();
-    const poutine = useSelector((state) => state.poutines[poutineId]);
+    const poutineData = useSelector((state) => ({ poutine: state.poutines[poutineId], store: state.poutines[poutineId] }));
     const dispatch = useDispatch();
-    console.log(poutine);
 
     useEffect(() => {
         dispatch(getPoutines());
     }, [dispatch]);
 
     const poutineContent = () => {
-        return <h1>{poutine.name}</h1>;
+        return (
+            <>
+                <h1>{poutineData.poutine.name}</h1>
+                <p>{poutineData.poutine.description}</p>
+                <p>Find it at:</p>
+                {poutineData.store && <Link to={`/stores/${poutineData.store.id}`}>{poutineData.store.name}</Link>}
+
+                <div className='btn-container'>
+                    <Link to={`/poutine/${poutineData.poutine.id}/checkins/create`} className='btn btn-alt'>Check-in</Link>
+                </div>
+            </>
+        );
     };
 
     const poutineImage = () => {
-        return <img src={poutine.imageUrl} alt={poutine.name} />;
+        return <img src={poutineData.poutine.imageUrl} alt={poutineData.poutine.name} />;
     };
 
     return (
         <>
             <div className="poutine-container">
                 <div className="poutine-content">
-                    {poutine && poutineContent()}
+                    {poutineData.poutine && poutineContent()}
+
                 </div>
-                <div className="poutine-image">{poutine && poutineImage()}</div>
+                <div className="poutine-image">
+                    {poutineData.poutine && poutineImage()}
+                </div>
             </div>
             <div className="checkins-container">
-                {poutine && poutine.Checkins.map((checkin) => (
-                        <CheckinCard key={checkin.id} checkin={checkin} />
-                    ))}
+                {poutineData.poutine && poutineData.poutine.Checkins.map((checkin) => (
+                    <CheckinCard key={checkin.id} checkin={checkin} />
+                ))}
             </div>
         </>
     );
