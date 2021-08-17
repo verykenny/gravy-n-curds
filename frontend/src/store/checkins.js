@@ -4,12 +4,9 @@ const SET_CHECKINS = 'checkins/setCheckins';
 const ADD_CHECKIN = 'checkins/addCheckin';
 const DELETE_CHECKIN = 'checkins/deleteCheckin';
 
-const setCheckins = (publicCheckins, privateCheckins) => ({
+const setCheckins = (checkins) => ({
     type: SET_CHECKINS,
-    payload: {
-        public: publicCheckins,
-        private: privateCheckins
-    },
+    payload: checkins
 });
 
 const addCheckin = (checkin) => ({
@@ -23,11 +20,9 @@ const deleteCheckin = (checkinId) => ({
 });
 
 export const getCheckins = () => async (dispatch) => {
-    const resPublic = await csrfFetch('/api/checkins');
-    const resPrivate = await csrfFetch('/api/users/checkins');
-    const dataPublic = await resPublic.json();
-    const dataPrivate = await resPrivate.json();
-    dispatch(setCheckins(dataPublic.checkins, dataPrivate.checkins));
+    const res = await csrfFetch('/api/checkins');
+    const data = await res.json();
+    dispatch(setCheckins(data.checkins));
 };
 
 export const createCheckin =
@@ -57,27 +52,22 @@ export const removeCheckin = (checkinId) => async (dispatch) => {
     dispatch(deleteCheckin(checkinId));
 };
 
-const initialState = { public: {}, private: {} };
+const initialState = {};
 
 const checkinsReducer = (state = initialState, action) => {
     Object.freeze(state);
     let newState = { ...state };
-    newState.public = { ...state.public };
-    newState.private = { ...state.private };
     switch (action.type) {
         case SET_CHECKINS:
-            action.payload.public.forEach((checkin) => {
-                newState.public[checkin.id] = checkin;
+            action.payload.forEach((checkin) => {
+                newState[checkin.id] = checkin;
             });
-            action.payload.private.forEach((checkin) => {
-                newState.private[checkin.id] = checkin
-            })
             return newState;
         case ADD_CHECKIN:
-            newState.private[action.payload.id] = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case DELETE_CHECKIN:
-            delete newState.private[action.payload];
+            delete newState[action.payload];
             return newState;
         default:
             return state;
