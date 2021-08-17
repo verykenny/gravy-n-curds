@@ -8,25 +8,27 @@ const { validatePoutine, validateStore } = require('../../utils/validation');
 
 // GET retrieve all stores
 router.get('/', asyncHandler(async (req, res) => {
-    const stores = await Store.findAll();
+    const stores = await Store.findAll({
+        include: Poutine
+    });
     return res.json({ stores });
 }))
 
 // GET retrieve all poutine for a store
-router.get('/:storeId(\\d+)/poutines', asyncHandler(async (req, res) => {
-    const storeId = Number(req.params.storeId);
+// router.get('/:storeId(\\d+)/poutines', asyncHandler(async (req, res) => {
+//     const storeId = Number(req.params.storeId);
 
-    const poutines = await Poutine.findAll({
-        include: {
-            model: Store,
-            where: {
-                id: storeId
-            }
-        }
-    })
+//     const poutines = await Poutine.findAll({
+//         include: {
+//             model: Store,
+//             where: {
+//                 id: storeId
+//             }
+//         }
+//     })
 
-    return res.json({ poutines })
-}))
+//     return res.json({ poutines })
+// }))
 
 
 // POST add a new store
