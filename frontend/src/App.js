@@ -11,6 +11,8 @@ import Profile from './components/Profile';
 import Poutine from './components/Poutine';
 import Store from './components/Store';
 import Checkin from './components/Checkin';
+import StoreForm from './components/StoreForm';
+import CheckinEditForm from './components/CheckinEditForm';
 
 
 function App() {
@@ -27,24 +29,30 @@ function App() {
             <Navigation isLoaded={isLoaded} />
             {isLoaded && (
                 <Switch>
-                <Route exact path='/'>
-                    <Home />
-                </Route>
-                <Route path='/signup'>
-                    <SignupFormPage />
-                </Route>
-                <Route path='/profile'>
-                    <Profile />
-                </Route>
-                <Route path='/poutines/:poutineId'>
-                    <Poutine />
-                </Route>
-                <Route path='/stores/:storeId'>
-                    <Store />
-                </Route>
-                <Route path='/checkins/:checkinId'>
-                    <Checkin />
-                </Route>
+                    <Route exact path='/'>
+                        <Home />
+                    </Route>
+                    <Route path='/signup'>
+                        <SignupFormPage />
+                    </Route>
+                    <Route path='/profile'>
+                        <Profile />
+                    </Route>
+                    <Route path='/poutines/:poutineId'>
+                        <Poutine />
+                    </Route>
+                    <Route path='/stores/create'>
+                        <StoreForm />
+                    </Route>
+                    <Route path='/stores/:storeId'>
+                        <Store />
+                    </Route>
+                    <Route path='/checkins/:checkinId/edit'>
+                        <CheckinEditForm />
+                    </Route>
+                    <Route path='/checkins/:checkinId'>
+                        <Checkin />
+                    </Route>
                 </Switch>
             )}
         </>
