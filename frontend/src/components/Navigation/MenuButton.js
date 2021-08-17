@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
-import * as sessionActions from '../../store/session';
 import { logOutUser } from "../../store/session";
 
 
@@ -25,11 +24,6 @@ function MenuButton({ user }) {
 
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
-
-    const logout = (e) => {
-        e.preventDefault();
-        dispatch(sessionActions.logOutUser());
-    };
 
     return (
         <>
