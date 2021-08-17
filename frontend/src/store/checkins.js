@@ -29,6 +29,15 @@ export const createCheckin = (comment, rating, poutineId) => async dispatch => {
     dispatch(addCheckin(data.checkin))
 }
 
+export const updateCheckin = (comment, rating, checkinId) => async dispatch => {
+    const res = await csrfFetch(`/api/checkins/${checkinId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ comment, rating })
+    })
+    const data = await res.json();
+    dispatch(addCheckin(data.checkin));
+}
+
 const initialState = {};
 
 const checkinsReducer = (state = initialState, action) => {
