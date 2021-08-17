@@ -8,7 +8,9 @@ import { restoreUser } from "./store/session";
 import SignupFormPage from './components/SignupFormPage';
 import Home from './components/Home';
 import Profile from './components/Profile';
-import Poutine from './components/Poutine'
+import Poutine from './components/Poutine';
+import Store from './components/Store';
+import Checkin from './components/Checkin';
 
 
 function App() {
@@ -36,6 +38,12 @@ function App() {
                 </Route>
                 <Route path='/poutines/:poutineId'>
                     <Poutine />
+                </Route>
+                <Route path='/stores/:storeId'>
+                    <Store />
+                </Route>
+                <Route path='/checkins/:checkinId'>
+                    <Checkin />
                 </Route>
                 </Switch>
             )}
