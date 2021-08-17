@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
-function ProfileButton({ user }) {
+function MenuButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
 
@@ -47,4 +47,4 @@ function ProfileButton({ user }) {
     );
 }
 
-export default ProfileButton;
+export default MenuButton;
