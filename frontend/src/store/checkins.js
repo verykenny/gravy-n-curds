@@ -1,12 +1,12 @@
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from './csrf';
 
 const SET_CHECKINS = 'checkins/setCheckins';
 const ADD_CHECKIN = 'checkins/addCheckin';
-const DELETE_CHECKIN = 'checkins/deleteCheckin'
+const DELETE_CHECKIN = 'checkins/deleteCheckin';
 
 const setCheckins = (checkins) => ({
     type: SET_CHECKINS,
-    payload: checkins
+    payload: checkins,
 });
 
 const addCheckin = (checkin) => ({
@@ -16,40 +16,41 @@ const addCheckin = (checkin) => ({
 
 const deleteCheckin = (checkinId) => ({
     type: DELETE_CHECKIN,
-    payload: checkinId
-})
+    payload: checkinId,
+});
 
-
-export const getCheckins = () => async dispatch => {
+export const getCheckins = () => async (dispatch) => {
     const res = await csrfFetch('/api/checkins');
     const data = await res.json();
     dispatch(setCheckins(data.checkins));
 };
 
-export const createCheckin = (comment, rating, poutineId) => async dispatch => {
-    const res = await csrfFetch(`/api/poutines/${poutineId}/checkins`, {
-        method: 'POST',
-        body: JSON.stringify({ comment, rating })
-    })
-    const data = await res.json();
-    dispatch(addCheckin(data.checkin))
-}
+export const createCheckin =
+    (comment, rating, poutineId) => async (dispatch) => {
+        const res = await csrfFetch(`/api/poutines/${poutineId}/checkins`, {
+            method: 'POST',
+            body: JSON.stringify({ comment, rating }),
+        });
+        const data = await res.json();
+        dispatch(addCheckin(data.checkin));
+    };
 
-export const updateCheckin = (comment, rating, checkinId) => async dispatch => {
-    const res = await csrfFetch(`/api/checkins/${checkinId}`, {
-        method: 'PUT',
-        body: JSON.stringify({ comment, rating })
-    })
-    const data = await res.json();
-    dispatch(addCheckin(data.checkin));
-}
+export const updateCheckin =
+    (comment, rating, checkinId) => async (dispatch) => {
+        const res = await csrfFetch(`/api/checkins/${checkinId}`, {
+            method: 'PUT',
+            body: JSON.stringify({ comment, rating }),
+        });
+        const data = await res.json();
+        dispatch(addCheckin(data.checkin));
+    };
 
-export const removeCheckin = (checkinId) => async dispatch => {
+export const removeCheckin = (checkinId) => async (dispatch) => {
     await csrfFetch(`/api/checkins/${checkinId}`, {
-        method: 'DELETE'
-    })
-    dispatch(deleteCheckin(checkinId))
-}
+        method: 'DELETE',
+    });
+    dispatch(deleteCheckin(checkinId));
+};
 
 const initialState = {};
 
@@ -58,9 +59,9 @@ const checkinsReducer = (state = initialState, action) => {
     let newState = { ...state };
     switch (action.type) {
         case SET_CHECKINS:
-            action.payload.forEach(checkin => {
-                newState[checkin.id] = checkin
-            })
+            action.payload.forEach((checkin) => {
+                newState[checkin.id] = checkin;
+            });
             return newState;
         case ADD_CHECKIN:
             newState[action.payload.id] = action.payload;
