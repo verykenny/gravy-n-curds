@@ -8,6 +8,7 @@ import { restoreUser } from "./store/session";
 import SignupFormPage from './components/SignupFormPage';
 import Home from './components/Home';
 import Profile from './components/Profile';
+import Poutine from './components/Poutine'
 
 
 function App() {
@@ -32,6 +33,9 @@ function App() {
                 </Route>
                 <Route path='/profile'>
                     <Profile />
+                </Route>
+                <Route path='/poutines/:poutineId'>
+                    <Poutine />
                 </Route>
                 </Switch>
             )}
