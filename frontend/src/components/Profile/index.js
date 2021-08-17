@@ -33,7 +33,7 @@ const Profile = () => {
                         {stores.length > 0 && stores.map(store => (
                             <StoreCard store={store} />
                         ))}
-                        <Link to='/stores/create'>Add new store</Link>
+                        <Link className='btn btn-alt' to='/stores/create'>Add new store</Link>
                     </section>
                 </div>
             </div>

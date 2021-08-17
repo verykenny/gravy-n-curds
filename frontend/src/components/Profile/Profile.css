@@ -42,3 +42,13 @@
 .checkin-card .btn-alt {
     margin-left: 20px;
 }
+
+.store-container a:not(.btn) {
+    text-decoration: none;
+    color: #393E41;
+}
+
+.store-container a:not(.btn):hover {
+    text-decoration: underline;
+    color: #1b1d1f;
+}
