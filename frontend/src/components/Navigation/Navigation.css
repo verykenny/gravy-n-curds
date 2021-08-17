@@ -133,3 +133,11 @@
         height: 40px;
     }
 }
+
+
+@media screen and (max-width: 640px) {
+    .session-buttons .btn {
+        margin-left: 5px;
+        padding: 10px 15px;
+    }
+}
