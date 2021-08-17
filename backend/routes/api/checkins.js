@@ -2,7 +2,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
 
-const { Checkin, User, Poutine } = require('../../db/models');
+const { Checkin, User, Poutine, Store } = require('../../db/models');
 
 
 
@@ -12,6 +12,7 @@ router.get('/', asyncHandler(async (req, res) => {
     const checkins = await Checkin.findAll({
         include: {
             model: Poutine,
+            include: Store
         }
     });
 
