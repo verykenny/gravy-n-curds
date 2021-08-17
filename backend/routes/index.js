@@ -1,9 +1,12 @@
 const express = require('express');
+const { restoreUser } = require('../utils/auth');
 
 const apiRouter = require('./api');
 
 const router = express.Router();
 
+
+router.use(restoreUser);
 router.use('/api', apiRouter);
 
 // Static routes

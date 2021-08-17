@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { setTokenCookie } = require('../../utils/auth');
+const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Checkin } = require('../../db/models');
 const { validateSignup } = require('../../utils/validation');
 
@@ -23,8 +23,8 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
 }));
 
 // GET all check-ins for a user
-router.get('/:userId(\\d+)/checkins', asyncHandler(async (req, res) => {
-    const userId = Number(req.params.userId);
+router.get('/checkins', requireAuth, asyncHandler(async (req, res) => {
+    const userId = req.user.id;
 
     const checkins = await Checkin.findAll({
         where: {
