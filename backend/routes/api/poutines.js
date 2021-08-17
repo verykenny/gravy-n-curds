@@ -1,14 +1,17 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const { Store, Poutine, Checkin } = require('../../db/models');
+const { Store, Poutine, Checkin, User } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { validatePoutine } = require('../../utils/validation');
 
 // GET retrieve all poutines
 router.get('/', asyncHandler(async (req, res) => {
     const poutines = await Poutine.findAll({
-        include: Checkin
+        include: {
+            model: Checkin,
+            include: User
+        }
     });
 
     res.json({ poutines })
