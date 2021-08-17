@@ -1,4 +1,159 @@
-.nav-container {
-    border: 1px solid red;
+.hidden-module {
+    display: none;
 }
 
+.nav-bar-color {
+    background-color: #d5b534;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.nav-container {
+    background-color: #d5b534;
+    display: flex;
+    width: 900px;
+    margin: 0 auto;
+    padding: 0 60px;
+    height: 34px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.collapse-menu {
+    background-color: #d5b534;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0px;
+    top: 52px;
+}
+
+
+
+.public-links,
+.session-links,
+.home-link,
+.nav-links,
+.session-buttons {
+    align-items: center;
+    display: flex;
+}
+
+.home-link {
+    margin-right: 50px;
+}
+.home-link a {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #393e41;
+}
+
+.nav-links {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+    margin: 10px 15px;
+    color: #393e41;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.session-links a {
+    margin-right: 40px;
+}
+
+.session-buttons {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.session-buttons .btn {
+    padding: 15px 30px;
+    max-height: 42px;
+    box-sizing: border-box;
+    margin-left: 30px;
+}
+
+.active {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 790px) {
+
+    .nav-bar-color {
+        position: relative;
+    }
+
+    .nav-container {
+        max-height: 1000px;
+        padding: 0 40px;
+    }
+
+    .public-links,
+    .session-links {
+        display: none;
+    }
+
+    .nav-links {
+        justify-content: flex-end;
+    }
+
+    .hidden-module {
+        display: inline;
+    }
+
+    .ham {
+        font-size: 1.5rem;
+        padding: 0 20px;
+    }
+
+    .collapse-menu {
+        width: 100%;
+        align-items: center;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        border-bottom: 1px solid;
+        padding-bottom: 5px;
+    }
+
+    .nav-link:hover{
+        border-bottom: 2px solid;
+        text-decoration: none;
+    }
+
+    .collapse-menu .btn-alt {
+        margin-bottom: 20px;
+        margin-top: 10px;
+        width: 50%;
+        height: 40px;
+    }
+}
+
+
+@media screen and (max-width: 640px) {
+    .session-buttons .btn {
+        margin-left: 5px;
+        padding: 10px 15px;
+    }
+
+
+}
+
+@media screen and (max-width: 420px) {
+    .home-link a {
+        font-size: 1rem;
+    }
+    .home-link {
+        margin-right: 10px;
+    }
+    .session-buttons .btn {
+        font-size: .4rem;
+    }
+}
