@@ -33,7 +33,7 @@ function MenuButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>
+            <button className='btn ham' onClick={openMenu}>
                 <i className="fas fa-bars" />
             </button>
             {showMenu && (

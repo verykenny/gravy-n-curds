@@ -15,7 +15,8 @@
     height: fit-content;
     width: 900px;
     margin: 20px 50px;
-    max-height: 74px;
+    height: 34px;
+    box-sizing: border-box;
 }
 
 .collapse-menu {
@@ -25,8 +26,9 @@
     position: absolute;
     right: 0px;
     top: 74px;
-
 }
+
+
 
 .public-links,
 .session-links,
@@ -82,6 +84,7 @@
 }
 
 @media screen and (max-width: 790px) {
+
     .nav-bar-color {
         position: relative;
     }
@@ -102,7 +105,31 @@
         display: inline;
     }
 
+    .ham {
+        font-size: 1.5rem;
+        padding: 0 20px;
+    }
+
     .collapse-menu {
         width: 100%;
+        align-items: center;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        border-bottom: 1px solid;
+        padding-bottom: 5px;
+    }
+
+    .nav-link:hover{
+        border-bottom: 2px solid;
+        text-decoration: none;
+    }
+
+    .btn-alt {
+        margin-bottom: 20px;
+        margin-top: 10px;
+        width: 50%;
+        height: 40px;
     }
 }
