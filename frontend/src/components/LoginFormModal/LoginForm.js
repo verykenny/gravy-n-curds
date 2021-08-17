@@ -22,7 +22,7 @@ function LoginForm({ setShowModal }) {
         setErrors([]);
         try {
             await dispatch(logInUser(credential, password));
-            history.go(-1);
+            history.push('/profile');
         } catch (e) {
             const res = await e.json();
             const { errors } = res
