@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SET_CHECKINS = 'checkins/setCheckins';
 const ADD_CHECKIN = 'checkins/addCheckin';
+const DELETE_CHECKIN = 'checkins/deleteCheckin'
 
 const setCheckins = (checkins) => ({
     type: SET_CHECKINS,
@@ -12,6 +13,11 @@ const addCheckin = (checkin) => ({
     type: ADD_CHECKIN,
     payload: checkin,
 });
+
+const deleteCheckin = (checkinId) => ({
+    type: DELETE_CHECKIN,
+    payload: checkinId
+})
 
 
 export const getCheckins = () => async dispatch => {
@@ -38,6 +44,13 @@ export const updateCheckin = (comment, rating, checkinId) => async dispatch => {
     dispatch(addCheckin(data.checkin));
 }
 
+export const removeCheckin = (checkinId) => async dispatch => {
+    await csrfFetch(`/api/checkins/${checkinId}`, {
+        method: 'DELETE'
+    })
+    dispatch(deleteCheckin(checkinId))
+}
+
 const initialState = {};
 
 const checkinsReducer = (state = initialState, action) => {
@@ -51,6 +64,9 @@ const checkinsReducer = (state = initialState, action) => {
             return newState;
         case ADD_CHECKIN:
             newState[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_CHECKIN:
+            delete newState[action.payload];
             return newState;
         default:
             return state;
