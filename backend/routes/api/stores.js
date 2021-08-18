@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const { Store, Poutine } = require('../../db/models');
+const { Store, Poutine, Checkin } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { validatePoutine, validateStore } = require('../../utils/validation');
 
@@ -93,6 +93,28 @@ router.delete('/:storeId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const storeId  = Number(req.params.storeId);
 
     const store = await Store.findByPk(storeId);
+
+    const poutines = await Poutine.findAll({
+        where: {
+            storeId: store.id
+        }
+    })
+
+    for (let poutine of poutines) {
+
+        const checkins = await Checkin.findAll({
+            where: {
+                poutineId: poutine.id
+            }
+        })
+
+        for (let checkin of checkins) {
+            await checkin.destroy();
+        }
+        await poutine.destroy();
+
+    }
+
     await store.destroy();
 
     return res.json({ message: 'success' });
