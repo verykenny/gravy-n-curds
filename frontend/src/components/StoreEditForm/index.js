@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
-import { getStores, updateStore } from "../../store/stores";
+import { useParams, Link, useHistory } from "react-router-dom";
+import { getStores, removeStore, updateStore } from "../../store/stores";
 
 import './StoreEditForm.css'
 
@@ -13,6 +13,7 @@ const StoreEditForm = () => {
     const [name, setName] = useState('')
     const [imageUrl, setImageUrl] = useState('')
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getStores())
@@ -40,6 +41,12 @@ const StoreEditForm = () => {
             const { errors } = res;
             setErrors(errors);
         }
+    }
+
+    const handleDelete = async () => {
+
+        await dispatch(removeStore(store.id))
+        history.push('/profile')
     }
 
     const storeContent = () => {
@@ -72,6 +79,13 @@ const StoreEditForm = () => {
                         </div>
                         <div className='btn-container'>
                             <button className='btn btn-primary' type="submit">Submit Changes</button>
+                        </div>
+                        <div className='btn-container'>
+                            <button
+                                className='btn btn-warning'
+                                type="button"
+                                onClick={() => handleDelete()}
+                            >Delete Store</button>
                         </div>
                     </form>
                 </div>
