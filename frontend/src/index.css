@@ -103,6 +103,20 @@ textarea:focus {
     outline: none;
 }
 
+select {
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 2px;
+    box-sizing: border-box;
+    resize: none;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+
+select:focus {
+    border: 1px solid lightblue;
+    border-radius: 2px;
+    outline: none;
+}
+
 
 .errors-container {
     padding-bottom: 10px;
