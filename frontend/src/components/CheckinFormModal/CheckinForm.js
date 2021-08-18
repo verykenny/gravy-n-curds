@@ -34,22 +34,16 @@ function CheckinForm({ setShowModal, poutine }) {
 
     return (
         <div className="form-container checkin-form">
+            <p>Create a checkin for {poutine.name} at {poutine.Store.name}</p>
             <form onSubmit={handleSubmit}>
                 <div className="widget-container">
-                    <input
-                        type="text"
+                    <textarea
                         placeholder='comments'
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
-                    ></input>
+                    ></textarea>
                 </div>
                 <div className="widget-container">
-                    {/* <input
-                        type="number"
-                        placeholder='rating'
-                        value={rating}
-                        onChange={(e) => setRating(e.target.value)}
-                    ></input> */}
                     <select
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
