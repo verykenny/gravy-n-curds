@@ -79,8 +79,6 @@ const StoreEditForm = () => {
                         </div>
                         <div className='btn-container'>
                             <button className='btn btn-primary' type="submit">Submit Changes</button>
-                        </div>
-                        <div className='btn-container'>
                             <button
                                 className='btn btn-warning'
                                 type="button"
