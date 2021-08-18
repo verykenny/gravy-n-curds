@@ -14,7 +14,9 @@ const Checkin = () => {
     }, [dispatch])
 
     return (
-        <h1>{checkin.id}</h1>
+        <>
+            <h1>{checkin.User.username}</h1>
+        </>
     )
 }
 
