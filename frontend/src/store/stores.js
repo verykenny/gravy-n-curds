@@ -28,13 +28,14 @@ export const getStores = () => async dispatch => {
     dispatch(setStores(data.stores));
 };
 
-export const createStore = (name, imageUrl) => async dispatch => {
+export const createStore = ({name, imageUrl}) => async dispatch => {
     const res = await csrfFetch('/api/stores', {
         method: 'POST',
         body: JSON.stringify({ name, imageUrl })
     })
     const data = await res.json();
     dispatch(addStore(data.store));
+    return data.store
 };
 
 export const updateStore = (name, imageUrl, storeId) => async dispatch => {
