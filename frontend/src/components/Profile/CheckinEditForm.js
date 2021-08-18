@@ -4,21 +4,18 @@ import { updatePoutine, removePoutine } from "../../store/poutine";
 import { getStores } from "../../store/stores";
 
 
-const CheckinEditForm = ({ poutine, setShowEdit }) => {
-    const [name, setName] = useState(poutine.name);
-    const [description, setDescription] = useState(poutine.description);
-    const [imageUrl, setImageUrl] = useState(poutine.imageUrl);
-    const [errors, setErrors] = useState([]);
+const CheckinEditForm = ({ checkin, setShowEdit }) => {
+    const [comment, setComment] = useState(checkin.comment);
+    const [rating, setRating] = useState(checkin.rating);
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const payload = {
-            name,
-            description,
-            imageUrl,
-            poutineId: poutine.id
+            comment,
+            rating,
+            checkinId: checkin.id
         }
         try {
             await dispatch(updatePoutine(payload));

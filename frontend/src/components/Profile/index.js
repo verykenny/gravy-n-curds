@@ -5,7 +5,7 @@ import { getCheckins } from "../../store/checkins";
 import { getStores } from '../../store/stores'
 
 import './Profile.css'
-// import CheckinEditForm from "./CheckinEditForm.js";
+import CheckinEditForm from "./CheckinEditForm.js";
 
 
 const Profile = () => {
@@ -58,7 +58,7 @@ const CheckinCard = ({ checkin }) => {
                 <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
             </div>
             <div className='poutine-edit-card'>
-                {/* {showEdit && <CheckinEditForm  />} */}
+                {showEdit && <CheckinEditForm checkin={checkin} setShowEdit={setShowEdit}  />}
             </div>
         </>
     )

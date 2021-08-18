@@ -36,7 +36,7 @@ export const createCheckin =
     };
 
 export const updateCheckin =
-    (comment, rating, checkinId) => async (dispatch) => {
+    ({comment, rating, checkinId}) => async (dispatch) => {
         const res = await csrfFetch(`/api/checkins/${checkinId}`, {
             method: 'PUT',
             body: JSON.stringify({ comment, rating }),
