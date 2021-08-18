@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { createCheckin, getCheckins } from '../../store/checkins';
 import { useDispatch } from 'react-redux';
-// import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import './CheckinForm.css'
 import { getPoutines } from '../../store/poutine';
@@ -9,12 +8,8 @@ import { getPoutines } from '../../store/poutine';
 function CheckinForm({ setShowModal, poutine, store }) {
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState('');
-    const [errors, setErrors] = useState([]);
-
 
     const dispatch = useDispatch();
-    // const history = useHistory();
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +25,6 @@ function CheckinForm({ setShowModal, poutine, store }) {
         await dispatch(getCheckins());
         setShowModal(false);
     };
-
 
     return (
         <div className="form-container checkin-form">

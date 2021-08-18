@@ -32,15 +32,9 @@ const PoutineEditForm = ({ poutine, setShowEdit }) => {
     }
 
     const handleDelete = async () => {
-        try {
-            await dispatch(removePoutine(poutine.id));
-            await dispatch(getStores());
-            setShowEdit(false);
-
-        } catch (e) {
-            e = await e.json()
-            console.log(e);
-        }
+        await dispatch(removePoutine(poutine.id));
+        await dispatch(getStores());
+        setShowEdit(false);
     }
 
     return (
