@@ -33,3 +33,15 @@
 .poutine-edit-form form {
     display: flex;
 }
+
+.description-input-container {
+    height: 100%;
+}
+
+.description-input {
+    height: 142px;
+}
+
+.small-inputs {
+    padding-right: 20px;
+}

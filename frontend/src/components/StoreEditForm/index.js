@@ -171,7 +171,7 @@ const PoutineEdit = ({ poutine, setShowEdit }) => {
         <>
             <div className='form-container poutine-edit-form'>
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className='small-inputs'>
                         <div className='widget-container'>
                             <input
                                 type="text"
@@ -199,9 +199,10 @@ const PoutineEdit = ({ poutine, setShowEdit }) => {
                         </div>
                     </div>
                     <div>
-                        <div className='widget-container'>
+                        <div className='widget-container description-input-container'>
                             <textarea
-                                cols='10'
+                                className='description-input'
+                                cols='100'
                                 placeholder='description'
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
