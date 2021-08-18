@@ -20,7 +20,7 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 ### Technologies
 #### Front End
 - JavaScript
-- HTML (rendered via Pug)
+- React-Redux
 - CSS styling
 - [Favicon.io](https://favicon.io/) for favicon
 - Heroku (Hosting)
