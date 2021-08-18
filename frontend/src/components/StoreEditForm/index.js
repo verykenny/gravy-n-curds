@@ -54,6 +54,7 @@ const StoreEditForm = () => {
             <>
                 <h1>{store.name}</h1>
                 <div className='form-container store-edit-form'>
+                    <p>Edit your store information:</p>
                     <form onSubmit={handleSubmit}>
                         <div className='widget-container'>
                             <input
@@ -98,7 +99,6 @@ const StoreEditForm = () => {
 
     return (
         <>
-            <h1>STORE EDIT FORM</h1>
             <div className='store-page-container'>
                 <div className='store-content'>
                     {store && storeContent()}
@@ -119,16 +119,73 @@ const StoreEditForm = () => {
 
 
 const PoutineCard = ({ poutine }) => {
+    const [showEdit, setShowEdit] = useState(false)
     return (
-        <div className='poutine-card'>
-            <img src={poutine.imageUrl} alt={poutine.name} />
-            <div className='poutine-card-content'>
-                <p>{poutine.name}</p>
-                <p>{poutine.description}</p>
-                <Link to={`/poutines/${poutine.id}`}>more info</Link>
-                <Link to={`/poutine/${poutine.id}/checkins/create`} className='btn btn-alt'>Check-in</Link>
+        <>
+            <div className='poutine-card'>
+                <img src={poutine.imageUrl} alt={poutine.name} />
+                <div className='poutine-card-content'>
+                    <p>{poutine.name}</p>
+                    <p>{poutine.description}</p>
+                    <Link to={`/poutines/${poutine.id}`}>more info</Link>
+                    <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
+                </div>
             </div>
-        </div>
+            <div className='poutine-edit-card'>
+                {showEdit && <PoutineEdit poutine={poutine} />}
+            </div>
+        </>
+    )
+}
+
+
+const PoutineEdit = ({ poutine }) => {
+    const [name, setName] = useState(poutine.name);
+    const [description, setDescription] = useState(poutine.description);
+    const [imageUrl, setImageUrl] = useState(poutine.imageUrl);
+    const [errors, setErrors] = useState([]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    return (
+        <>
+            <div className='form-container poutine-edit-form'>
+                <form onSubmit={handleSubmit}>
+                    <div className='widget-container'>
+                        <input
+                            type="text"
+                            placeholder='name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        ></input>
+                        {errors.includes('Please provide a name for your poutine with at least 4 characters.') && (
+                            <p className='form-custom-error'>Please provide a name for your poutine with at least 4 characters.</p>
+                        )}
+                    </div>
+                    <div className='widget-container'>
+                        <input
+                            type="text"
+                            placeholder='description'
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className='widget-container'>
+                        <input
+                            type="text"
+                            placeholder='imageUrl'
+                            value={imageUrl}
+                            onChange={(e) => setImageUrl(e.target.value)}
+                        ></input>
+                    </div>
+                    <div className='btn-container'>
+                        <button className='btn btn-primary' type="submit">update</button>
+                    </div>
+                </form>
+            </div>
+        </>
     )
 }
 

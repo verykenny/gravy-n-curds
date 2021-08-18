@@ -1,6 +1,5 @@
 .store-edit-form {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 0;
     width: 100%;
 
 }
@@ -8,6 +7,10 @@
 .store-edit-form .btn-container {
     display: flex;
     justify-content: space-between;
+}
+
+.store-edit-form p {
+    color: #A33B20;
 }
 
 .store-edit-form .btn-container .btn {
