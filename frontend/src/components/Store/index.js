@@ -41,7 +41,7 @@ const Store = () => {
             </div>
             <div className='poutine-list-container'>
                 {(store && store.Poutines) && store.Poutines.map(poutine => (
-                    <PoutineCard poutine={poutine} />
+                    <PoutineCard poutine={poutine} store={store} />
                 ))}
             </div>
         </>
@@ -50,7 +50,7 @@ const Store = () => {
 
 
 
-const PoutineCard = ({ poutine }) => {
+const PoutineCard = ({ poutine, store }) => {
     return (
         <div className='poutine-card'>
             <img src={poutine.imageUrl} alt={poutine.name} />
@@ -58,7 +58,7 @@ const PoutineCard = ({ poutine }) => {
                 <p>{poutine.name}</p>
                 <p>{poutine.description}</p>
             <Link to={`/poutines/${poutine.id}`}>more info</Link>
-            <CheckinFormModal poutine={poutine}/>
+            <CheckinFormModal poutine={poutine} store={store}/>
             </div>
         </div>
     )

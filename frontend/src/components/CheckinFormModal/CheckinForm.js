@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import './CheckinForm.css'
 import { getPoutines } from '../../store/poutine';
 
-function CheckinForm({ setShowModal, poutine }) {
+function CheckinForm({ setShowModal, poutine, store }) {
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState('');
     const [errors, setErrors] = useState([]);
@@ -34,7 +34,7 @@ function CheckinForm({ setShowModal, poutine }) {
 
     return (
         <div className="form-container checkin-form">
-            <p>Create a checkin for {poutine.name} at {poutine.Store.name}</p>
+            <p>Create a checkin for {poutine.name} at {store.name}</p>
             <form onSubmit={handleSubmit}>
                 <div className="widget-container">
                     <textarea
