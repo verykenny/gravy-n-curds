@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getCheckins } from "../../store/checkins";
-import { getStores} from '../../store/stores'
+import { getStores } from '../../store/stores'
 
 import './Profile.css'
+// import CheckinEditForm from "./CheckinEditForm.js";
 
 
 const Profile = () => {
@@ -45,15 +46,21 @@ export default Profile;
 
 
 const CheckinCard = ({ checkin }) => {
+    const [showEdit, setShowEdit] = useState(false)
     return (
-        <div className='checkin-card'>
-            <p>You ate <Link to={`/poutines/${checkin.Poutine.id}`}>{checkin.Poutine.name}</Link> at <Link to={`/stores/${checkin.Poutine.Store.id}`}>{checkin.Poutine.Store.name}</Link>.</p>
-            <p>You said: </p>
-            <p>{checkin.comment}</p>
-            <p>Rating: {checkin.rating}</p>
-            <Link className='btn btn-primary' to={`/checkins/${checkin.id}`}>more info</Link>
-            <Link className='btn btn-alt' to={`/checkins/${checkin.id}/edit`}>edit</Link>
-        </div>
+        <>
+            <div className='checkin-card'>
+                <p>You ate <Link to={`/poutines/${checkin.Poutine.id}`}>{checkin.Poutine.name}</Link> at <Link to={`/stores/${checkin.Poutine.Store.id}`}>{checkin.Poutine.Store.name}</Link>.</p>
+                <p>You said: </p>
+                <p>{checkin.comment}</p>
+                <p>Rating: {checkin.rating}</p>
+                <Link className='btn btn-primary' to={`/checkins/${checkin.id}`}>more info</Link>
+                <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
+            </div>
+            <div className='poutine-edit-card'>
+                {/* {showEdit && <CheckinEditForm  />} */}
+            </div>
+        </>
     )
 }
 
