@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateCheckin, removeCheckin, getCheckins } from "../../store/checkins";
+import { getStores } from "../../store/stores";
 
 
 const CheckinEditForm = ({ checkin, setShowEdit }) => {
@@ -18,7 +19,9 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
         }
         await dispatch(updateCheckin(payload));
         await dispatch(getCheckins());
+        await dispatch(getStores());
         setShowEdit(false)
+
     }
 
     const handleDelete = async () => {
