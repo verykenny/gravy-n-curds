@@ -54,7 +54,7 @@ const CheckinCard = ({ checkin }) => {
                 <p>You said: </p>
                 <p>{checkin.comment}</p>
                 <p>Rating: {checkin.rating}</p>
-                <Link className='btn btn-primary' to={`/checkins/${checkin.id}`}>more info</Link>
+                <Link to={`/checkins/${checkin.id}`}>more info</Link>
                 <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
             </div>
             <div className='poutine-edit-card'>
