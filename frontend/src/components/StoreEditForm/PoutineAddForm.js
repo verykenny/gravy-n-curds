@@ -60,7 +60,7 @@ const PoutineAddForm = ({ storeId, setShowAdd }) => {
                             )}
                         </div>
                         <div className='btn-container'>
-                            <button className='btn btn-primary' type="submit">update</button>
+                            <button className='btn btn-primary' type="submit">add dish</button>
                         </div>
                     </div>
                     <div>

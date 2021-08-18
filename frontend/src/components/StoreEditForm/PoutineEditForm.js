@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updatePoutine } from "../../store/poutine";
+import { updatePoutine, removePoutine } from "../../store/poutine";
 import { getStores } from "../../store/stores";
+
 
 const PoutineEditForm = ({ poutine, setShowEdit }) => {
     const [name, setName] = useState(poutine.name);
@@ -22,12 +23,18 @@ const PoutineEditForm = ({ poutine, setShowEdit }) => {
         try {
             await dispatch(updatePoutine(payload));
             setShowEdit(false)
-            dispatch(getStores());
+            await dispatch(getStores());
         } catch (e) {
             const res = await e.json();
             const { errors } = res;
             setErrors(errors);
         }
+    }
+
+    const handleDelete = async () => {
+        await dispatch(removePoutine(poutine.id));
+        await dispatch(getStores());
+        setShowEdit(false);
     }
 
     return (
@@ -59,6 +66,7 @@ const PoutineEditForm = ({ poutine, setShowEdit }) => {
                         </div>
                         <div className='btn-container'>
                             <button className='btn btn-primary' type="submit">update</button>
+                            <button className='btn btn-warning' type="button" onClick={() => handleDelete()}>delete</button>
                         </div>
                     </div>
                     <div>
