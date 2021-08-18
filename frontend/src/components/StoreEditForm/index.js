@@ -38,6 +38,7 @@ const StoreEditForm = () => {
 
         try {
             await dispatch(updateStore(payload));
+            await dispatch(getStores());
             setErrors([])
         } catch (e) {
             const res = await e.json();
