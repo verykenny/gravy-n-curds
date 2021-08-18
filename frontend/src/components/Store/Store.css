@@ -29,7 +29,8 @@
 }
 
 .poutine-card {
-    width: 450px;
+    /* width: 450px; */
+    width: 100%;
     border-top: 1px solid;
     margin-bottom: 40px;
     padding-left: 20px;

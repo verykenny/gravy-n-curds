@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { getStores, removeStore, updateStore } from "../../store/stores";
+import PoutineAddForm from "./PoutineAddForm";
 import PoutineEditForm from "./PoutineEditForm";
 
 import './StoreEditForm.css'
@@ -14,6 +15,7 @@ const StoreEditForm = () => {
     const [name, setName] = useState('')
     const [imageUrl, setImageUrl] = useState('')
     const [errors, setErrors] = useState([]);
+    const [showAdd, setShowAdd] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
@@ -109,8 +111,10 @@ const StoreEditForm = () => {
                 </div>
             </div>
             <div className='poutine-list-container'>
+                <button className={(showAdd) ? 'btn btn-warning add-btn' : 'btn btn-primary add-btn'} onClick={() => setShowAdd(prevState => !prevState)}>{(showAdd) ? 'cancel' : 'add poutine dish'}</button>
+                {showAdd && <PoutineAddForm storeId={store.id} setShowAdd={setShowAdd} />}
                 {(store && store.Poutines) && store.Poutines.map(poutine => (
-                    <PoutineCard poutine={poutine} />
+                    <PoutineCard poutine={poutine}  />
                 ))}
             </div>
         </>
@@ -138,6 +142,8 @@ const PoutineCard = ({ poutine }) => {
         </>
     )
 }
+
+
 
 
 
