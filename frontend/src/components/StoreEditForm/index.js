@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { getStores } from "../../store/stores";
+import { getStores, updateStore } from "../../store/stores";
 
 import './StoreEditForm.css'
 
@@ -12,17 +12,41 @@ const StoreEditForm = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         dispatch(getStores())
     }, [dispatch])
+
+    useEffect(() => {
+        if (store.name) setName(store.name);
+    }, [store])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            name,
+            imageUrl,
+            storeId
+        }
+
+        try {
+            await dispatch(updateStore(payload));
+            setErrors([])
+        } catch (e) {
+            const res = await e.json();
+            const { errors } = res;
+            setErrors(errors);
+        }
+    }
 
     const storeContent = () => {
         return (
             <>
                 <h1>{store.name}</h1>
                 <div className='form-container store-edit-form'>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className='widget-container'>
                             <input
                                 type='text'
@@ -30,6 +54,9 @@ const StoreEditForm = () => {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             ></input>
+                            {errors.includes('Please provide a store/restaurant name with at least 4 characters.') && (
+                                <p className='form-custom-error'>Please provide a store/restaurant name with at least 4 characters.</p>
+                            )}
                         </div>
                         <div className='widget-container'>
                             <input
@@ -38,6 +65,9 @@ const StoreEditForm = () => {
                                 value={imageUrl}
                                 onChange={(e) => setImageUrl(e.target.value)}
                             ></input>
+                            {errors.includes('Please provide a url to a photo of your store/restaurant.') && (
+                                <p className='form-custom-error'>Please provide a url to a photo of your store/restaurant.</p>
+                            )}
                         </div>
                         <div className='btn-container'>
                             <button className='btn btn-primary' type="submit">Submit Changes</button>
