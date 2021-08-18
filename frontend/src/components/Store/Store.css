@@ -1,4 +1,4 @@
-.store-container {
+.store-page-container {
     display: flex;
     width: 900px;
     padding: 60px;
@@ -14,7 +14,7 @@
     max-width: 30%;
 }
 
-.store-container img {
+.store-page-container img {
     width: 500px;
     max-width: 500px;
     max-height: 335px;

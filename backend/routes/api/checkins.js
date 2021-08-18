@@ -10,10 +10,12 @@ const { Checkin, User, Poutine, Store } = require('../../db/models');
 router.get('/', asyncHandler(async (req, res) => {
 
     const checkins = await Checkin.findAll({
-        include: {
+        include: [{
             model: Poutine,
             include: Store
-        }
+        },{
+            model: User
+        }]
     });
 
     res.json({ checkins });

@@ -1,0 +1,24 @@
+.checkin-container {
+    display: flex;
+    width: 900px;
+    padding: 60px;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+
+.checkin-container img {
+    width: 500px;
+    max-width: 500px;
+    max-height: 335px;
+}
+
+.checkin-container a:not(.btn) {
+    text-decoration: none;
+    color: #A33B20;
+}
+.checkin-container a:not(.btn):hover {
+    color: #702815;
+}
