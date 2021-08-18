@@ -39,7 +39,8 @@
     color: #702815;
 }
 
-.checkin-card .btn-alt {
+.checkin-card .btn-alt,
+.checkin-card .btn-warning {
     margin-left: 20px;
 }
 

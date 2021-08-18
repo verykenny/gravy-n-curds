@@ -28,7 +28,12 @@ router.put('/:checkinId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const checkinId = Number(req.params.checkinId);
     const userId = req.user.id;
 
-    const checkin = await Checkin.findByPk(checkinId);
+    const checkin = await Checkin.findByPk(checkinId, {
+        include: {
+            model: Poutine,
+            include: Store
+        }
+    });
 
     if (userId !== checkin.userId) return res.json({ message: 'unauthorized' })
 

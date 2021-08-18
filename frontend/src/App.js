@@ -12,7 +12,6 @@ import Poutine from './components/Poutine';
 import Store from './components/Store';
 import Checkin from './components/Checkin';
 import StoreForm from './components/StoreForm';
-import CheckinEditForm from './components/CheckinEditForm';
 import { getCheckins } from './store/checkins';
 import { getPoutines } from './store/poutine';
 import { getStores } from './store/stores';
@@ -56,9 +55,6 @@ function App() {
                     </Route>
                     <Route path='/stores/:storeId'>
                         <Store />
-                    </Route>
-                    <Route path='/checkins/:checkinId/edit'>
-                        <CheckinEditForm />
                     </Route>
                     <Route path='/checkins/:checkinId'>
                         <Checkin />
