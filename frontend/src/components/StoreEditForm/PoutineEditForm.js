@@ -66,7 +66,7 @@ const PoutineEditForm = ({ poutine, setShowEdit }) => {
                         </div>
                         <div className='btn-container'>
                             <button className='btn btn-primary' type="submit">update</button>
-                            <button className='btn btn-warning' type="button" onClick={() => handleDelete()}>delete</button>
+                            <button className='btn btn-warning delete-btn' type="button" onClick={() => handleDelete()}>delete</button>
                         </div>
                     </div>
                     <div>
