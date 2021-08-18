@@ -1,0 +1,15 @@
+.store-edit-form {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+
+}
+
+.store-edit-form .btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.store-edit-form .btn-container .btn {
+    max-width: 45%;
+}

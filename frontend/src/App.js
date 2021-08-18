@@ -17,6 +17,7 @@ import { getCheckins } from './store/checkins';
 import { getPoutines } from './store/poutine';
 import { get } from 'js-cookie';
 import { getStores } from './store/stores';
+import StoreEditForm from './components/StoreEditForm';
 
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
                     </Route>
                     <Route path='/stores/create'>
                         <StoreForm />
+                    </Route>
+                    <Route path='/stores/:storeId/edit'>
+                        <StoreEditForm />
                     </Route>
                     <Route path='/stores/:storeId'>
                         <Store />
