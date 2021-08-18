@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { getStores, removeStore, updateStore } from "../../store/stores";
+import { updatePoutine } from "../../store/poutine";
 
 import './StoreEditForm.css'
 
@@ -132,21 +133,38 @@ const PoutineCard = ({ poutine }) => {
                 </div>
             </div>
             <div className='poutine-edit-card'>
-                {showEdit && <PoutineEdit poutine={poutine} />}
+                {showEdit && <PoutineEdit poutine={poutine} setShowEdit={setShowEdit} />}
             </div>
         </>
     )
 }
 
 
-const PoutineEdit = ({ poutine }) => {
+const PoutineEdit = ({ poutine, setShowEdit }) => {
     const [name, setName] = useState(poutine.name);
     const [description, setDescription] = useState(poutine.description);
     const [imageUrl, setImageUrl] = useState(poutine.imageUrl);
     const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const payload = {
+            name,
+            description,
+            imageUrl,
+            poutineId: poutine.id
+        }
+        try {
+            await dispatch(updatePoutine(payload));
+            setShowEdit(false)
+            dispatch(getStores());
+        } catch (e) {
+            const res = await e.json();
+            const { errors } = res;
+            setErrors(errors);
+        }
     }
 
     return (
@@ -165,12 +183,12 @@ const PoutineEdit = ({ poutine }) => {
                         )}
                     </div>
                     <div className='widget-container'>
-                        <input
-                            type="text"
+                        <textarea
+                            cols='10'
                             placeholder='description'
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                        ></input>
+                        ></textarea>
                     </div>
                     <div className='widget-container'>
                         <input

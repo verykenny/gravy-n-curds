@@ -34,7 +34,7 @@ export const createPoutine = (name, imageUrl, description, storeId) => async dis
     dispatch(addPoutine(data.poutine))
 };
 
-export const updatePoutine = (name, imageUrl, description, poutineId) => async dispatch => {
+export const updatePoutine = ({name, imageUrl, description, poutineId}) => async dispatch => {
     const res = await csrfFetch(`/api/poutines/${poutineId}`, {
         method: 'PUT',
         body: JSON.stringify({ name, imageUrl, description })
