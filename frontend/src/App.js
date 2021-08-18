@@ -15,7 +15,6 @@ import StoreForm from './components/StoreForm';
 import CheckinEditForm from './components/CheckinEditForm';
 import { getCheckins } from './store/checkins';
 import { getPoutines } from './store/poutine';
-import { get } from 'js-cookie';
 import { getStores } from './store/stores';
 import StoreEditForm from './components/StoreEditForm';
 

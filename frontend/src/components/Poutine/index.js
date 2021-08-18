@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getPoutines } from '../../store/poutine';
+import CheckinFormModal from '../CheckinFormModal';
 
 import './Poutine.css'
 
@@ -24,7 +25,7 @@ const Poutine = () => {
                 {<Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>}
 
                 <div className='btn-container'>
-                    <Link to={`/poutine/${poutine.id}/checkins/create`} className='btn btn-alt'>Check-in</Link>
+                    <CheckinFormModal poutine={poutine} store={poutine.Store}/>
                 </div>
             </>
         );
