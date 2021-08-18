@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updatePoutine, removePoutine } from "../../store/poutine";
-import { getStores } from "../../store/stores";
+import { updateCheckin, removeCheckin, getCheckins } from "../../store/checkins";
 
 
 const CheckinEditForm = ({ checkin, setShowEdit }) => {
@@ -17,20 +16,14 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
             rating,
             checkinId: checkin.id
         }
-        try {
-            await dispatch(updatePoutine(payload));
-            setShowEdit(false)
-            await dispatch(getStores());
-        } catch (e) {
-            const res = await e.json();
-            const { errors } = res;
-            setErrors(errors);
-        }
+        await dispatch(updateCheckin(payload));
+        await dispatch(getCheckins());
+        setShowEdit(false)
     }
 
     const handleDelete = async () => {
-        await dispatch(removePoutine(poutine.id));
-        await dispatch(getStores());
+        await dispatch(removeCheckin(checkin.id));
+        await dispatch(getCheckins());
         setShowEdit(false);
     }
 
@@ -40,26 +33,17 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
                 <form onSubmit={handleSubmit}>
                     <div className='small-inputs'>
                         <div className='widget-container'>
-                            <input
-                                type="text"
-                                placeholder='name'
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            ></input>
-                            {errors.includes('Please provide a name for your poutine with at least 4 characters.') && (
-                                <p className='form-custom-error'>Please provide a name for your poutine with at least 4 characters.</p>
-                            )}
-                        </div>
-                        <div className='widget-container'>
-                            <input
-                                type="text"
-                                placeholder='imageUrl'
-                                value={imageUrl}
-                                onChange={(e) => setImageUrl(e.target.value)}
-                            ></input>
-                            {errors.includes('Please provide a url to a photo of your poutine dish.') && (
-                                <p className='form-custom-error'>Please provide a url to a photo of your poutine dish.</p>
-                            )}
+                            <select
+                                value={rating}
+                                onChange={(e) => setRating(e.target.value)}
+                            >
+                                <option value=''>no rating</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                            </select>
                         </div>
                         <div className='btn-container'>
                             <button className='btn btn-primary' type="submit">update</button>
@@ -71,13 +55,11 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
                             <textarea
                                 className='description-input'
                                 cols='100'
-                                placeholder='description'
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
+                                placeholder='comment'
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
                             ></textarea>
-                            {errors.includes('Please provide a description of your poutine with at least 4 characters.') && (
-                                <p className='form-custom-error'>Please provide a description of your poutine with at least 4 characters.</p>
-                            )}
+
                         </div>
                     </div>
                 </form>
