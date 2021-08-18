@@ -30,7 +30,7 @@ const Store = () => {
 
     return (
         <>
-            <div className='store-container'>
+            <div className='store-page-container'>
                 <div className='store-content'>
                     {store && storeContent()}
                 </div>
