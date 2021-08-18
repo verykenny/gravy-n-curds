@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getStores } from "../../store/stores";
+import CheckinFormModal from "../CheckinFormModal";
 
 import './Store.css'
 
@@ -57,7 +58,7 @@ const PoutineCard = ({ poutine }) => {
                 <p>{poutine.name}</p>
                 <p>{poutine.description}</p>
             <Link to={`/poutines/${poutine.id}`}>more info</Link>
-            <Link to={`/poutine/${poutine.id}/checkins/create`} className='btn btn-alt'>Check-in</Link>
+            <CheckinFormModal poutineId={poutine.id}/>
             </div>
         </div>
     )

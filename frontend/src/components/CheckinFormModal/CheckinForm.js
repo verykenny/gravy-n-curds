@@ -1,17 +1,14 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { Link, Redirect, useHistory } from 'react-router-dom';
 
 
 
-function CheckinForm({ setShowModal }) {
+function CheckinForm({ setShowModal, poutineId }) {
     const [credential, setCredential] = useState('');
 
     // const dispatch = useDispatch();
     // const history = useHistory();
-    const sessionUser = useSelector((state) => state.session.user);
-
-    if (sessionUser) return <Redirect to="/"></Redirect>;
 
 
     const handleSubmit = async (e) => {
@@ -25,14 +22,14 @@ function CheckinForm({ setShowModal }) {
                 <div className="widget-container">
                     <input
                         type="text"
-                        placeholder="username or email"
+                        placeholder='comments'
                         value={credential}
                         onChange={(e) => setCredential(e.target.value)}
                     ></input>
                 </div>
                 <div className="btn-container">
                     <button className="btn btn-primary" type="submit">
-                        Log In
+                        create check-in
                     </button>
                 </div>
             </form>
