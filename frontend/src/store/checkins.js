@@ -26,7 +26,7 @@ export const getCheckins = () => async (dispatch) => {
 };
 
 export const createCheckin =
-    (comment, rating, poutineId) => async (dispatch) => {
+    ({comment, rating, poutineId}) => async (dispatch) => {
         const res = await csrfFetch(`/api/poutines/${poutineId}/checkins`, {
             method: 'POST',
             body: JSON.stringify({ comment, rating }),
