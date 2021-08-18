@@ -30,13 +30,12 @@ function StoreForm() {
 
         try {
             const store = await dispatch(createStore(payload));
-            history.push(`/stores/${store.id}`)
+            history.push(`/stores/${store.id}/edit`)
         } catch (e) {
             const res = await e.json();
             const { errors } = res;
             setErrors(errors);
         }
-
     }
 
     return (
