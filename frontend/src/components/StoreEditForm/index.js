@@ -114,7 +114,7 @@ const StoreEditForm = () => {
                 <button className={(showAdd) ? 'btn btn-warning add-btn' : 'btn btn-primary add-btn'} onClick={() => setShowAdd(prevState => !prevState)}>{(showAdd) ? 'cancel' : 'add poutine dish'}</button>
                 {showAdd && <PoutineAddForm storeId={store.id} setShowAdd={setShowAdd} />}
                 {(store && store.Poutines) && store.Poutines.map(poutine => (
-                    <PoutineCard poutine={poutine}  />
+                    <PoutineCard key={poutine.id} poutine={poutine}  />
                 ))}
             </div>
         </>

@@ -24,14 +24,14 @@ const Profile = () => {
                 <main className='checkins-container'>
                     <h2>Your most recent check-ins:</h2>
                     {checkins.length > 0 && checkins.map(checkin => (
-                        <CheckinCard checkin={checkin} />
+                        <CheckinCard key={checkin.id} checkin={checkin} />
                     ))}
                 </main>
                 <div className='side-container'>
                     <section className='store-container'>
                         <h2>Edit your stores:</h2>
                         {stores.length > 0 && stores.map(store => (
-                            <StoreCard store={store} />
+                            <StoreCard key={store.id} store={store} />
                         ))}
                         <Link className='btn btn-alt' to='/stores/create'>Add new store</Link>
                     </section>
