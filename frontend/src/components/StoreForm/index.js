@@ -29,8 +29,8 @@ function StoreForm() {
         }
 
         try {
-            await dispatch(createStore(payload));
-            history.push('/profile')
+            const store = await dispatch(createStore(payload));
+            history.push(`/stores/${store.id}`)
         } catch (e) {
             const res = await e.json();
             const { errors } = res;
@@ -40,7 +40,8 @@ function StoreForm() {
     }
 
     return (
-        <div className='form-container signup-form'>
+        <div className='form-container new-store-form'>
+            <h1>Add your store/restaurant:</h1>
             <form onSubmit={handleSubmit}>
                 <div className='widget-container'>
                     <input

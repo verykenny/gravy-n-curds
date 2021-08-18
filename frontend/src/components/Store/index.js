@@ -39,7 +39,7 @@ const Store = () => {
                 </div>
             </div>
             <div className='poutine-list-container'>
-                {store && store.Poutines.map(poutine => (
+                {(store && store.Poutines) && store.Poutines.map(poutine => (
                     <PoutineCard poutine={poutine} />
                 ))}
             </div>
