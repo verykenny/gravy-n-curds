@@ -19,7 +19,8 @@ const StoreEditForm = () => {
     }, [dispatch])
 
     useEffect(() => {
-        if (store.name) setName(store.name);
+        if (store) setName(store.name);
+        if (store) setImageUrl(store.imageUrl);
     }, [store])
 
     const handleSubmit = async (e) => {
