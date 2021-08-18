@@ -1,0 +1,47 @@
+.store-container {
+    display: flex;
+    width: 900px;
+    padding: 60px;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+
+.store-content {
+    padding-right: 20px;
+    max-width: 30%;
+}
+
+.store-container img {
+    width: 500px;
+    max-width: 500px;
+    max-height: 335px;
+}
+
+
+.poutine-list-container {
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.poutine-card {
+    width: 450px;
+    border-top: 1px solid;
+    margin-bottom: 40px;
+    padding-left: 20px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.poutine-card-content {
+    margin-left: 15px;
+}
+
+.poutine-card-content .btn {
+    margin-left: 15px;
+}
