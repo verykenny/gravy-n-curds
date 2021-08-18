@@ -25,7 +25,7 @@ export const getPoutines = () => async dispatch => {
     dispatch(setPoutines(data.poutines));
 };
 
-export const createPoutine = (name, imageUrl, description, storeId) => async dispatch => {
+export const createPoutine = ({name, imageUrl, description, storeId}) => async dispatch => {
     const res = await csrfFetch(`/api/stores/${storeId}/poutines`, {
         method: 'POST',
         body: JSON.stringify({ name, imageUrl, description })
@@ -34,7 +34,7 @@ export const createPoutine = (name, imageUrl, description, storeId) => async dis
     dispatch(addPoutine(data.poutine))
 };
 
-export const updatePoutine = (name, imageUrl, description, poutineId) => async dispatch => {
+export const updatePoutine = ({name, imageUrl, description, poutineId}) => async dispatch => {
     const res = await csrfFetch(`/api/poutines/${poutineId}`, {
         method: 'PUT',
         body: JSON.stringify({ name, imageUrl, description })

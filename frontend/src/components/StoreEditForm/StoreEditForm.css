@@ -1,6 +1,5 @@
 .store-edit-form {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 0;
     width: 100%;
 
 }
@@ -10,6 +9,46 @@
     justify-content: space-between;
 }
 
+.store-edit-form p {
+    color: #A33B20;
+}
+
 .store-edit-form .btn-container .btn {
     max-width: 45%;
+}
+
+
+.poutine-edit-form {
+    padding-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.poutine-edit-form div {
+    padding-bottom: 1px;
+    width: 100%;
+}
+
+.poutine-edit-form form {
+    display: flex;
+}
+
+.description-input-container {
+    height: 100%;
+}
+
+.description-input {
+    height: 142px;
+}
+
+.small-inputs {
+    padding-right: 20px;
+}
+
+.add-btn {
+    margin-bottom: 20px;
+}
+
+.delete-btn {
+    margin-left: 20px;
 }

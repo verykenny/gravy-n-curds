@@ -80,10 +80,24 @@ router.delete('/:poutineId(\\d+)', requireAuth, asyncHandler(async (req, res) =>
     const userId = req.user.id;
 
     const poutine = await Poutine.findByPk(poutineId, {
-        include: Store
+        include: [{
+            model: Store
+        }, {
+            model: Checkin
+        }]
     });
 
     if (poutine.Store.ownerId !== userId) return res.json({ message: 'unauthorized' })
+
+    const checkins = await Checkin.findAll({
+        where: {
+            poutineId: poutine.id
+        }
+    })
+
+    for (let checkin of checkins) {
+        await checkin.destroy();
+    }
 
     await poutine.destroy();
 

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { getStores, removeStore, updateStore } from "../../store/stores";
+import PoutineAddForm from "./PoutineAddForm";
+import PoutineEditForm from "./PoutineEditForm";
 
 import './StoreEditForm.css'
 
@@ -13,6 +15,7 @@ const StoreEditForm = () => {
     const [name, setName] = useState('')
     const [imageUrl, setImageUrl] = useState('')
     const [errors, setErrors] = useState([]);
+    const [showAdd, setShowAdd] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
@@ -54,6 +57,7 @@ const StoreEditForm = () => {
             <>
                 <h1>{store.name}</h1>
                 <div className='form-container store-edit-form'>
+                    <p>Edit your store information:</p>
                     <form onSubmit={handleSubmit}>
                         <div className='widget-container'>
                             <input
@@ -98,7 +102,6 @@ const StoreEditForm = () => {
 
     return (
         <>
-            <h1>STORE EDIT FORM</h1>
             <div className='store-page-container'>
                 <div className='store-content'>
                     {store && storeContent()}
@@ -108,8 +111,10 @@ const StoreEditForm = () => {
                 </div>
             </div>
             <div className='poutine-list-container'>
+                <button className={(showAdd) ? 'btn btn-warning add-btn' : 'btn btn-primary add-btn'} onClick={() => setShowAdd(prevState => !prevState)}>{(showAdd) ? 'cancel' : 'add poutine dish'}</button>
+                {showAdd && <PoutineAddForm storeId={store.id} setShowAdd={setShowAdd} />}
                 {(store && store.Poutines) && store.Poutines.map(poutine => (
-                    <PoutineCard poutine={poutine} />
+                    <PoutineCard poutine={poutine}  />
                 ))}
             </div>
         </>
@@ -119,18 +124,29 @@ const StoreEditForm = () => {
 
 
 const PoutineCard = ({ poutine }) => {
+    const [showEdit, setShowEdit] = useState(false)
     return (
-        <div className='poutine-card'>
-            <img src={poutine.imageUrl} alt={poutine.name} />
-            <div className='poutine-card-content'>
-                <p>{poutine.name}</p>
-                <p>{poutine.description}</p>
-                <Link to={`/poutines/${poutine.id}`}>more info</Link>
-                <Link to={`/poutine/${poutine.id}/checkins/create`} className='btn btn-alt'>Check-in</Link>
+        <>
+            <div className='poutine-card'>
+                <img src={poutine.imageUrl} alt={poutine.name} />
+                <div className='poutine-card-content'>
+                    <p>{poutine.name}</p>
+                    <p>{poutine.description}</p>
+                    <Link to={`/poutines/${poutine.id}`}>more info</Link>
+                    <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
+                </div>
             </div>
-        </div>
+            <div className='poutine-edit-card'>
+                {showEdit && <PoutineEditForm poutine={poutine} setShowEdit={setShowEdit} />}
+            </div>
+        </>
     )
 }
+
+
+
+
+
 
 
 export default StoreEditForm;
