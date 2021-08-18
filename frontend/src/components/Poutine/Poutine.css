@@ -1,0 +1,40 @@
+.poutine-container {
+    display: flex;
+    width: 900px;
+    padding: 60px;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.poutine-content {
+    padding-right: 20px;
+    max-width: 30%;
+}
+
+.poutine-container img {
+    width: 500px;
+    max-width: 500px;
+    max-height: 335px;
+}
+
+
+.checkins-container {
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+}
+
+
+.poutine-container a:not(.btn) {
+    text-decoration: none;
+    color: #A33B20;
+}
+.poutine-container a:not(.btn):hover {
+    color: #702815;
+}
+
+.poutine-content .btn-container {
+    margin-top: 50px;
+}
