@@ -9,7 +9,7 @@ import './Poutine.css'
 
 const Poutine = () => {
     const { poutineId } = useParams();
-    const poutineData = useSelector((state) => ({ poutine: state.poutines[poutineId], store: state.poutines[poutineId] }));
+    const poutine = useSelector((state) => state.poutines[poutineId]);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,35 +19,35 @@ const Poutine = () => {
     const poutineContent = () => {
         return (
             <>
-                <h1>{poutineData.poutine.name}</h1>
-                <p>{poutineData.poutine.description}</p>
+                <h1>{poutine.name}</h1>
+                <p>{poutine.description}</p>
                 <p>Find it at:</p>
-                {poutineData.store && <Link to={`/stores/${poutineData.store.id}`}>{poutineData.store.name}</Link>}
+                {<Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>}
 
                 <div className='btn-container'>
-                    <Link to={`/poutine/${poutineData.poutine.id}/checkins/create`} className='btn btn-alt'>Check-in</Link>
+                    <Link to={`/poutine/${poutine.id}/checkins/create`} className='btn btn-alt'>Check-in</Link>
                 </div>
             </>
         );
     };
 
     const poutineImage = () => {
-        return <img src={poutineData.poutine.imageUrl} alt={poutineData.poutine.name} />;
+        return <img src={poutine.imageUrl} alt={poutine.name} />;
     };
 
     return (
         <>
             <div className="poutine-container">
                 <div className="poutine-content">
-                    {poutineData.poutine && poutineContent()}
+                    {poutine && poutineContent()}
 
                 </div>
                 <div className="poutine-image">
-                    {poutineData.poutine && poutineImage()}
+                    {poutine && poutineImage()}
                 </div>
             </div>
             <div className="checkins-container">
-                {poutineData.poutine && poutineData.poutine.Checkins.map((checkin) => (
+                {poutine && poutine.Checkins.map((checkin) => (
                     <CheckinCard key={checkin.id} checkin={checkin} />
                 ))}
             </div>
