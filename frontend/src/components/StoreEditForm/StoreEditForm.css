@@ -16,3 +16,20 @@
 .store-edit-form .btn-container .btn {
     max-width: 45%;
 }
+
+
+.poutine-edit-form {
+    padding-top: 0;
+    width: 450px;
+    box-sizing: border-box;
+    padding-right: 0;
+}
+
+.poutine-edit-form div {
+    padding-bottom: 1px;
+    width: 100%;
+}
+
+.poutine-edit-form form {
+    display: flex;
+}
