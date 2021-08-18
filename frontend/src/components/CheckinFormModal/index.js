@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CheckinForm from './CheckinForm';
 
-function CheckinFormModal({ poutineId }) {
+function CheckinFormModal({ poutine }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -10,7 +10,7 @@ function CheckinFormModal({ poutineId }) {
             <button className='btn btn-alt' onClick={() => setShowModal(true)}>Check-in</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CheckinForm setShowModal={setShowModal} poutineId={poutineId}/>
+                    <CheckinForm setShowModal={setShowModal} poutine={poutine}/>
                 </Modal>
             )}
         </>

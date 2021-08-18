@@ -58,7 +58,7 @@ const PoutineCard = ({ poutine }) => {
                 <p>{poutine.name}</p>
                 <p>{poutine.description}</p>
             <Link to={`/poutines/${poutine.id}`}>more info</Link>
-            <CheckinFormModal poutineId={poutine.id}/>
+            <CheckinFormModal poutine={poutine}/>
             </div>
         </div>
     )

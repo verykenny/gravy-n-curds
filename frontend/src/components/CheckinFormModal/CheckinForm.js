@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 
 
-function CheckinForm({ setShowModal, poutineId }) {
+function CheckinForm({ setShowModal, poutine }) {
     const [credential, setCredential] = useState('');
 
     // const dispatch = useDispatch();

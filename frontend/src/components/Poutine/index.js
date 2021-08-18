@@ -25,7 +25,7 @@ const Poutine = () => {
                 {<Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>}
 
                 <div className='btn-container'>
-                    <CheckinFormModal poutineId={poutine.id}/>
+                    <CheckinFormModal poutine={poutine}/>
                 </div>
             </>
         );
