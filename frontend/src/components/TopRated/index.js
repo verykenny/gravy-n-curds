@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import CheckinFormModal from '../CheckinFormModal';
 import './TopRated.css'
 
 
@@ -19,8 +21,10 @@ const TopRated = () => {
                     <button className={`btn ${(!topToggle) ? 'active': 'disabled'}`} onClick={() => setTopToggle(false)}><h1>Top Rated Stores</h1></button>
                 </div>
                 <div className='top-show-container'>
-                    {topToggle && <p>Top Poutine</p>}
-                    {!topToggle && <p>Top Store</p>}
+                    {(topToggle && topPoutines.length > 0) && topPoutines.map(poutine => (
+                        <TopPoutines key={poutine.id} poutine={poutine}/>
+                    ))}
+                    {!topToggle && <TopStores />}
                 </div>
             </div>
         </>
@@ -28,7 +32,28 @@ const TopRated = () => {
 }
 
 
-
+const TopPoutines = ({ poutine }) => {
+    return (
+        <div className='top-poutine-card'>
+            <div className='top-poutine-image'>
+                <img src={poutine.imageUrl} alt={poutine.name}/>
+            </div>
+            <div className='top-poutine-content'>
+                <h2>{poutine.name}</h2>
+                <p>{poutine.description}</p>
+            </div>
+            <div className='top-poutine-access'>
+                    <CheckinFormModal poutine={poutine} store={poutine.Store}/>
+                    <Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>
+            </div>
+        </div>
+    )
+}
+const TopStores = () => {
+    return (
+        <div className='top-store-card'></div>
+    )
+}
 
 
 export default TopRated;
