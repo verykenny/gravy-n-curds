@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getStores } from "../../store/stores";
-import CheckinFormModal from "../CheckinFormModal";
+
+import PoutineCard from "../PoutineCard";
 
 import './Store.css'
 
@@ -40,9 +41,7 @@ const Store = () => {
                 </div>
             </div>
             <div className='poutine-list-container'>
-                {(store && store.Poutines) && store.Poutines.map(poutine => (
-                    <PoutineCard key={poutine.id} poutine={poutine} store={store} />
-                ))}
+                {(store) && <PoutineList storeId={store.id} />}
             </div>
         </>
     )
@@ -50,17 +49,14 @@ const Store = () => {
 
 
 
-const PoutineCard = ({ poutine, store }) => {
+const PoutineList = ({ storeId }) => {
+    const poutines = useSelector(state => Object.values(state.poutines).filter(poutine => poutine.storeId === storeId))
     return (
-        <div className='poutine-card'>
-            <img src={poutine.imageUrl} alt={poutine.name} />
-            <div className='poutine-card-content'>
-                <p>{poutine.name}</p>
-                <p>{poutine.description}</p>
-            <Link to={`/poutines/${poutine.id}`}>more info</Link>
-            <CheckinFormModal poutine={poutine} store={store}/>
-            </div>
-        </div>
+        <>
+            {poutines && poutines.map(poutine => (
+                <PoutineCard key={poutine.id} poutine={poutine} />
+            ))}
+        </>
     )
 }
 
