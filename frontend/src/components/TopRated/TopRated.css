@@ -1,0 +1,39 @@
+.top-page-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 30px;
+}
+
+
+.top-menu-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 2px;
+}
+
+.top-menu-container .btn {
+    border-top: 1px solid #393e4152;
+    border-right: 1px solid #393e4152;
+    border-left: 1px solid #393e4152;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: white;
+}
+
+.top-menu-container .btn h1 {
+    font-weight: 300;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.top-menu-container .btn.active {
+    box-shadow: -1px -1px 2px;
+}
+.top-menu-container .btn.disabled {
+    background-color: rgba(197, 197, 197, 0.486);
+}
+
+.top-show-container {
+    border: 1px solid #393e4152;
+}
