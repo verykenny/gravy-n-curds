@@ -75,19 +75,19 @@ h2 {
 
 .feature-container {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     justify-content: space-around;
 }
 
 .example-container,
 .links-container {
-    width: 100%;
+    max-width: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 10px;
+    margin: 0 30px;
 }
 
 .example-container {
@@ -106,8 +106,9 @@ h2 {
     text-align: center;
 }
 
-.links-container {
-
+.example-container p {
+    font-size: 1.3rem;
+    text-align: center;
 }
 
 .links-container  a:not(.btn) {
@@ -134,5 +135,11 @@ h2 {
 
     .feature-container {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .links-container {
+        border-top: 1px solid #393e41;
+        margin-top: 30px;
     }
 }
