@@ -6,7 +6,14 @@ import './RecentReviews.css'
 const RecentReviews = () => {
     return (
         <>
-            <h1>Recent Reviews</h1>
+            <div className='recent-page-container'>
+                <div className='recent-reviews-container'>
+
+                </div>
+                <div className='trending-poutine-container'>
+
+                </div>
+            </div>
         </>
     )
 }
