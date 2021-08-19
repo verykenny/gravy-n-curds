@@ -40,7 +40,7 @@ const CheckinCard = ({ checkin }) => {
     }
 
     return (
-        <div className='checkin-card'>
+        <div className='top-checkin-card'>
             <div>
                 <img src='/images/poutine-icon-red-background.svg' alt='poutine icon' />
             </div>
