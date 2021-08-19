@@ -39,7 +39,7 @@
     padding-right: 20px;
     margin-bottom: 0;
     border: none;
-    transition: margin .8s, box-shadow .8s;
+    transition: margin .5s, box-shadow .5s;
     border-radius: 3px;
 }
 
@@ -91,4 +91,8 @@
 .checkin-footer a {
     margin: 4px 0 0;
     font-size: .8rem;
+}
+
+.checkin-footer p {
+    color: #393e41;
 }
