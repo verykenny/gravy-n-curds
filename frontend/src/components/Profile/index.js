@@ -5,7 +5,6 @@ import { getCheckins } from "../../store/checkins";
 import { getStores } from '../../store/stores'
 
 import './Profile.css'
-import CheckinEditForm from "./CheckinEditForm.js";
 import CheckinCard from '../CheckinCard';
 
 

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import CheckinEditForm from "../Profile/CheckinEditForm";
+import CheckinEditForm from "../CheckinEditForm";
 
 import './CheckinCard.css'
 

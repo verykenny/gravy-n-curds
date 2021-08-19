@@ -4,6 +4,8 @@ import { updateCheckin, removeCheckin, getCheckins } from "../../store/checkins"
 import { getStores } from "../../store/stores";
 
 
+import './CheckinEditForm.css'
+
 const CheckinEditForm = ({ checkin, setShowEdit }) => {
     const [comment, setComment] = useState(checkin.comment);
     const [rating, setRating] = useState(checkin.rating);
