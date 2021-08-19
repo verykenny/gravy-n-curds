@@ -1,0 +1,62 @@
+.top-poutine-card,
+.top-store-card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    /* border: 1px solid #393e4152; */
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-bottom: 25px;
+}
+
+.top-poutine-card:hover,
+.top-store-card:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+
+.top-poutine-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.top-poutine-image img {
+    width: 100%;
+}
+
+.top-poutine-content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 50%;
+    margin-left: 25px;
+}
+
+.top-poutine-access {
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.top-poutine-content h2 {
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.top-poutine-content p {
+    margin-top: 0px;
+    font-weight: 300;
+}
+
+.top-poutine-access {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-poutine-access a {
+    margin-top: 10px;
+}
