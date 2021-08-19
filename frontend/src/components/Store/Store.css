@@ -47,11 +47,3 @@
     margin-left: 15px;
 }
 
-
-.poutine-card-content a:not(.btn) {
-    text-decoration: none;
-    color: #A33B20;
-}
-.poutine-card-content a:not(.btn):hover {
-    color: #702815;
-}

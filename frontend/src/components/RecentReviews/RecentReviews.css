@@ -36,16 +36,6 @@
 }
 
 
-.little-poutine-card  a:not(.btn),
-.top-checkin-card a:not(.btn) {
-    text-decoration: none;
-    color: #A33B20;
-}
-.little-poutine-card  a:not(.btn):hover,
-.top-checkin-card a:not(.btn):hover {
-    color: #702815;
-}
-
 
 
 @media screen and (max-width: 790px) {

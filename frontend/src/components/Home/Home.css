@@ -110,13 +110,6 @@ h2 {
     text-align: center;
 }
 
-.links-container  a:not(.btn) {
-    text-decoration: none;
-    color: #A33B20;
-}
-.links-container  a:not(.btn):hover {
-    color: #702815;
-}
 
 .links-container p {
     text-align: center;

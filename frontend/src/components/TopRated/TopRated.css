@@ -104,11 +104,3 @@
     flex-direction: column;
 }
 
-.top-poutine-access a:not(.btn) {
-    text-decoration: none;
-    color: #A33B20;
-    margin-top: 25px;
-}
-.top-poutine-access a:not(.btn):hover {
-    color: #702815;
-}
