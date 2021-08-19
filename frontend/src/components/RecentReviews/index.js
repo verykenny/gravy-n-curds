@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import CheckinCard from './CheckinCard';
+import CheckinCard from '../CheckinCard';
 import TrendingDishes from './TrendingDishes';
 
 import './RecentReviews.css'
