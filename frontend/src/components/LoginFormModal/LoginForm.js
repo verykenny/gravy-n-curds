@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logInUser } from '../../store/session';
 
 import './LoginForm.css';
@@ -13,7 +13,7 @@ function LoginForm({ setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
-    if (sessionUser) return <Redirect to="/"></Redirect>;
+    if (sessionUser) setShowModal(false);
 
 
     const handleSubmit = async (e) => {
