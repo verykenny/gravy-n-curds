@@ -66,7 +66,18 @@
 }
 
 
+@media screen and (max-width: 950px) {
+    .photo-container {
+        display: none;
+    }
+    .info-container {
+        justify-content: center;
+    }
 
+    .info-card {
+        margin: 0;
+    }
+}
 
 
 .secondary-container {
