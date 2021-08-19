@@ -9,9 +9,13 @@ import './TopRated.css'
 const TopRated = () => {
     const [topToggle, setTopToggle] = useState(true)
 
-    const average = (accum, currentValue) => accum + currentValue.rating;
+    const averageRating = (checkins) => {
+        const checkinCount = checkins.length;
+        const averageRating = (checkins.reduce((sum, ele) => sum + ele.rating, 0) / checkinCount).toFixed(1);
+        return averageRating
+    }
 
-    const topPoutines = useSelector(state => Object.values(state.poutines).sort((a, b) => b.Checkins.length - a.Checkins.length).slice(0, 10))
+    const topPoutines = useSelector(state => Object.values(state.poutines).sort((a, b) => averageRating(b.Checkins) - averageRating(a.Checkins)).slice(0, 10))
 
     return (
         <>
@@ -33,6 +37,9 @@ const TopRated = () => {
 
 
 const TopPoutines = ({ poutine }) => {
+    const checkinCount = poutine.Checkins.length;
+    const averageRating = (poutine.Checkins.reduce((sum, ele) => sum + ele.rating, 0) / checkinCount).toFixed(1);
+
     return (
         <div className='top-poutine-card'>
             <div className='top-poutine-image'>
@@ -41,8 +48,8 @@ const TopPoutines = ({ poutine }) => {
             <div className='top-poutine-content'>
                 <h2>{poutine.name}</h2>
                 <p>{poutine.description}</p>
-                <p>Average rating</p>
-                <p>number of checkins</p>
+                <p>Average rating: {averageRating}</p>
+                <p>number of checkins: {checkinCount}</p>
             </div>
             <div className='top-poutine-access'>
                 <CheckinFormModal poutine={poutine} store={poutine.Store} />
