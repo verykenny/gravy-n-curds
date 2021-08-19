@@ -20,7 +20,7 @@ const Home = () => {
                         <div className='info-card'>
                             <img src='/images/poutine-icon-white.svg' alt='poutine icon' />
                             <h1>gravyNcurds</h1>
-                            <h2>EAT GOOD STUFF</h2>
+                            <h2>eat good stuff</h2>
                             <p className='tag-line'>Discover and share your favorite poutine dishes.</p>
                             <p>Get started with some <Link to='/top-rated'>top-rated dishes</Link>.</p>
                         </div>
@@ -30,13 +30,13 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='feature-container'>
-                    <div className='example-container'></div>
+                    <div className='example-container'>
+                        <img src='/images/checkin-example.png' alt='checkin example' />
+                        <h2>check-in and rate poutine</h2>
+                        <p>...with check-ins, you can keep track of what you've tried ans what you thought of it!</p>
+                    </div>
                     <div className='links-container'></div>
                 </div>
-            </div>
-            <div className='secondary-container'>
-                <div className='checkin-container'></div>
-                <div className='poutine-container'></div>
             </div>
         </>
     )
