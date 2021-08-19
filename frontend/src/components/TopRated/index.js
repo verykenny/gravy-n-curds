@@ -48,7 +48,7 @@ const TopPoutines = ({ poutine }) => {
             <div className='top-poutine-content'>
                 <h2>{poutine.name}</h2>
                 <p>{poutine.description}</p>
-                <p>Average rating: {averageRating}</p>
+                <p>Average rating: {(averageRating > 0) ? averageRating : 'no rating'}</p>
                 <p>number of checkins: {checkinCount}</p>
             </div>
             <div className='top-poutine-access'>
