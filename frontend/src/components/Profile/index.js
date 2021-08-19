@@ -6,6 +6,7 @@ import { getStores } from '../../store/stores'
 
 import './Profile.css'
 import CheckinEditForm from "./CheckinEditForm.js";
+import CheckinCard from '../CheckinCard';
 
 
 const Profile = () => {
@@ -32,7 +33,9 @@ const Profile = () => {
                     <section className='store-container'>
                         <h2>Edit your stores:</h2>
                         {stores.length > 0 && stores.map(store => (
+                            <>
                             <StoreCard key={store.id} store={store} />
+                            </>
                         ))}
                         <Link className='btn btn-alt' to='/stores/create'>Add new store</Link>
                     </section>
@@ -44,25 +47,6 @@ const Profile = () => {
 
 export default Profile;
 
-
-const CheckinCard = ({ checkin }) => {
-    const [showEdit, setShowEdit] = useState(false)
-    return (
-        <>
-            <div className='checkin-card'>
-                <p>You ate <Link to={`/poutines/${checkin.Poutine.id}`}>{checkin.Poutine.name}</Link> at <Link to={`/stores/${checkin.Poutine.Store.id}`}>{checkin.Poutine.Store.name}</Link>.</p>
-                <p>You said: </p>
-                <p>{checkin.comment}</p>
-                <p>Rating: {checkin.rating}</p>
-                <Link to={`/checkins/${checkin.id}`}>more info</Link>
-                <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
-            </div>
-            <div className='poutine-edit-card'>
-                {showEdit && <CheckinEditForm checkin={checkin} setShowEdit={setShowEdit}  />}
-            </div>
-        </>
-    )
-}
 
 const StoreCard = ({ store }) => {
 
