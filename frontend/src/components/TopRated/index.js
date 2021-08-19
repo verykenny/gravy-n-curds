@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -52,11 +52,6 @@ const TopPoutines = ({ poutine }) => {
                 <Link to={`/poutines/${poutine.id}`}>more info</Link>
             </div>
         </div>
-    )
-}
-const TopStores = () => {
-    return (
-        <div className='top-store-card'></div>
     )
 }
 
