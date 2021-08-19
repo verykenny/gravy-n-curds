@@ -7,7 +7,6 @@ import './TopRated.css'
 
 
 const TopRated = () => {
-    const [topToggle, setTopToggle] = useState(true)
 
     const averageRating = (checkins) => {
         const checkinCount = checkins.length;
@@ -20,15 +19,11 @@ const TopRated = () => {
     return (
         <>
             <div className='top-page-container'>
-                <div className='top-menu-container'>
-                    <button className={`btn ${(topToggle) ? 'active' : 'disabled'}`} onClick={() => setTopToggle(true)}><h1>Top Rated Poutine</h1></button>
-                    <button className={`btn ${(!topToggle) ? 'active' : 'disabled'}`} onClick={() => setTopToggle(false)}><h1>Top Rated Stores</h1></button>
-                </div>
                 <div className='top-show-container'>
-                    {(topToggle && topPoutines.length > 0) && topPoutines.map(poutine => (
+                    <h1>Top Rated Poutine Dishes</h1>
+                    {topPoutines.length > 0 && topPoutines.map(poutine => (
                         <TopPoutines key={poutine.id} poutine={poutine} />
                     ))}
-                    {!topToggle && <TopStores />}
                 </div>
             </div>
         </>

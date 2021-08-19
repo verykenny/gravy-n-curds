@@ -4,6 +4,10 @@
     padding: 0 30px;
 }
 
+.top-show-container > h1 {
+    font-weight: 300;
+}
+
 
 .top-menu-container {
     display: flex;
