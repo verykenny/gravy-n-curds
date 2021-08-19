@@ -1,14 +1,69 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-
+import CheckinFormModal from '../CheckinFormModal';
 import './TopRated.css'
 
 
 const TopRated = () => {
+    const [topToggle, setTopToggle] = useState(true)
+
+    const averageRating = (checkins) => {
+        const checkinCount = checkins.length;
+        const averageRating = (checkins.reduce((sum, ele) => sum + ele.rating, 0) / checkinCount).toFixed(1);
+        return averageRating
+    }
+
+    const topPoutines = useSelector(state => Object.values(state.poutines).sort((a, b) => averageRating(b.Checkins) - averageRating(a.Checkins)).slice(0, 10))
+
     return (
         <>
-        <h1>Top Rated</h1>
+            <div className='top-page-container'>
+                <div className='top-menu-container'>
+                    <button className={`btn ${(topToggle) ? 'active' : 'disabled'}`} onClick={() => setTopToggle(true)}><h1>Top Rated Poutine</h1></button>
+                    <button className={`btn ${(!topToggle) ? 'active' : 'disabled'}`} onClick={() => setTopToggle(false)}><h1>Top Rated Stores</h1></button>
+                </div>
+                <div className='top-show-container'>
+                    {(topToggle && topPoutines.length > 0) && topPoutines.map(poutine => (
+                        <TopPoutines key={poutine.id} poutine={poutine} />
+                    ))}
+                    {!topToggle && <TopStores />}
+                </div>
+            </div>
         </>
     )
 }
+
+
+const TopPoutines = ({ poutine }) => {
+    const checkinCount = poutine.Checkins.length;
+    const averageRating = (poutine.Checkins.reduce((sum, ele) => sum + ele.rating, 0) / checkinCount).toFixed(1);
+
+    return (
+        <div className='top-poutine-card'>
+            <div className='top-poutine-image'>
+                <img src={poutine.imageUrl} alt={poutine.name} />
+            </div>
+            <div className='top-poutine-content'>
+                <h2>{poutine.name}</h2>
+                <p>{poutine.description}</p>
+                <p>Average rating: {(averageRating > 0) ? averageRating : 'no rating'}</p>
+                <p>Check-ins: {checkinCount}</p>
+            </div>
+            <div className='top-poutine-access'>
+                <CheckinFormModal poutine={poutine} store={poutine.Store} />
+                <Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>
+                <Link to={`/poutines/${poutine.id}`}>more info</Link>
+            </div>
+        </div>
+    )
+}
+const TopStores = () => {
+    return (
+        <div className='top-store-card'></div>
+    )
+}
+
 
 export default TopRated;
