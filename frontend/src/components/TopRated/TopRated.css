@@ -48,11 +48,17 @@
     width: 100%;
     justify-content: center;
     padding: 10px;
-    border: 1px solid #393e4152;
+    /* border: 1px solid #393e4152; */
     box-sizing: border-box;
     border-radius: 2px;
     margin-bottom: 25px;
 }
+
+.top-poutine-card:hover,
+.top-store-card:hover {
+    background-color: rgb(230, 230, 230);
+}
+
 
 .top-poutine-image {
     display: flex;
