@@ -16,7 +16,7 @@ function SignupFormPage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
 
-    if (sessionUser) return <Redirect to="/"></Redirect>;
+    if (sessionUser) return <Redirect to="/profile"></Redirect>;
 
 
     const handleSubmit = async (e) => {
