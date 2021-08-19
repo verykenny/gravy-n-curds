@@ -49,13 +49,12 @@ const TopPoutines = ({ poutine }) => {
                 <h2>{poutine.name}</h2>
                 <p>{poutine.description}</p>
                 <p>Average rating: {(averageRating > 0) ? averageRating : 'no rating'}</p>
-                <p>number of checkins: {checkinCount}</p>
+                <p>Check-ins: {checkinCount}</p>
             </div>
             <div className='top-poutine-access'>
                 <CheckinFormModal poutine={poutine} store={poutine.Store} />
                 <Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>
                 <Link to={`/poutines/${poutine.id}`}>more info</Link>
-                <p>Link to poutine page</p>
             </div>
         </div>
     )
