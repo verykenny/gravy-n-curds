@@ -1,0 +1,13 @@
+.checkin-edit-form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.checkin-edit-form div {
+    padding-bottom: 1px;
+    width: 100%;
+}
+
+.checkin-edit-form form {
+    display: flex;
+}

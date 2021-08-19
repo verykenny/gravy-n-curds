@@ -57,6 +57,19 @@
     justify-content: space-between;
 }
 
+.checkin-footer .btn {
+    text-decoration: none;
+    color: #A33B20;
+    background: none;
+    padding: 0;
+    margin: 4px 0;
+    font-size: .8rem
+}
+
+.checkin-footer .btn:hover {
+    color: #702815;
+}
+
 .checkin-footer p,
 .checkin-footer a {
     margin: 4px 0 0;

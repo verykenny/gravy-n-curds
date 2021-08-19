@@ -34,7 +34,7 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
 
     return (
         <>
-            <div className='form-container poutine-edit-form'>
+            <div className='form-container checkin-edit-form'>
                 <form onSubmit={handleSubmit}>
                     <div className='small-inputs'>
                         <div className='widget-container'>
