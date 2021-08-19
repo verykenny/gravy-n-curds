@@ -27,3 +27,14 @@
         width: 60%;
     }
 }
+
+
+.checkin-card {
+    display: flex;
+}
+
+.comment-container {
+    border: 1px solid #393e418e;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #393e418e;
+}
