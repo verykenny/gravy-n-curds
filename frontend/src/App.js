@@ -16,6 +16,8 @@ import { getCheckins } from './store/checkins';
 import { getPoutines } from './store/poutine';
 import { getStores } from './store/stores';
 import StoreEditForm from './components/StoreEditForm';
+import RecentReviews from './components/RecentReviews';
+import TopRated from './components/TopRated';
 
 
 function App() {
@@ -43,6 +45,12 @@ function App() {
                     </Route>
                     <Route path='/profile'>
                         <Profile />
+                    </Route>
+                    <Route path='/recent'>
+                        <RecentReviews />
+                    </Route>
+                    <Route path='/top-rated'>
+                        <TopRated />
                     </Route>
                     <Route path='/poutines/:poutineId'>
                         <Poutine />
