@@ -74,9 +74,6 @@ const CheckinCard = ({ checkin }) => {
                 <div className='checkin-footer'>
                     <p>{timeAgo(checkin.createdAt)}</p>
                     <Link to={`/checkins/${checkin.id}`}>more info</Link>
-                    {/* {sessionUser.id === checkin.userId && (
-                        <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
-                    )} */}
                     {sessionUser && showButton()}
                 </div>
                 <div className='poutine-edit-card'>
