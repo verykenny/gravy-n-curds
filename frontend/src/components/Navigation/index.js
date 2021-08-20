@@ -6,10 +6,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import LoginFormModal from "../LoginFormModal";
 import { logOutUser } from "../../store/session";
 import MenuButton from "./MenuButton";
+import { logInUser } from "../../store/session";
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
+
+    const handleDemoLogin = async () => {
+        await dispatch(logInUser('demo@user.io', 'password'));
+    }
 
     let sessionLinks;
     if (sessionUser) {
@@ -24,15 +29,22 @@ function Navigation({ isLoaded }) {
                     <button className='btn btn-alt' onClick={() => dispatch(logOutUser())}>Log Out</button>
                 </div>
                 <div className='hidden-module'>
-                    <MenuButton />
+                    <MenuButton sessionUser={sessionUser} />
                 </div>
             </div>
         );
     } else {
         sessionLinks = (
             <div className='session-buttons'>
-                <LoginFormModal />
-                <NavLink className='btn btn-primary' to="/signup">Sign Up</NavLink>
+                <div className='session-links'>
+                    <button className='btn btn-alt' type='button' onClick={() => handleDemoLogin()}>Demo Login</button>
+                    <LoginFormModal />
+                    <NavLink className='btn btn-primary' to="/signup">Sign Up</NavLink>
+
+                </div>
+                <div className='hidden-module'>
+                    <MenuButton sessionUser={sessionUser} />
+                </div>
             </div >
         );
     }

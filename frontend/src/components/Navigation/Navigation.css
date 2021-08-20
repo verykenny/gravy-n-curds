@@ -63,16 +63,14 @@
     text-decoration: underline !important;
 }
 
-.session-links a {
-    margin-right: 40px;
-}
+
 
 .session-buttons {
     width: 100%;
     justify-content: flex-end;
 }
 
-.session-buttons .btn {
+.session-buttons .btn:not(.ham) {
     padding: 15px 30px;
     max-height: 42px;
     box-sizing: border-box;
@@ -83,7 +81,17 @@
     font-weight: bold;
 }
 
+
 @media screen and (max-width: 790px) {
+    .home-link {
+        margin-right: 15px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 715px) {
 
     .nav-bar-color {
         position: relative;
@@ -92,10 +100,16 @@
     .nav-container {
         max-height: 1000px;
         padding: 0 40px;
+        justify-content: space-between;
+    }
+
+    .home-link {
+        margin-right: 0;
     }
 
     .public-links,
-    .session-links {
+    .session-links .btn:not(.login),
+    .session-links .nav-link {
         display: none;
     }
 
@@ -128,32 +142,26 @@
         text-decoration: none;
     }
 
-    .collapse-menu .btn-alt {
+    .collapse-menu .btn-alt,
+    .collapse-menu .btn-primary {
         margin-bottom: 20px;
         margin-top: 10px;
         width: 50%;
         height: 40px;
+        text-align: center;
     }
 }
 
-
-@media screen and (max-width: 640px) {
-    .session-buttons .btn {
-        margin-left: 5px;
-        padding: 10px 15px;
+@media screen and (max-width: 430px) {
+    .ham {
+        padding-right: 0;
     }
 
-
-}
-
-@media screen and (max-width: 420px) {
-    .home-link a {
-        font-size: 1rem;
+    .session-links .login {
+        margin-left: 0 !important;
+        padding: 15px 15px !important;
     }
-    .home-link {
-        margin-right: 10px;
-    }
-    .session-buttons .btn {
-        font-size: .4rem;
+    .nav-container {
+        padding: 0 20px;
     }
 }
