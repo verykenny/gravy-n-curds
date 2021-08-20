@@ -81,7 +81,17 @@
     font-weight: bold;
 }
 
+
 @media screen and (max-width: 790px) {
+    .home-link {
+        margin-right: 15px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 715px) {
 
     .nav-bar-color {
         position: relative;
