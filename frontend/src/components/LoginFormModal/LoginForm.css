@@ -24,10 +24,10 @@
     margin: 0;
 }
 
-.login-form p {
+.login-form .subtitle {
     font-size: .7rem;
     text-transform: uppercase;
-    color: #393e41 !important;
+    color: #393e41;
     text-align: center;
     margin-top: 0;
 }

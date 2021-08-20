@@ -35,7 +35,7 @@ function LoginForm({ setShowModal }) {
         <div className="form-container login-form">
             <div>
                 <h1>gravyNcurds</h1>
-                <p>eat good stuff</p>
+                <p className='subtitle'>eat good stuff</p>
             </div>
             <div className='errors-container'>
             {errors.includes('The provided credentials were invalid.') && (
