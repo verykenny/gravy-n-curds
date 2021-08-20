@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -17,16 +17,32 @@ const Poutine = () => {
         dispatch(getPoutines());
     }, [dispatch]);
 
+    const averageRating = (checkins) => {
+        const totalCheckins = checkins.length;
+        const sum = checkins.reduce((accum, ele) => accum + ele.rating, 0)
+        return sum / totalCheckins;
+    }
+
     const poutineContent = () => {
         return (
             <>
-                <h1>{poutine.name}</h1>
-                <p>{poutine.description}</p>
-                <p>Find it at:</p>
-                {<Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>}
+                <h1 className='poutine-info-header'>{poutine.name}</h1>
+                <p className='poutine-info-header'>{poutine.description}</p>
+                <div className='sub-content'>
+                    <div className='store-info'>
+                        <p>Find it at:</p>
+                        <Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>
+                    </div>
+                    <div className='rating-info'>
+                        <p>Total checkins:</p>
+                        <p>{poutine.Checkins.length}</p>
+                        <p>Average rating:</p>
+                        <p>{averageRating(poutine.Checkins)}</p>
+                    </div>
+                </div>
 
                 <div className='btn-container'>
-                    <CheckinFormModal poutine={poutine} store={poutine.Store}/>
+                    <CheckinFormModal poutine={poutine} store={poutine.Store} />
                 </div>
             </>
         );
@@ -55,14 +71,14 @@ const Poutine = () => {
 };
 
 
-const CheckinsContainer = ({poutineId}) => {
+const CheckinsContainer = ({ poutineId }) => {
     const checkins = useSelector(state => Object.values(state.checkins).filter(checkin => checkin.poutineId === poutineId))
 
     return (
         <>
-        {checkins && checkins.map(checkin => (
-            <CheckinCard key={checkin.id} checkin={checkin} />
-        ))}
+            {checkins && checkins.map(checkin => (
+                <CheckinCard key={checkin.id} checkin={checkin} />
+            ))}
         </>
     )
 }

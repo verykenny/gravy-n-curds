@@ -8,9 +8,17 @@
     box-sizing: border-box;
 }
 
+.poutine-info-header {
+    font-weight: 300;
+}
+
+p.poutine-info-header {
+    text-align: center;
+}
+
 .poutine-content {
     padding-right: 20px;
-    max-width: 30%;
+    max-width: 50%;
 }
 
 .poutine-container img {
@@ -26,6 +34,17 @@
     margin: 0 auto;
 }
 
+.sub-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sub-content .rating-info p {
+    margin-bottom: 5px;
+}
+.sub-content .rating-info p:not(:first-child) {
+    margin-top: 5px;
+}
 
 
 .poutine-content .btn-container {
