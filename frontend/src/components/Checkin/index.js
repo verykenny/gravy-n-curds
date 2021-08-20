@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getCheckins } from "../../store/checkins";
 import CheckinCard from "../CheckinCard";
 import PoutineCard from "../PoutineCard";
