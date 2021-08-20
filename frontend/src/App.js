@@ -18,6 +18,7 @@ import { getStores } from './store/stores';
 import StoreEditForm from './components/StoreEditForm';
 import RecentReviews from './components/RecentReviews';
 import TopRated from './components/TopRated';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
                     </Route>
                 </Switch>
             )}
+            <Footer />
         </>
     );
 }
