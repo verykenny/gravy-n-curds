@@ -1,0 +1,22 @@
+.footer-container {
+    width: 100%;
+    height: 75px;
+    background-color: #393e41;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+.copy {
+    font-size: .7rem;
+    margin: 0;
+}
+
+.footer-container .fab {
+    font-size: 2rem;
+    color: white;
+    margin: 0 15px 5px;
+}
