@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { logOutUser, logInUser } from "../../store/session";
-import LoginFormModal from "../LoginFormModal";
 
 
 function MenuButton({ sessionUser }) {
