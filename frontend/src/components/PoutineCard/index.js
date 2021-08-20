@@ -34,8 +34,8 @@ const PoutineCard = ({ poutineId, edit = false }) => {
                     <p>Check-ins: {checkinCount}</p>
                 </div>
                 <div className='top-poutine-access'>
-                    <CheckinFormModal poutine={poutine} store={poutine.Store} />
-                    <Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>
+                    {poutine.Store && <CheckinFormModal poutine={poutine} store={poutine.Store} />}
+                    {poutine.Store && <Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>}
                     <Link to={`/poutines/${poutine.id}`}>more info</Link>
                     {edit && <button className={(showEdit) ? 'btn btn-warning edit' : 'btn btn-alt edit'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>}
 
