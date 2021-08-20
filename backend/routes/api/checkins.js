@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
 
 const { Checkin, User, Poutine, Store } = require('../../db/models');
+const { validateCheckin } = require('../../utils/validation');
 
 
 
@@ -23,7 +24,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
 
 // PUT update a check-in
-router.put('/:checkinId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.put('/:checkinId(\\d+)', requireAuth, validateCheckin, asyncHandler(async (req, res) => {
     const { comment, rating } = req.body;
     const checkinId = Number(req.params.checkinId);
     const userId = req.user.id;

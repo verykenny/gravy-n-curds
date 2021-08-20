@@ -8,11 +8,13 @@ import { getPoutines } from '../../store/poutine';
 function CheckinForm({ setShowModal, poutine, store }) {
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors([]);
 
         const payload = {
             comment,
@@ -20,10 +22,16 @@ function CheckinForm({ setShowModal, poutine, store }) {
             poutineId: poutine.id
         }
 
-        await dispatch(createCheckin(payload));
-        await dispatch(getPoutines());
-        await dispatch(getCheckins());
-        setShowModal(false);
+        try {
+            await dispatch(createCheckin(payload));
+            await dispatch(getPoutines());
+            await dispatch(getCheckins());
+            setShowModal(false);
+        } catch (e) {
+            const res = await e.json();
+            const { errors } = res;
+            setErrors(errors);
+        }
     };
 
     return (
@@ -42,13 +50,16 @@ function CheckinForm({ setShowModal, poutine, store }) {
                         value={rating}
                         onChange={(e) => setRating(e.target.value)}
                     >
-                        <option value=''>no rating</option>
+                        <option value='' disabled>select rating</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
                         <option value='4'>4</option>
                         <option value='5'>5</option>
                     </select>
+                    {errors.includes('Please provide a rating.') && (
+                        <p className='form-custom-error'>Please provide a rating.</p>
+                    )}
                 </div>
                 <div className="btn-container">
                     <button className="btn btn-primary" type="submit">

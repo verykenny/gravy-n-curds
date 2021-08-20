@@ -72,6 +72,14 @@ validateStore = [
     handleValidationErrors,
 ];
 
+
+validateCheckin = [
+    check('rating')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a rating.'),
+    handleValidationErrors,
+];
+
 validatePoutine = [
     check('name')
         .exists({ checkFalsy: true })
@@ -96,4 +104,5 @@ module.exports = {
     validateSignup,
     validateStore,
     validatePoutine,
+    validateCheckin,
 };
