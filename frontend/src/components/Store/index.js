@@ -54,7 +54,7 @@ const PoutineList = ({ storeId }) => {
     return (
         <>
             {poutines && poutines.map(poutine => (
-                <PoutineCard key={poutine.id} poutine={poutine} />
+                <PoutineCard key={poutine.id} poutineId={poutine.id} />
             ))}
         </>
     )

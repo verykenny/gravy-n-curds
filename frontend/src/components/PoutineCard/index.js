@@ -1,16 +1,25 @@
 import { Link } from "react-router-dom";
 import CheckinFormModal from "../CheckinFormModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import PoutineEditForm from "../StoreEditForm/PoutineEditForm";
 
 import './PoutineCard.css'
+import { useSelector } from "react-redux";
 
-const PoutineCard = ({ poutine, edit = false }) => {
-    console.log(poutine);
-    const [showEdit, setShowEdit] = useState(false)
-    const checkinCount = poutine.Checkins.length;
-    const averageRating = (poutine.Checkins.reduce((sum, ele) => sum + ele.rating, 0) / checkinCount).toFixed(1);
+const PoutineCard = ({ poutineId, edit = false }) => {
+    const poutine = useSelector(state => state.poutines[poutineId])
+    const [showEdit, setShowEdit] = useState(false);
+    const [checkinCount, setCheckinCount] = useState(0)
+    const [averageRating, setAverageRating] = useState(0)
+
+    useEffect(() => {
+        if (poutine.Checkins) {
+            setCheckinCount(poutine.Checkins.length);
+            setAverageRating((poutine.Checkins.reduce((sum, ele) => sum + ele.rating, 0) / checkinCount).toFixed(1))
+        }
+    }, [poutine, checkinCount])
+
 
     return (
         <>

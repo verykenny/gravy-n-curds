@@ -21,7 +21,7 @@ const TopRated = () => {
                 <div className='top-show-container'>
                     <h1>Top Rated Poutine Dishes</h1>
                     {topPoutines.length > 0 && topPoutines.map(poutine => (
-                        <PoutineCard key={poutine.id} poutine={poutine} />
+                        <PoutineCard key={poutine.id} poutineId={poutine.id} />
                     ))}
                 </div>
             </div>

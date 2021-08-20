@@ -123,11 +123,11 @@ const StoreEditForm = () => {
 
 
 const PoutineList = ({ storeId }) => {
-    const poutines = useSelector(state => Object.values(state.poutines).filter(poutine => poutine.storeId === storeId))
+    const poutines = useSelector(state => Object.values(state.poutines).filter(poutine => poutine.storeId === storeId));
     return (
         <>
             {poutines && poutines.map(poutine => (
-                <PoutineCard key={poutine.id} poutine={poutine} edit={true} />
+                <PoutineCard key={poutine.id} poutineId={poutine.id} edit={true} />
             ))}
         </>
     )

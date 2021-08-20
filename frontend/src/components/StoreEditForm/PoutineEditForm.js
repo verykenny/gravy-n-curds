@@ -25,10 +25,9 @@ const PoutineEditForm = ({ poutine, setShowEdit }) => {
             setShowEdit(false)
             await dispatch(getStores());
         } catch (e) {
-            console.log(e);
-            // const res = await e.json();
-            // const { errors } = res;
-            // setErrors(errors);
+            const res = await e.json();
+            const { errors } = res;
+            setErrors(errors);
         }
     }
 
