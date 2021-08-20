@@ -4,26 +4,24 @@
     padding: 60px;
     max-width: 100%;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: center;
     box-sizing: border-box;
 }
 
-.checkin-container > .checkin-content-info {
-    padding-right: 20px;
-}
-
-.checkin-image img {
-    width: 500px;
-    max-width: 100%;
-    max-height: 335px;
-}
-
 .checkin-poutine-list {
-    max-width: 500px;
+    max-width: 900px;
 }
 
-.checkin-poutine-list  .top-poutine-image {
-    display: none !important;
+.checkin-content-info {
+    width: 100%;
+}
+
+.checkin-content-info .top-checkin-card {
+    max-width: 100%;
+}
+
+.checkin-content-info .checkin-footer a {
+    display: none;
 }
 
 

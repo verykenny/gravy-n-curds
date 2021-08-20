@@ -24,18 +24,11 @@ const Checkin = () => {
         )
     }
 
-    const checkinImage = () => {
-        return <img src={checkin.Poutine.imageUrl} alt={checkin.Poutine.name} />
-    }
-
     return (
         <>
             <div className='checkin-container'>
                 <div className='checkin-content-info'>
                     {checkin && checkinContent()}
-                </div>
-                <div className='checkin-image'>
-                    {checkin && checkinImage()}
                 </div>
             </div>
             <div className='poutine-list-container checkin-poutine-list'>
