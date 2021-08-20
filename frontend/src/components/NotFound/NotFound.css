@@ -1,0 +1,15 @@
+
+
+.not-found-container {
+    width: 500px;
+    display: flex;
+    margin: 0 auto;
+    max-width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.not-found-container h1 {
+    color: #393e41;
+}
