@@ -63,16 +63,14 @@
     text-decoration: underline !important;
 }
 
-.session-links a {
-    margin-right: 40px;
-}
+
 
 .session-buttons {
     width: 100%;
     justify-content: flex-end;
 }
 
-.session-buttons .btn {
+.session-buttons .btn:not(.ham) {
     padding: 15px 30px;
     max-height: 42px;
     box-sizing: border-box;
@@ -128,32 +126,12 @@
         text-decoration: none;
     }
 
-    .collapse-menu .btn-alt {
+    .collapse-menu .btn-alt,
+    .collapse-menu .btn-primary {
         margin-bottom: 20px;
         margin-top: 10px;
         width: 50%;
         height: 40px;
-    }
-}
-
-
-@media screen and (max-width: 640px) {
-    .session-buttons .btn {
-        margin-left: 5px;
-        padding: 10px 15px;
-    }
-
-
-}
-
-@media screen and (max-width: 420px) {
-    .home-link a {
-        font-size: 1rem;
-    }
-    .home-link {
-        margin-right: 10px;
-    }
-    .session-buttons .btn {
-        font-size: .4rem;
+        text-align: center;
     }
 }
