@@ -72,6 +72,19 @@ validateStore = [
     handleValidationErrors,
 ];
 
+
+validateCheckin = [
+    check('comment')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a comment with at least 4 characters.')
+        .isLength({ min: 4 })
+        .withMessage('Please provide a comment with at least 4 characters.'),
+    check('rating')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide a rating.'),
+    handleValidationErrors,
+];
+
 validatePoutine = [
     check('name')
         .exists({ checkFalsy: true })
@@ -96,4 +109,5 @@ module.exports = {
     validateSignup,
     validateStore,
     validatePoutine,
+    validateCheckin,
 };
