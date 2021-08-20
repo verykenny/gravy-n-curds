@@ -68,6 +68,9 @@ function App() {
                     <Route path='/checkins/:checkinId'>
                         <Checkin />
                     </Route>
+                    <Route>
+                        Page Not Found
+                    </Route>
                 </Switch>
             )}
             <Footer />
