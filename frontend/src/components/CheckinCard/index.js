@@ -47,6 +47,19 @@ const CheckinCard = ({ checkin }) => {
         )
     }
 
+
+    const showButton = () => {
+
+        return (
+            <>
+                {sessionUser.id === checkin.userId && (
+                    <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
+                )}
+            </>
+        )
+    }
+
+
     const checkinCard = (checkin) => {
         return (<>
             <div>
@@ -61,9 +74,10 @@ const CheckinCard = ({ checkin }) => {
                 <div className='checkin-footer'>
                     <p>{timeAgo(checkin.createdAt)}</p>
                     <Link to={`/checkins/${checkin.id}`}>more info</Link>
-                    {sessionUser.id === checkin.userId && (
+                    {/* {sessionUser.id === checkin.userId && (
                         <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
-                    )}
+                    )} */}
+                    {sessionUser && showButton()}
                 </div>
                 <div className='poutine-edit-card'>
                     {showEdit && <CheckinEditForm checkin={checkin} setShowEdit={setShowEdit} />}
@@ -73,12 +87,15 @@ const CheckinCard = ({ checkin }) => {
         )
     }
 
-
     return (
         <div className='top-checkin-card'>
             {checkin.User && checkinCard(checkin)}
         </div>
     )
 }
+
+
+
+
 
 export default CheckinCard;
