@@ -42,7 +42,6 @@ export const updateCheckin =
             body: JSON.stringify({ comment, rating }),
         });
         const data = await res.json();
-        console.log(data.checkin);
         dispatch(addCheckin(data.checkin));
     };
 
