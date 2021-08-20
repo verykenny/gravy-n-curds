@@ -10,13 +10,28 @@
     flex-direction: column;
 }
 
+.footer-links {
+    display: flex;
+    align-items: center;
+}
+
+.footer-links p {
+    margin: 0;
+}
+
 .copy {
     font-size: .7rem;
-    margin: 0;
+    margin: 5px 0 0;
 }
 
 .footer-container .fab {
     font-size: 2rem;
     color: white;
-    margin: 0 15px 5px;
+    margin: 0 15px;
+}
+
+.footer-container .fab:hover {
+    font-size: 2rem;
+    color: rgb(192, 192, 192);
+    margin: 0 15px;
 }
