@@ -90,6 +90,11 @@
     .nav-container {
         max-height: 1000px;
         padding: 0 40px;
+        justify-content: space-between;
+    }
+
+    .home-link {
+        margin-right: 0;
     }
 
     .public-links,
