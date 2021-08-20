@@ -42,7 +42,7 @@ export default Profile;
 
 
 const Checkins = ({ sessionUserId }) => {
-    const checkins = useSelector(state => Object.values(state.checkins).filter(checkin => checkin.userId === sessionUserId))
+    const checkins = useSelector(state => Object.values(state.checkins).filter(checkin => checkin.userId === sessionUserId).sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)))
 
     return (
         <>
