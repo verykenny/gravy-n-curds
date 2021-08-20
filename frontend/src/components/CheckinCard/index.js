@@ -27,12 +27,12 @@ const CheckinCard = ({ checkin }) => {
     const checkinComment = (comment) => {
         if (!comment) {
             return (
-                <p class='comment no-comment'>no comment</p>
+                <p className='comment no-comment'>no comment</p>
             )
         }
 
         return (
-            <p class='comment'>{comment}</p>
+            <p className='comment'>{comment}</p>
         )
     }
 

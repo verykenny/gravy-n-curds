@@ -17,7 +17,6 @@
     max-width: 45%;
 }
 
-
 .poutine-edit-form {
     padding-top: 0;
     width: 100%;
@@ -51,4 +50,8 @@
 
 .delete-btn {
     margin-left: 20px;
+}
+
+.btn.edit {
+    margin-top: 20px;
 }
