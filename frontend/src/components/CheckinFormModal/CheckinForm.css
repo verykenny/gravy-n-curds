@@ -1,0 +1,16 @@
+.checkin-form {
+    width: 400px;
+    padding: 24px;
+}
+
+.checkin-form p {
+    margin-top: 0;
+}
+
+.checkin-form .widget-container {
+    height: fit-content;
+}
+
+.checkin-form select {
+    width: fit-content;
+}
