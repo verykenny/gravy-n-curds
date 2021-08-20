@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getCheckins } from "../../store/checkins";
 import CheckinCard from "../CheckinCard";
+import PoutineCard from "../PoutineCard";
 
 import './Checkin.css'
 
@@ -36,6 +37,9 @@ const Checkin = () => {
                 <div className='checkin-image'>
                     {checkin && checkinImage()}
                 </div>
+            </div>
+            <div className='poutine-list-container checkin-poutine-list'>
+                {checkin && <PoutineCard poutineId={checkin.poutineId} />}
             </div>
         </>
     )

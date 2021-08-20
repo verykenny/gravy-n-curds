@@ -18,6 +18,14 @@
     max-height: 335px;
 }
 
+.checkin-poutine-list {
+    max-width: 500px;
+}
+
+.checkin-poutine-list  .top-poutine-image {
+    display: none !important;
+}
+
 
 
 @media screen and (max-width: 900px) {
