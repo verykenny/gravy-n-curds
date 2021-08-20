@@ -8,10 +8,30 @@
     box-sizing: border-box;
 }
 
+.checkin-container > .checkin-content-info {
+    padding-right: 20px;
+}
 
-.checkin-container img {
+.checkin-image img {
     width: 500px;
-    max-width: 500px;
+    max-width: 100%;
     max-height: 335px;
 }
 
+
+
+@media screen and (max-width: 900px) {
+    .checkin-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .checkin-image{
+        order: -1;
+    }
+
+    .checkin-content-info {
+        padding-right: 0px;
+        max-width: 100%;
+    }
+}
