@@ -50,7 +50,6 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
                                 value={rating}
                                 onChange={(e) => setRating(e.target.value)}
                             >
-                                <option value=''>no rating</option>
                                 <option value='1'>1</option>
                                 <option value='2'>2</option>
                                 <option value='3'>3</option>
@@ -75,10 +74,6 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                             ></textarea>
-                            {errors.includes('Please provide a comment with at least 4 characters.') && (
-                                <p className='form-custom-error'>Please provide a comment with at least 4 characters.</p>
-                            )}
-
                         </div>
                     </div>
                 </form>
