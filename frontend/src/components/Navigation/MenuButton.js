@@ -46,7 +46,6 @@ function MenuButton({ sessionUser }) {
             {(showMenu && !sessionUser) && (
                 <div className='collapse-menu'>
                     <button className='btn btn-alt' type='button' onClick={() => handleDemoLogin()}>Demo Login</button>
-                    <LoginFormModal />
                     <NavLink className='btn btn-primary' to="/signup">Sign Up</NavLink>
                 </div>
             )}

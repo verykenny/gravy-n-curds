@@ -37,13 +37,13 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <div className='session-buttons'>
                 <div className='session-links'>
-                <button className='btn btn-alt' type='button' onClick={() => handleDemoLogin()}>Demo Login</button>
-                <LoginFormModal />
-                <NavLink className='btn btn-primary' to="/signup">Sign Up</NavLink>
+                    <button className='btn btn-alt' type='button' onClick={() => handleDemoLogin()}>Demo Login</button>
+                    <LoginFormModal />
+                    <NavLink className='btn btn-primary' to="/signup">Sign Up</NavLink>
 
                 </div>
                 <div className='hidden-module'>
-                    <MenuButton  sessionUser={sessionUser}/>
+                    <MenuButton sessionUser={sessionUser} />
                 </div>
             </div >
         );

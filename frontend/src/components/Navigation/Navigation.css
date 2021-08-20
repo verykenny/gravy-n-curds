@@ -108,7 +108,8 @@
     }
 
     .public-links,
-    .session-links {
+    .session-links .btn:not(.login),
+    .session-links .nav-link {
         display: none;
     }
 
@@ -148,5 +149,19 @@
         width: 50%;
         height: 40px;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .ham {
+        padding-right: 0;
+    }
+
+    .session-links .login {
+        margin-left: 0 !important;
+        padding: 15px 15px !important;
+    }
+    .nav-container {
+        padding: 0 20px;
     }
 }
