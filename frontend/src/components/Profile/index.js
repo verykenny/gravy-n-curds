@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getCheckins } from "../../store/checkins";
 import { getStores } from '../../store/stores'
@@ -10,8 +10,6 @@ import CheckinCard from '../CheckinCard';
 
 const Profile = () => {
     const sessionUser = useSelector(state => state.session.user)
-    const checkins = useSelector(state => Object.values(state.checkins).filter(checkin => checkin.userId === sessionUser.id))
-    const stores = useSelector(state => Object.values(state.stores).filter(store => store.ownerId === sessionUser.id))
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,23 +17,19 @@ const Profile = () => {
         dispatch(getStores());
     }, [dispatch])
 
+    if (!sessionUser) return <Redirect to="/"></Redirect>;
+
     return (
         <>
             <div className='profile-container'>
                 <main className='checkins-container'>
                     <h2>Your most recent check-ins:</h2>
-                    {checkins.length > 0 && checkins.map(checkin => (
-                        <CheckinCard key={checkin.id} checkin={checkin} />
-                    ))}
+                    {sessionUser && <Checkins sessionUserId={sessionUser.id} />}
                 </main>
                 <div className='side-container'>
                     <section className='store-container'>
                         <h2>Edit your stores:</h2>
-                        {stores.length > 0 && stores.map(store => (
-                            <>
-                            <StoreCard key={store.id} store={store} />
-                            </>
-                        ))}
+                        {sessionUser && <Stores sessionUserId={sessionUser.id} />}
                         <Link className='btn btn-alt' to='/stores/create'>Add new store</Link>
                     </section>
                 </div>
@@ -45,6 +39,37 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+const Checkins = ({ sessionUserId }) => {
+    const checkins = useSelector(state => Object.values(state.checkins).filter(checkin => checkin.userId === sessionUserId))
+
+    return (
+        <>
+            {checkins.length > 0 && checkins.map(checkin => (
+                <CheckinCard key={checkin.id} checkin={checkin} />
+            ))}
+        </>
+    )
+}
+
+const Stores = ({ sessionUserId }) => {
+    const stores = useSelector(state => Object.values(state.stores).filter(store => store.ownerId === sessionUserId))
+
+    return (
+        <>
+            {stores.length > 0 && stores.map(store => (
+                <>
+                    <StoreCard key={store.id} store={store} />
+                </>
+            ))}
+        </>
+    )
+
+}
+
+
+
 
 
 const StoreCard = ({ store }) => {
