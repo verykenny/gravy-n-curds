@@ -8,6 +8,8 @@
     align-items: center;
     margin-top: 50px;
     flex-direction: column;
+    position: sticky;
+    bottom: 0;
 }
 
 .footer-links {
