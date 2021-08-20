@@ -23,12 +23,15 @@ const Profile = () => {
         <>
             <div className='profile-container'>
                 <main className='checkins-container'>
-                    <h2>Your most recent check-ins:</h2>
+                    <h2>Your most recent check-ins</h2>
                     {sessionUser && <Checkins sessionUserId={sessionUser.id} />}
                 </main>
                 <div className='side-container'>
+                    <section className='user-info-container'>
+                        {sessionUser && <SessionUserInfo sessionUser={sessionUser} />}
+                    </section>
                     <section className='store-container'>
-                        <h2>Edit your stores:</h2>
+                        <h2>Edit your stores</h2>
                         {sessionUser && <Stores sessionUserId={sessionUser.id} />}
                         <Link className='btn btn-alt' to='/stores/create'>Add new store</Link>
                     </section>
@@ -39,6 +42,22 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+const SessionUserInfo = ({ sessionUser }) => {
+    const checkins = useSelector(state => Object.values(state.checkins).filter(checkin => checkin.userId === sessionUser.id))
+
+
+
+    return (
+        <>
+            <h2>About you</h2>
+            <p>Welcome back {sessionUser.username}</p>
+            {checkins && <p>Total checkins: {checkins.length}</p>}
+            {checkins && <p>Different dishes: {new Set(checkins.map(checkin => checkin.poutineId)).size}</p>}
+        </>
+    )
+}
 
 
 const Checkins = ({ sessionUserId }) => {
