@@ -33,7 +33,7 @@ const Home = () => {
                     <div className='example-container'>
                         <img src='/images/checkin-example-2.png' alt='checkin example' />
                         <h2>check-in and rate poutine</h2>
-                        <p>...with check-ins, you can keep track of what you've tried ans what you thought of it!</p>
+                        <p>...with check-ins, you can keep track of what you've tried and what you thought of it!</p>
                     </div>
                     <div className='links-container'>
                         <h2>Getting Started</h2>
