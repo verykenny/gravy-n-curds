@@ -6,32 +6,14 @@ module.exports = {
         return queryInterface.bulkInsert('Checkins', [
             {
                 userId: 1,
-                poutineId: 6,
-                comment: 'heard about this on rebetiko radio, decided to give it a try.',
-                rating: 4,
-            },
-            {
-                userId: 1,
                 poutineId: 7,
                 comment: 'Love me some veggies on my poutine! Try it out!',
                 rating: 5,
             },
             {
-                userId: 1,
-                poutineId: 8,
-                comment: 'needed a quick bine of poutine and this was the perfect size. Quick and easy to eat!',
-                rating: 4,
-            },
-            {
-                userId: 1,
-                poutineId: 12,
-                comment: 'WAY TOO MESSY!',
-                rating: 2,
-            },
-            {
-                userId: 1,
-                poutineId: 15,
-                comment: 'I love just being able to grab a bag of poutine for the road. Gotta try this again.',
+                userId: 5,
+                poutineId: 1,
+                comment: 'I keep coming back for more!',
                 rating: 5,
             },
             {
@@ -42,15 +24,21 @@ module.exports = {
             },
             {
                 userId: 3,
-                poutineId: 3,
-                comment: 'This poutine works certainly well. It energetically improves my golf by a lot.',
-                rating: 5,
-            },
-            {
-                userId: 3,
                 poutineId: 6,
                 comment: 'this poutine is awesome.',
                 rating: 5,
+            },
+            {
+                userId: 1,
+                poutineId: 6,
+                comment: 'heard about this on rebetiko radio, decided to give it a try.',
+                rating: 4,
+            },
+            {
+                userId: 4,
+                poutineId: 10,
+                comment: 'I thought that this would be a burger with poutine inside, and it was!',
+                rating: 4,
             },
             {
                 userId: 3,
@@ -65,16 +53,10 @@ module.exports = {
                 rating: 5,
             },
             {
-                userId: 4,
-                poutineId: 10,
-                comment: 'I thought that this would be a burger with poutine inside, and it was!',
+                userId: 1,
+                poutineId: 8,
+                comment: 'needed a quick bine of poutine and this was the perfect size. Quick and easy to eat!',
                 rating: 4,
-            },
-            {
-                userId: 4,
-                poutineId: 13,
-                comment: 'Who doesn\'t love bacon!?',
-                rating: 5,
             },
             {
                 userId: 4,
@@ -90,15 +72,15 @@ module.exports = {
             },
             {
                 userId: 5,
-                poutineId: 1,
-                comment: 'I keep coming back for more!',
-                rating: 5,
-            },
-            {
-                userId: 5,
                 poutineId: 2,
                 comment: 'All I can say is "eww, gross..."',
                 rating: 1,
+            },
+            {
+                userId: 1,
+                poutineId: 12,
+                comment: 'WAY TOO MESSY!',
+                rating: 2,
             },
             {
                 userId: 5,
@@ -107,16 +89,34 @@ module.exports = {
                 rating: 4,
             },
             {
-                userId: 5,
-                poutineId: 7,
-                comment: 'Too many veggies and not enough curds',
-                rating: 1,
-            },
-            {
                 userId: 6,
                 poutineId: 8,
                 comment: 'Great if you just need something for when you\'re on the go!',
                 rating: 3,
+            },
+            {
+                userId: 4,
+                poutineId: 13,
+                comment: 'Who doesn\'t love bacon!?',
+                rating: 5,
+            },
+            {
+                userId: 1,
+                poutineId: 15,
+                comment: 'I love just being able to grab a bag of poutine for the road. Gotta try this again.',
+                rating: 5,
+            },
+            {
+                userId: 3,
+                poutineId: 3,
+                comment: 'This poutine works certainly well. It energetically improves my golf by a lot.',
+                rating: 5,
+            },
+            {
+                userId: 5,
+                poutineId: 7,
+                comment: 'Too many veggies and not enough curds',
+                rating: 1,
             },
             {
                 userId: 6,

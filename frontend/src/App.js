@@ -19,6 +19,7 @@ import StoreEditForm from './components/StoreEditForm';
 import RecentReviews from './components/RecentReviews';
 import TopRated from './components/TopRated';
 import Footer from './components/Footer';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -69,7 +70,7 @@ function App() {
                         <Checkin />
                     </Route>
                     <Route>
-                        Page Not Found
+                        <NotFound />
                     </Route>
                 </Switch>
             )}

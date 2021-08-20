@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getCheckins } from "../../store/checkins";
+import CheckinCard from "../CheckinCard";
+import PoutineCard from "../PoutineCard";
 
 import './Checkin.css'
 
@@ -17,26 +19,20 @@ const Checkin = () => {
     const checkinContent = () => {
         return (
             <>
-                <p>{checkin.User.username} ate <Link to={`/poutines/${checkin.Poutine.id}`}>{checkin.Poutine.name}</Link> at <Link to={`/stores/${checkin.Poutine.Store.id}`}>{checkin.Poutine.Store.name}</Link>.</p>
-                <p>{checkin.comment}</p>
-                <p>Rating: {checkin.rating}</p>
+                {checkin && <CheckinCard checkin={checkin} />}
             </>
         )
-    }
-
-    const checkinImage = () => {
-        return <img src={checkin.Poutine.imageUrl} alt={checkin.Poutine.name} />
     }
 
     return (
         <>
             <div className='checkin-container'>
-                <div className='checkin-content'>
+                <div className='checkin-content-info'>
                     {checkin && checkinContent()}
                 </div>
-                <div className='checkin-image'>
-                    {checkin && checkinImage()}
-                </div>
+            </div>
+            <div className='poutine-list-container checkin-poutine-list'>
+                {checkin && <PoutineCard poutineId={checkin.poutineId} />}
             </div>
         </>
     )

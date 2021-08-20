@@ -4,14 +4,40 @@
     padding: 60px;
     max-width: 100%;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: center;
     box-sizing: border-box;
 }
 
-
-.checkin-container img {
-    width: 500px;
-    max-width: 500px;
-    max-height: 335px;
+.checkin-poutine-list {
+    max-width: 900px;
 }
 
+.checkin-content-info {
+    width: 100%;
+}
+
+.checkin-content-info .top-checkin-card {
+    max-width: 100%;
+}
+
+.checkin-content-info .checkin-footer a {
+    display: none;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .checkin-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .checkin-image{
+        order: -1;
+    }
+
+    .checkin-content-info {
+        padding-right: 0px;
+        max-width: 100%;
+    }
+}
