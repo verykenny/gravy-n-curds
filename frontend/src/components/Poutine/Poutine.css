@@ -15,7 +15,7 @@
 
 .poutine-container img {
     width: 500px;
-    max-width: 500px;
+    max-width: 100%;
     max-height: 335px;
 }
 
@@ -30,4 +30,16 @@
 
 .poutine-content .btn-container {
     margin-top: 50px;
+}
+
+
+@media screen and (max-width: 900px) {
+    .poutine-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .poutine-image{
+        order: -1;
+    }
 }
