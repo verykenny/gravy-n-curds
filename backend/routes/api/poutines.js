@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { Store, Poutine, Checkin, User } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
-const { validatePoutine } = require('../../utils/validation');
+const { validatePoutine, validateCheckin } = require('../../utils/validation');
 
 // GET retrieve all poutines
 router.get('/', asyncHandler(async (req, res) => {
@@ -20,22 +20,8 @@ router.get('/', asyncHandler(async (req, res) => {
 }))
 
 
-// GET check-ins for a poutine dish
-// router.get('/:poutineId(\\d+)/checkins', asyncHandler(async (req, res) => {
-//     const poutineId = Number(req.params.poutineId);
-
-//     const checkins = await Checkin.findAll({
-//         where: {
-//             poutineId: poutineId
-//         }
-//     })
-
-//     res.json({ checkins });
-// }))
-
-
 // POST create a check-in for a poutine dish
-router.post('/:poutineId(\\d+)/checkins', requireAuth, asyncHandler(async (req, res) => {
+router.post('/:poutineId(\\d+)/checkins', requireAuth, validateCheckin, asyncHandler(async (req, res) => {
     const { comment, rating } = req.body;
     const userId = req.user.id;
     const poutineId = Number(req.params.poutineId);
