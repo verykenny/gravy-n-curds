@@ -9,20 +9,28 @@ import './CheckinEditForm.css'
 const CheckinEditForm = ({ checkin, setShowEdit }) => {
     const [comment, setComment] = useState(checkin.comment);
     const [rating, setRating] = useState(checkin.rating);
+    const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors([]);
 
         const payload = {
             comment,
             rating,
             checkinId: checkin.id
         }
-        await dispatch(updateCheckin(payload));
-        await dispatch(getCheckins());
-        await dispatch(getStores());
-        setShowEdit(false)
+        try {
+            await dispatch(updateCheckin(payload));
+            await dispatch(getCheckins());
+            await dispatch(getStores());
+            setShowEdit(false)
+        } catch (e) {
+            const res = await e.json();
+            const { errors } = res;
+            setErrors(errors);
+        }
 
     }
 
@@ -49,6 +57,9 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
                                 <option value='4'>4</option>
                                 <option value='5'>5</option>
                             </select>
+                            {errors.includes('Please provide a rating.') && (
+                                <p className='form-custom-error'>Please provide a rating.</p>
+                            )}
                         </div>
                         <div className='btn-container'>
                             <button className='btn btn-primary' type="submit">update</button>
@@ -64,6 +75,9 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                             ></textarea>
+                            {errors.includes('Please provide a comment with at least 4 characters.') && (
+                                <p className='form-custom-error'>Please provide a comment with at least 4 characters.</p>
+                            )}
 
                         </div>
                     </div>
