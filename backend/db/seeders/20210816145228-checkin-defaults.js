@@ -130,6 +130,48 @@ module.exports = {
                 comment: 'I can\'t get enough peas. My wife always says that I need to eat more peas and here is the perfect dish to satisfy my poutine craving!',
                 rating: 5,
             },
+            {
+                userId: 6,
+                poutineId: 5,
+                comment: 'I was super hungry this evening and was really craving some good, home style poutine. I was thrilled to come across this dense poutine. Thank you!',
+                rating: 5,
+            },
+            {
+                userId: 6,
+                poutineId: 2,
+                comment: 'Was totally surprized to find this option--but I cannot pass up some poutine so I had to try it. It was ok...',
+                rating: 2,
+            },
+            {
+                userId: 1,
+                poutineId: 1,
+                comment: 'not really a fan of short rib but I think I liked this one. The fries were exceptional.',
+                rating: 3,
+            },
+            {
+                userId: 7,
+                poutineId: 3,
+                comment: 'I just wanted some good old poutine and this really hit the spot. Thank you!',
+                rating: 4,
+            },
+            {
+                userId: 5,
+                poutineId: 13,
+                comment: 'With a name as romantic as bacon poutina, I couldn\'t resist getting it and I wasn\'t disappointed!',
+                rating: 5,
+            },
+            {
+                userId: 2,
+                poutineId: 1,
+                comment: 'I love me a good short rib. And I love me a good poutine. This was a great combo.',
+                rating: 4,
+            },
+            {
+                userId: 1,
+                poutineId: 16,
+                comment: 'whew, can\'t believe I finished something so grand.',
+                rating: 5,
+            },
         ], {});
     },
 
