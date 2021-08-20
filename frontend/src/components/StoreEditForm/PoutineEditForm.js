@@ -22,7 +22,7 @@ const PoutineEditForm = ({ poutine, setShowEdit }) => {
         }
         try {
             await dispatch(updatePoutine(payload));
-            // setShowEdit(false)
+            setShowEdit(false)
             await dispatch(getStores());
         } catch (e) {
             console.log(e);

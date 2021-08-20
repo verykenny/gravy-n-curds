@@ -47,8 +47,8 @@ const CheckinCard = ({ checkin }) => {
         )
     }
 
-    return (
-        <div className='top-checkin-card'>
+    const checkinCard = (checkin) => {
+        return (<>
             <div>
                 <img src='/images/poutine-icon-red-background.svg' alt='poutine icon' />
             </div>
@@ -69,6 +69,14 @@ const CheckinCard = ({ checkin }) => {
                     {showEdit && <CheckinEditForm checkin={checkin} setShowEdit={setShowEdit} />}
                 </div>
             </div>
+        </>
+        )
+    }
+
+
+    return (
+        <div className='top-checkin-card'>
+            {checkin.User && checkinCard(checkin)}
         </div>
     )
 }
