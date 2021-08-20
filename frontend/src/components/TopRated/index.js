@@ -8,8 +8,9 @@ import './TopRated.css'
 const TopRated = () => {
 
     const averageRating = (checkins) => {
-        const checkinCount = checkins.length;
-        const averageRating = (checkins.reduce((sum, ele) => sum + ele.rating, 0) / checkinCount).toFixed(1);
+        const checkinCount = checkins.filter(checkin => checkin.rating > 0).length;
+        const averageRating = (checkins.reduce((sum, ele) => (ele.rating > 1) ? sum + ele.rating : sum, 0) / checkinCount).toFixed(1);
+        console.log(averageRating, checkins);
         return averageRating
     }
 
