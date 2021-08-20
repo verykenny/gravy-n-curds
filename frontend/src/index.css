@@ -59,6 +59,14 @@ img {
     background-color: #1b1d1f;
 }
 
+a:not(.btn) {
+    text-decoration: none;
+    color: #A33B20;
+}
+a:not(.btn):hover {
+    color: #702815;
+}
+
 /* *************** */
 /*  Default Forms  */
 /* *************** */

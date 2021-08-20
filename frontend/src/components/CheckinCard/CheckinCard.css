@@ -1,0 +1,79 @@
+
+.top-checkin-card {
+    display: flex;
+    width: 100%;
+    max-width: 540px;
+    padding-left: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    margin-bottom: 0;
+    border: none;
+    transition: box-shadow .5s;
+    border-radius: 3px;
+}
+
+.top-checkin-card:hover {
+    box-shadow: 1px 0px 5px #393e416e;
+}
+
+.top-checkin-card img {
+    width: 75px;
+    padding: 0 20px 0 0;
+}
+
+.checkin-content {
+    width: 100%;
+}
+
+.card-description {
+    margin: 0 0 10px;
+}
+
+
+
+
+.comment-container {
+    border: 1px solid #393e4152;
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #393e4142;
+    width: 100%;
+    font-weight: 300;
+}
+
+.comment-container p {
+    margin: 5px 0 5px 5px;
+}
+
+.no-comment,
+.no-rating {
+    color: #393e41a8;
+}
+
+.checkin-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkin-footer .btn {
+    text-decoration: none;
+    color: #A33B20;
+    background: none;
+    padding: 0;
+    margin: 4px 0;
+    font-size: .8rem
+}
+
+.checkin-footer .btn:hover {
+    color: #702815;
+}
+
+.checkin-footer p,
+.checkin-footer a {
+    margin: 4px 0 0;
+    font-size: .8rem;
+}
+
+.checkin-footer p {
+    color: #393e41;
+}

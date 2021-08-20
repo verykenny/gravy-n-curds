@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getStores, removeStore, updateStore } from "../../store/stores";
 import PoutineAddForm from "./PoutineAddForm";
-import PoutineEditForm from "./PoutineEditForm";
+import PoutineCard from '../PoutineCard'
 
 import './StoreEditForm.css'
 
@@ -114,9 +114,7 @@ const StoreEditForm = () => {
             <div className='poutine-list-container'>
                 <button className={(showAdd) ? 'btn btn-warning add-btn' : 'btn btn-primary add-btn'} onClick={() => setShowAdd(prevState => !prevState)}>{(showAdd) ? 'cancel' : 'add poutine dish'}</button>
                 {showAdd && <PoutineAddForm storeId={store.id} setShowAdd={setShowAdd} />}
-                {(store && store.Poutines) && store.Poutines.map(poutine => (
-                    <PoutineCard key={poutine.id} poutine={poutine}  />
-                ))}
+                {store && <PoutineList storeId={store.id} />}
             </div>
         </>
     )
@@ -124,30 +122,15 @@ const StoreEditForm = () => {
 
 
 
-const PoutineCard = ({ poutine }) => {
-    const [showEdit, setShowEdit] = useState(false)
+const PoutineList = ({ storeId }) => {
+    const poutines = useSelector(state => Object.values(state.poutines).filter(poutine => poutine.storeId === storeId));
     return (
         <>
-            <div className='poutine-card'>
-                <img src={poutine.imageUrl} alt={poutine.name} />
-                <div className='poutine-card-content'>
-                    <p>{poutine.name}</p>
-                    <p>{poutine.description}</p>
-                    <Link to={`/poutines/${poutine.id}`}>more info</Link>
-                    <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
-                </div>
-            </div>
-            <div className='poutine-edit-card'>
-                {showEdit && <PoutineEditForm poutine={poutine} setShowEdit={setShowEdit} />}
-            </div>
+            {poutines && poutines.map(poutine => (
+                <PoutineCard key={poutine.id} poutineId={poutine.id} edit={true} />
+            ))}
         </>
     )
 }
-
-
-
-
-
-
 
 export default StoreEditForm;

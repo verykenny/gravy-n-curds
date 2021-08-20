@@ -27,13 +27,6 @@
 }
 
 
-.poutine-container a:not(.btn) {
-    text-decoration: none;
-    color: #A33B20;
-}
-.poutine-container a:not(.btn):hover {
-    color: #702815;
-}
 
 .poutine-content .btn-container {
     margin-top: 50px;

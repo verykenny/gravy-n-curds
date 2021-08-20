@@ -31,7 +31,7 @@ const Home = () => {
                 </div>
                 <div className='feature-container'>
                     <div className='example-container'>
-                        <img src='/images/checkin-example.png' alt='checkin example' />
+                        <img src='/images/checkin-example-2.png' alt='checkin example' />
                         <h2>check-in and rate poutine</h2>
                         <p>...with check-ins, you can keep track of what you've tried ans what you thought of it!</p>
                     </div>

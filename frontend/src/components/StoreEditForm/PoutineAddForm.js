@@ -22,10 +22,8 @@ const PoutineAddForm = ({ storeId, setShowAdd }) => {
         try {
             await dispatch(createPoutine(payload));
             setShowAdd(false);
-            // console.log(setShowAdd);
             dispatch(getStores());
         } catch (e) {
-
             const res = await e.json();
             const { errors } = res;
             setErrors(errors);

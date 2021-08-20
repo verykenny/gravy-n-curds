@@ -1,6 +1,14 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import CheckinEditForm from "../CheckinEditForm";
+
+import './CheckinCard.css'
 
 const CheckinCard = ({ checkin }) => {
+    const sessionUser = useSelector(state => state.session.user)
+    const [showEdit, setShowEdit] = useState(false)
 
 
     const timeAgo = (date) => {
@@ -19,12 +27,12 @@ const CheckinCard = ({ checkin }) => {
     const checkinComment = (comment) => {
         if (!comment) {
             return (
-                <p class='comment no-comment'>no comment</p>
+                <p className='comment no-comment'>no comment</p>
             )
         }
 
         return (
-            <p class='comment'>{comment}</p>
+            <p className='comment'>{comment}</p>
         )
     }
 
@@ -39,8 +47,8 @@ const CheckinCard = ({ checkin }) => {
         )
     }
 
-    return (
-        <div className='top-checkin-card'>
+    const checkinCard = (checkin) => {
+        return (<>
             <div>
                 <img src='/images/poutine-icon-red-background.svg' alt='poutine icon' />
             </div>
@@ -53,8 +61,22 @@ const CheckinCard = ({ checkin }) => {
                 <div className='checkin-footer'>
                     <p>{timeAgo(checkin.createdAt)}</p>
                     <Link to={`/checkins/${checkin.id}`}>more info</Link>
+                    {sessionUser.id === checkin.userId && (
+                        <button className={(showEdit) ? 'btn btn-warning' : 'btn btn-alt'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>
+                    )}
+                </div>
+                <div className='poutine-edit-card'>
+                    {showEdit && <CheckinEditForm checkin={checkin} setShowEdit={setShowEdit} />}
                 </div>
             </div>
+        </>
+        )
+    }
+
+
+    return (
+        <div className='top-checkin-card'>
+            {checkin.User && checkinCard(checkin)}
         </div>
     )
 }

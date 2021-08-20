@@ -4,6 +4,8 @@ import { updateCheckin, removeCheckin, getCheckins } from "../../store/checkins"
 import { getStores } from "../../store/stores";
 
 
+import './CheckinEditForm.css'
+
 const CheckinEditForm = ({ checkin, setShowEdit }) => {
     const [comment, setComment] = useState(checkin.comment);
     const [rating, setRating] = useState(checkin.rating);
@@ -32,7 +34,7 @@ const CheckinEditForm = ({ checkin, setShowEdit }) => {
 
     return (
         <>
-            <div className='form-container poutine-edit-form'>
+            <div className='form-container checkin-edit-form'>
                 <form onSubmit={handleSubmit}>
                     <div className='small-inputs'>
                         <div className='widget-container'>

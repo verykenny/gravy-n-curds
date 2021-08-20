@@ -45,7 +45,7 @@
 .home-link a {
     font-size: 1.8rem;
     text-decoration: none;
-    color: #393e41;
+    color: #393e41 !important;
 }
 
 .nav-links {
@@ -56,11 +56,11 @@
 .nav-link {
     text-decoration: none;
     margin: 10px 15px;
-    color: #393e41;
+    color: #393e41 !important;
 }
 
 .nav-link:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 .session-links a {

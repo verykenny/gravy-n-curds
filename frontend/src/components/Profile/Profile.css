@@ -23,33 +23,3 @@
     max-width: 100%;
 }
 
-.checkin-card {
-    width: 100%;
-    border-top: 1px solid;
-    margin-bottom: 40px;
-    padding-left: 20px;
-    box-sizing: border-box;
-}
-
-.checkin-card a:not(.btn) {
-    text-decoration: none;
-    color: #A33B20;
-}
-.checkin-card a:not(.btn):hover {
-    color: #702815;
-}
-
-.checkin-card .btn-alt,
-.checkin-card .btn-warning {
-    margin-left: 20px;
-}
-
-.store-container a:not(.btn) {
-    text-decoration: none;
-    color: #393E41;
-}
-
-.store-container a:not(.btn):hover {
-    text-decoration: underline;
-    color: #1b1d1f;
-}

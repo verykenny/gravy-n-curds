@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { getPoutines } from '../../store/poutine';
 import CheckinFormModal from '../CheckinFormModal';
+import CheckinCard from '../CheckinCard'
 
 import './Poutine.css'
 
@@ -47,25 +48,25 @@ const Poutine = () => {
                 </div>
             </div>
             <div className="checkins-container">
-                {poutine && poutine.Checkins.map((checkin) => (
-                    <CheckinCard key={checkin.id} checkin={checkin} />
-                ))}
+                {poutine && <CheckinsContainer poutineId={poutine.id} />}
             </div>
         </>
     );
 };
 
-const CheckinCard = ({ checkin }) => {
+
+const CheckinsContainer = ({poutineId}) => {
+    const checkins = useSelector(state => Object.values(state.checkins).filter(checkin => checkin.poutineId === poutineId))
+
     return (
-        <div className="checkin-card">
-            <p>{checkin.User.username} said: </p>
-            <p>{checkin.comment}</p>
-            <p>Rating: {checkin.rating}</p>
-            <Link className="btn btn-primary" to={`/checkins/${checkin.id}`}>
-                more info
-            </Link>
-        </div>
-    );
-};
+        <>
+        {checkins && checkins.map(checkin => (
+            <CheckinCard key={checkin.id} checkin={checkin} />
+        ))}
+        </>
+    )
+}
+
+
 
 export default Poutine;
