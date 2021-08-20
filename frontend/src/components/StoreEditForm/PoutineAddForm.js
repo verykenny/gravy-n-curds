@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createPoutine } from "../../store/poutine";
+import { createPoutine, getPoutines } from "../../store/poutine";
 import { getStores } from "../../store/stores";
 
 const PoutineAddForm = ({ storeId, setShowAdd }) => {
@@ -23,6 +23,7 @@ const PoutineAddForm = ({ storeId, setShowAdd }) => {
             await dispatch(createPoutine(payload));
             setShowAdd(false);
             dispatch(getStores());
+            dispatch(getPoutines());
         } catch (e) {
             const res = await e.json();
             const { errors } = res;
