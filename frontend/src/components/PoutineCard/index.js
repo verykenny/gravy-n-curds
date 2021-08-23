@@ -26,6 +26,7 @@ const PoutineCard = ({ poutineId, edit = false }) => {
 
 
 const PoutineCardContent = ({ poutine, edit }) => {
+    const sessionUser = useSelector(state => state.session)
     const [showEdit, setShowEdit] = useState(false);
     const [checkinCount, setCheckinCount] = useState(0)
     const [averageRating, setAverageRating] = useState(0)
@@ -50,7 +51,7 @@ const PoutineCardContent = ({ poutine, edit }) => {
                     <p>Check-ins: {checkinCount}</p>
                 </div>
                 <div className='top-poutine-access'>
-                    {poutine.Store && <CheckinFormModal poutine={poutine} store={poutine.Store} />}
+                    {(poutine.Store && sessionUser.user) && <CheckinFormModal poutine={poutine} store={poutine.Store} />}
                     {poutine.Store && <Link to={`/stores/${poutine.Store.id}`}>{poutine.Store.name}</Link>}
                     <Link to={`/poutines/${poutine.id}`}>more info</Link>
                     {edit && <button className={(showEdit) ? 'btn btn-warning edit' : 'btn btn-alt edit'} onClick={() => setShowEdit((prevState) => !prevState)}>{(showEdit) ? 'cancel' : 'edit'}</button>}
