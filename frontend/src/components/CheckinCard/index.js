@@ -17,7 +17,7 @@ const CheckinCard = ({ checkin }) => {
         const minutes = Math.floor(seconds / 60);
         if (minutes < 60) return (minutes > 1) ? `${minutes} minutes ago` : `1 minute ago`
         const hours = Math.floor(minutes / 60);
-        if (hours < 24) return (hours > 1) ? `${hours} hour ago` : `1 hour ago`
+        if (hours < 24) return (hours > 1) ? `${hours} hours ago` : `1 hour ago`
         const days = Math.floor(hours / 24);
         if (days < 30) return (days > 1) ? `${days} days ago` : `1 day ago`
         const months = Math.floor(days / 30);
