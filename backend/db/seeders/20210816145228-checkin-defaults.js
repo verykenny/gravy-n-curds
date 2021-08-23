@@ -191,14 +191,14 @@ module.exports = {
                 poutineId: 1,
                 comment: 'I love me a good short rib. And I love me a good poutine. This was a great combo.',
                 rating: 4,
-                createdAt: new Date('August 23, 2021 09:24:00')
+                createdAt: new Date('August 23, 2021 07:24:00')
             },
             {
                 userId: 1,
                 poutineId: 16,
                 comment: 'whew, can\'t believe I finished something so grand.',
                 rating: 5,
-                createdAt: new Date('August 23, 2021 08:19:00')
+                createdAt: new Date('August 23, 2021 08:05:00')
             },
         ], {});
     },
