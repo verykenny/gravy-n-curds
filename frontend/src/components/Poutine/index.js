@@ -21,7 +21,7 @@ const Poutine = () => {
     const averageRating = (checkins) => {
         const totalCheckins = checkins.length;
         const sum = checkins.reduce((accum, ele) => accum + ele.rating, 0)
-        return (sum / totalCheckins).toFixed(1) > 0 ?  (sum / totalCheckins).toFixed(1) > 0  : 'no rating';
+        return (sum / totalCheckins).toFixed(1) > 0 ? (sum / totalCheckins).toFixed(1)  : 'no rating';
     }
 
     const poutineContent = () => {
@@ -38,7 +38,7 @@ const Poutine = () => {
                         <p>Total checkins:</p>
                         <p>{poutine.Checkins && poutine.Checkins.length}</p>
                         <p>Average rating:</p>
-                        <p>{(poutine.Checkins) ? averageRating(poutine.Checkins) : 'no ratings'}</p>
+                        <p>{poutine.Checkins && averageRating(poutine.Checkins)}</p>
                     </div>
                 </div>
 
