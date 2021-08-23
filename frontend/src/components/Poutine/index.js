@@ -36,9 +36,9 @@ const Poutine = () => {
                     </div>
                     <div className='rating-info'>
                         <p>Total checkins:</p>
-                        <p>{poutine.Checkins.length}</p>
+                        <p>{poutine.Checkins && poutine.Checkins.length}</p>
                         <p>Average rating:</p>
-                        <p>{averageRating(poutine.Checkins)}</p>
+                        <p>{(poutine.Checkins) ? averageRating(poutine.Checkins) : 'no ratings'}</p>
                     </div>
                 </div>
 
