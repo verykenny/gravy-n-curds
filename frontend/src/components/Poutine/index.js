@@ -10,6 +10,7 @@ import './Poutine.css'
 
 const Poutine = () => {
     const { poutineId } = useParams();
+    const sessionUser = useSelector(state => state.session)
     const poutine = useSelector((state) => state.poutines[poutineId]);
     const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ const Poutine = () => {
     const averageRating = (checkins) => {
         const totalCheckins = checkins.length;
         const sum = checkins.reduce((accum, ele) => accum + ele.rating, 0)
-        return (sum / totalCheckins).toFixed(1);
+        return (sum / totalCheckins).toFixed(1) > 0 ?  (sum / totalCheckins).toFixed(1) > 0  : 'no rating';
     }
 
     const poutineContent = () => {
@@ -35,14 +36,14 @@ const Poutine = () => {
                     </div>
                     <div className='rating-info'>
                         <p>Total checkins:</p>
-                        <p>{poutine.Checkins.length}</p>
+                        <p>{poutine.Checkins && poutine.Checkins.length}</p>
                         <p>Average rating:</p>
-                        <p>{averageRating(poutine.Checkins)}</p>
+                        <p>{(poutine.Checkins) ? averageRating(poutine.Checkins) : 'no ratings'}</p>
                     </div>
                 </div>
 
                 <div className='btn-container'>
-                    <CheckinFormModal poutine={poutine} store={poutine.Store} />
+                    {sessionUser.user && <CheckinFormModal poutine={poutine} store={poutine.Store} />}
                 </div>
             </>
         );
