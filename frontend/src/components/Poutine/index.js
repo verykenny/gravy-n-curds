@@ -21,7 +21,7 @@ const Poutine = () => {
     const averageRating = (checkins) => {
         const totalCheckins = checkins.length;
         const sum = checkins.reduce((accum, ele) => accum + ele.rating, 0)
-        return (sum / totalCheckins).toFixed(1);
+        return (sum / totalCheckins).toFixed(1) > 0 ?  (sum / totalCheckins).toFixed(1) > 0  : 'no rating';
     }
 
     const poutineContent = () => {
