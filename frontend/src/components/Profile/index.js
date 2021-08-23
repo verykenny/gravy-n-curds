@@ -78,9 +78,7 @@ const Stores = ({ sessionUserId }) => {
     return (
         <>
             {stores.length > 0 && stores.map(store => (
-                <>
                     <StoreCard key={store.id} store={store} />
-                </>
             ))}
         </>
     )
