@@ -10,6 +10,7 @@ import './Poutine.css'
 
 const Poutine = () => {
     const { poutineId } = useParams();
+    const sessionUser = useSelector(state => state.session)
     const poutine = useSelector((state) => state.poutines[poutineId]);
     const dispatch = useDispatch();
 
@@ -42,7 +43,7 @@ const Poutine = () => {
                 </div>
 
                 <div className='btn-container'>
-                    <CheckinFormModal poutine={poutine} store={poutine.Store} />
+                    {sessionUser.user && <CheckinFormModal poutine={poutine} store={poutine.Store} />}
                 </div>
             </>
         );
