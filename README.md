@@ -1,6 +1,13 @@
 # Welcome to gravy-n-curds!
 
 gravy-n-curds is a web application that allows users to view poutine dish options and see what others thought about them. User can also check-in and rate poutine dishes so they can remember what they have tried and what they thought of it. This project is inspired by [Untappd](https://untappd.com/), a website where individuals can search for beer, check-in and leave reviews on beer they try and unlock acheivements by trying new and different beer styles.
+
+<p align="center">
+  <img src="https://github.com/verykenny/gravy-n-curds/blob/main/planning/gravyncurds.png" alt="gravy and curds home page">
+</p>
+
+
+
 #### Live link: [gravy-n-curds](https://gravy-n-curds.herokuapp.com/)
 ***
 
@@ -36,6 +43,26 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 ***
 
 ### Key Features
+
+- Users can check-in, rate, and leave comments on poutine dishes that they try.
+
+<p align="center">
+  <img src="https://github.com/verykenny/gravy-n-curds/blob/main/planning/gravyncurds_checkin.gif?raw=true" alt="gravy and curds check in and comment">
+</p>
+
+
+- User profile page allows users to keep track of their favorite poutines by reviewing their past checkins, editing them and deleting them.
+
+<p align="center">
+  <img src="https://github.com/verykenny/gravy-n-curds/blob/main/planning/gravyncurds_profile.png" alt="gravy and curds profile page">
+</p>
+
+- Top ranking poutine dishes can be found on the Top Rated page where users can easily check-in for dishes or review possible dishes to try.
+
+<p align="center">
+  <img src="https://github.com/verykenny/gravy-n-curds/blob/main/planning/gravyncurds_top.png?raw=true" alt="gravy and curds top rated dishes page">
+</p>
+
 - Bcryptjs library to secure authentication (w/ Demo User) to ensure user security
 - CSRUF library used to prevent csrf attacks
 - Session cookies used to authorize users when trying to view shelves and read/update their reviews
