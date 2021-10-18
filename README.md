@@ -18,8 +18,6 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 
 [Key Features](#key-features)
 
-[Code Snippets](#code-snippets)
-
 [Wiki Pages](#wiki-pages)
 
 [Future Goals](#future-goals)
@@ -27,20 +25,20 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 ***
 
 ### Launch
-- You can read more about the project using the wiki located at: https://github.com/verykenny/r-board/wiki
+- You can read more about the project using the wiki located at: https://github.com/verykenny/gravy-n-curds/wiki
 - To start a development environment:
-  - Clone the repository at: https://github.com/verykenny/r-board
-  - Install front-end locally using npm from the react-app directory:
+  - Clone the repository at: https://github.com/verykenny/gravy-n-curds
+  - Install front-end locally using npm from the frontend directory:
     ```
     npm install
     npm start
     ```
-  - Install back-end locally using pipenv "pipenv install" from the root directory:
+  - Install back-end locally using npm from the backend directory:
     ```
-    pipenv install
-    pipenv run flask run
+    npm install
+    npm start development
     ```
-  - Navigate to the localhost port specified in config/index.js
+  - Navigate to the localhost port specified in the frontend console output (e.g. http://localhost:3000)
 
 
 ### Technologies
