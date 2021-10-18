@@ -18,6 +18,8 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 
 [Key Features](#key-features)
 
+[Code Snippets](#code-snippets)
+
 [Wiki Pages](#wiki-pages)
 
 [Future Goals](#future-goals)
@@ -83,6 +85,36 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 - Bcryptjs library to secure authentication (w/ Demo User) to ensure user security
 - CSRUF library used to prevent csrf attacks
 - Session cookies used to authorize users when displaying check-in buttons and profile option.
+
+***
+
+### Code Snippets
+#### Example 1
+
+Route with authorization validation and checkin form input validation middleware. Eager loading when querying the object to be updated allows the Redux state to be updated with the required poutine and store information when the object is returned as a json string:
+
+````javascript
+router.put('/:checkinId(\\d+)', requireAuth, validateCheckin, asyncHandler(async (req, res) => {
+    const { comment, rating } = req.body;
+    const checkinId = Number(req.params.checkinId);
+    const userId = req.user.id;
+
+    const checkin = await Checkin.findByPk(checkinId, {
+        include: {
+            model: Poutine,
+            include: Store
+        }
+    });
+
+    if (userId !== checkin.userId) return res.json({ message: 'unauthorized' })
+
+    checkin.comment = comment;
+    checkin.rating = rating;
+    await checkin.save();
+
+    res.json({ checkin });
+}))
+````
 
 ***
 
