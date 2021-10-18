@@ -91,7 +91,7 @@ gravy-n-curds is a web application that allows users to view poutine dish option
 ### Code Snippets
 #### Example 1
 
-Route with authorization and form input validation middleware to confirm if user is allowed to make the update and to confirm that the information provided to update the check-in is valid. Eager loading when querying the object to be updated allows the Redux state to be updated with the required poutine and store information when the object is returned as a json string:
+Route with authorization and form input validation middleware to confirm if user is allowed to make the update and to confirm that the information provided to update the check-in is valid. Eager loading for the object query allows the Redux state to be updated with the required poutine and store information when the object is returned as a json string:
 
 ````javascript
 router.put('/:checkinId(\\d+)', requireAuth, validateCheckin, asyncHandler(async (req, res) => {
